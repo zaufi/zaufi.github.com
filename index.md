@@ -10,4 +10,3 @@ Here is my notepad (I actually hate blogs) about <strike>hard</strike> life unde
 
 I'll try to collect a some kind of knowledge base here, based on my Gentoo experience.
 ...cuz I've started to forget some tricks while fixing smth.
-
