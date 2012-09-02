@@ -7,7 +7,9 @@ tags: [virtualbox, howto]
 ---
 {% include JB/setup %}
 
-Ok, lets go:
+# Create a new VM
+
+Ok, lets go!
 
 Create a fresh VM named *ubuntu-12.04* (just pure .vbox config file)
 
@@ -79,7 +81,81 @@ To eject the DVD disk after installation, stop VM by typing:
 
     zaufi@gentop ~ $ VBoxManage controlvm ubuntu-12.04 poweroff
 
-then detach the disk, and set primary boot device to HDD:
+then detach the disk, and set a primary boot device to HDD:
 
-    zaufi@gentop ~ $ VBoxManage storageattach ubuntu-12.04 --storagectl storage --port 2 --medium none --type dvddrive
+    zaufi@gentop ~ $ VBoxManage storageattach ubuntu-12.04 --storagectl storage --port 2 --medium none
     zaufi@gentop ~ $ VBoxManage modifyvm ubuntu-12.04 --boot1 disk
+
+
+
+
+# Setup just installed Ubuntu 12.04
+
+To make shared folders work VirtualBox Guest Additions must be installed. First of all u have to "insert"
+an ISO image into virtual CD drive:
+
+    zaufi@gentop ~ $ VBoxManage storageattach ubuntu-12.04 --storagectl storage --port 2 --medium /usr/share/virtualbox/VBoxGuestAdditions.iso --type dvddrive
+
+then boot into VM and mount it:
+
+    root@ubuntu:/# mount /dev/dvd /media/cdrom/
+    mount: block device /dev/sr0 is write-protected, mounting read-only
+
+    root@ubuntu:/# ll /media/cdrom/
+    total 48527
+    dr-xr-xr-x 4 root root     2048 Aug 20 18:44 ./
+    drwxr-xr-x 4 root root     4096 Sep  2 07:07 ../
+    dr-xr-xr-x 3 root root     2048 Aug 20 18:44 32Bit/
+    dr-xr-xr-x 2 root root     2048 Aug 20 18:44 64Bit/
+    -r-xr-xr-x 1 root root      647 Aug 17  2011 AUTORUN.INF*
+    -r-xr-xr-x 1 root root     6966 Aug 20 18:35 autorun.sh*
+    -r-xr-xr-x 1 root root     5523 Aug 20 18:35 runasroot.sh*
+    -r-xr-xr-x 1 root root  7699918 Aug 20 18:39 VBoxLinuxAdditions.run*
+    -r-xr-xr-x 1 root root 20625408 Aug 20 18:47 VBoxSolarisAdditions.pkg*
+    -r-xr-xr-x 1 root root 13626392 Aug 20 18:29 VBoxWindowsAdditions-amd64.exe*
+    -r-xr-xr-x 1 root root   282968 Aug 20 18:21 VBoxWindowsAdditions.exe*
+    -r-xr-xr-x 1 root root  7431960 Aug 20 18:22 VBoxWindowsAdditions-x86.exe*
+
+**before** run ``VBoxLinuxAdditions.run`` from it, make sure u have the following packages installed:
+
+    root@ubuntu:/# apt-get install -y dkms build-essential linux-headers-virtual
+
+They are required to build kernel modules. Now u may run additions installer...
+
+    root@entell:/media/cdrom# ./VBoxLinuxAdditions.run
+    Verifying archive integrity... All good.
+    Uncompressing VirtualBox 4.1.20 Guest Additions for Linux.........
+    VirtualBox Guest Additions installer
+    Removing existing VirtualBox DKMS kernel modules ...done.
+    Removing existing VirtualBox non-DKMS kernel modules ...done.
+    Building the VirtualBox Guest Additions kernel modules ...done.
+    Doing non-kernel setup of the Guest Additions ...done.
+    Starting the VirtualBox Guest Additions ...done.
+    Installing the Window System drivers ...fail!
+    (Could not find the X.Org or XFree86 Window System.)
+
+Now turn off the VM and lets add some shared folders:
+
+    zaufi@gentop ~ $ VBoxManage sharedfolder add ubuntu-12.04 --name 'soft-storage' --hostpath /storage/soft
+    zaufi@gentop ~ $ VBoxManage sharedfolder add ubuntu-12.04 --name 'host-exchange' --hostpath /storage/tmp
+
+In ``/storage/soft`` I have a collection of .deb packages shared between VMs and schroot'ed systems which I have
+in my host gentoo system -- just to avoid redundand downloads when many systems require updates).
+And ``/storage/tmp`` will be used to exchange files between host and guest systems.
+
+Now boot it again and append the following to the end of ``/etc/fstab``:
+
+    host-exchange              /mnt/host                vboxsf  defaults  0 0
+    soft-storage               /storage                 vboxsf  defaults  0 0
+    /storage/ubuntu/archives   /var/cache/apt/archives  none    rw,bind   0 0
+
+**NOTE** the FS name! It is ``vboxsf`` not a ``vobxfs`` %)
+
+Make sure all specified mountpoints and directories are exist! The last line is a rebind of a ``.deb``s
+storage, so ``apt`` will use a shared collection (this also will reduce size of the VM image in a host system).
+
+Before ``mount -a`` (or reboot) u may clean content of ``/var/cache/apt/archives`` to save some space whithin the VM.
+
+## Important
+
+1. After clonevm do not forget to remove ``/etc/udev/rules.d/70-persistent*``
