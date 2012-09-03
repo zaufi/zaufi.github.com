@@ -9,7 +9,7 @@ tags: [chroot, howto]
 
 Ok, lets go!
 
-First of all u have to emerge a ``debootstrap`` package, then become root and do the following:
+First of all u have to emerge a `debootstrap` package, then become root and do the following:
 
     root@gentop ~ $ cd /storage/schroot/
 
@@ -26,9 +26,9 @@ First of all u have to emerge a ``debootstrap`` package, then become root and do
     <...skipped...>
 
 This command will prepare base environment for Ubuntu 11.10 (to make same for 12.04 just replace
-``oneiric`` to ``precise``). The ``/storage/schroot/`` is a base directory where I keep all my chroot'ed systems.
+`oneiric` to `precise`). The `/storage/schroot/` is a base directory where I keep all my chroot'ed systems.
 
-Next step is to install ``schroot`` and write a config files for it (``/etc/schroot/schroot.conf``):
+Next step is to install `schroot` and write a config files for it (`/etc/schroot/schroot.conf`):
 
     [oneiric]
     type=directory
@@ -39,7 +39,7 @@ Next step is to install ``schroot`` and write a config files for it (``/etc/schr
     root-groups=root,wheel
     script-config=ubuntu/config
 
-The last line points to a config file relative to ``/etc/schroot`` w/ the following content:
+The last line points to a config file relative to `/etc/schroot` w/ the following content:
 
     # Filesystems to mount inside the chroot.
     FSTAB="/etc/schroot/ubuntu/fstab"
@@ -50,7 +50,7 @@ The last line points to a config file relative to ``/etc/schroot`` w/ the follow
     # System NSS databases to copy into the chroot.
     NSSDATABASES="/etc/schroot/ubuntu/nssdatabases"
 
-The most intersting here is a ``fstab``:
+The most intersting here is a `fstab`:
 
     /proc     /proc     none    rw,bind     0   0
     /sys      /sys      none    rw,bind     0   0
@@ -60,8 +60,8 @@ The most intersting here is a ``fstab``:
     /home     /home     none    rw,bind     0   0
     /storage/soft/ubuntu/archives   /var/cache/apt/archives none    rw,bind     0   0
 
-Other files could be taken from default configuration (``/etc/schroot/default``).
-Alto it would be nice to have the following function in a ``~/.bashrc``:
+Other files could be taken from default configuration (`/etc/schroot/default`).
+Also it would be nice to have the following function in a `~/.bashrc`:
 
     function build-chroot()
     {
