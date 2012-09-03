@@ -65,13 +65,11 @@ Also it would be nice to have the following function in a `~/.bashrc`:
 
     function build-chroot()
     {
-        set_misc_konsole
         cd /home/builder
         select c in `/usr/bin/schroot -l`; do
             /usr/bin/schroot -c $c -u builder
             break
         done
-        set_normal_konsole
     }
 
 so u may just run it from the bash prompt to switch into a chroot'ed environment of your choice
