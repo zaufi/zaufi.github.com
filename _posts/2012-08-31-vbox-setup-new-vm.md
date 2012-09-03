@@ -7,6 +7,10 @@ tags: [virtualbox, howto]
 ---
 {% include JB/setup %}
 
+### Absatact
+
+Step by step instruction to create a virtual machine using VirtualBox and command line w/ Ubuntu inside.
+
 # Create a new VM
 
 Ok, lets go!
@@ -28,12 +32,12 @@ Setup VM and hardware:
 
 Here we requested:
 
-1. ``--memory 2048`` 2048M of RAM
-2. ``--cpus 2`` 2 CPU w/ PAE, ACPI, HPET and IOAPIC
-3. use modern CPU instructions for hardware virtualization support: ``--hwvirtex on``,
-   ``--hwvirtexexcl on`` and ``--vtxvpid on``
+1. `--memory 2048` 2048M of RAM
+2. `--cpus 2` 2 CPU w/ PAE, ACPI, HPET and IOAPIC
+3. use modern CPU instructions for hardware virtualization support: `--hwvirtex on`,
+   `--hwvirtexexcl on` and `--vtxvpid on`
 4. no hardware 3D graphics acceleration required (cuz we'd like to install a server :) as well as audio support:
-   ``--accelerate3d off`` and ``--audio none`` options
+   `--accelerate3d off` and `--audio none` options
 5. we want to emulate Intel ICH9 chipset and the only Intel PRO/1000 T Server (82543GC) network card bridged
    w/ physical wlan0
 6. enable VirtualBox Remote Desktop Extension on port 5555, so we can connect the VM using an RDP client
@@ -41,8 +45,8 @@ Here we requested:
 
 
 Now it is time to make a 10Gb "disk" (I gave a full path to desired place for image file,
-cuz don't like to have heavy files in my home :) BTW, one may use ``--basefolder /storage/soft/vbox`` option
-in the very first command to move all files related to this VM out of ``$HOME`` directory...
+cuz don't like to have heavy files in my home :) BTW, one may use `--basefolder /storage/soft/vbox` option
+in the very first command to move all files related to this VM out of `$HOME` directory...
 
     zaufi@gentop ~ $ VBoxManage createhd --filename /storage/soft/vbox/ubuntu-12.04-sda.vdi --size 10240
     0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
@@ -116,7 +120,7 @@ then boot into VM and mount it:
     -r-xr-xr-x 1 root root   282968 Aug 20 18:21 VBoxWindowsAdditions.exe*
     -r-xr-xr-x 1 root root  7431960 Aug 20 18:22 VBoxWindowsAdditions-x86.exe*
 
-**before** run ``VBoxLinuxAdditions.run`` from it, make sure u have the following packages installed:
+**before** run `VBoxLinuxAdditions.run` from it, make sure u have the following packages installed:
 
     root@ubuntu:/# apt-get install -y dkms build-essential linux-headers-virtual
 
@@ -139,23 +143,31 @@ Now turn off the VM and lets add some shared folders:
     zaufi@gentop ~ $ VBoxManage sharedfolder add ubuntu-12.04 --name 'soft-storage' --hostpath /storage/soft
     zaufi@gentop ~ $ VBoxManage sharedfolder add ubuntu-12.04 --name 'host-exchange' --hostpath /storage/tmp
 
-In ``/storage/soft`` I have a collection of .deb packages shared between VMs and schroot'ed systems which I have
+In `/storage/soft` I have a collection of .deb packages shared between VMs and schroot'ed systems which I have
 in my host gentoo system -- just to avoid redundand downloads when many systems require updates).
-And ``/storage/tmp`` will be used to exchange files between host and guest systems.
+And `/storage/tmp` will be used to exchange files between host and guest systems.
 
-Now boot it again and append the following to the end of ``/etc/fstab``:
+Now boot it again and append the following to the end of `/etc/fstab`:
 
     host-exchange              /mnt/host                vboxsf  defaults  0 0
     soft-storage               /storage                 vboxsf  defaults  0 0
     /storage/ubuntu/archives   /var/cache/apt/archives  none    rw,bind   0 0
 
-**NOTE** the FS name! It is ``vboxsf`` not a ``vobxfs`` %)
+**NOTE** the FS name! It is `vboxsf` not a `vobxfs` %)
 
-Make sure all specified mountpoints and directories are exist! The last line is a rebind of a ``.deb``s
-storage, so ``apt`` will use a shared collection (this also will reduce size of the VM image in a host system).
+Make sure all specified mountpoints and directories are exist! The last line is a rebind of a `.deb`s
+storage, so `apt` will use a shared collection (this also will reduce size of the VM image in a host system).
+The alternative way is to create a file `/etc/apt/apt.conf.d/90shared-archives` w/ the following content:
 
-Before ``mount -a`` (or reboot) u may clean content of ``/var/cache/apt/archives`` to save some space whithin the VM.
+    Dir::Cache::Archives "/storage/ubuntu/archives";
 
-## Important
+so u wouldn't need a rebind entry in the `/etc/fstab` :)
 
-1. After clonevm do not forget to remove ``/etc/udev/rules.d/70-persistent*``
+**ATTENTION** Make sure the user u r running VM from has write permissions to shared archives directory
+(on a host system), so `apt` (inside the VM) would be able to create a lock file and download new .deb files.
+
+Before `mount -a` (or reboot) u may clean content of `/var/cache/apt/archives` to save some space whithin the VM.
+
+### Important Notes
+
+1. After `clonevm` do not forget to remove `/etc/udev/rules.d/70-persistent*`

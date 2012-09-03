@@ -74,4 +74,5 @@ Alto it would be nice to have the following function in a ``~/.bashrc``:
         set_normal_konsole
     }
 
-so u may just run it from the bash prompt to switch into a chroot'ed environment of your choice.
+so u may just run it from the bash prompt to switch into a chroot'ed environment of your choice
+(as user _builder_, so do not forget to add such user or use some other name).
