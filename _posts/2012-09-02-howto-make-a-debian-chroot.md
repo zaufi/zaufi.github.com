@@ -12,7 +12,6 @@ Ok, lets go!
 First of all u have to emerge a `debootstrap` package, then become root and do the following:
 
     root@gentop ~ $ cd /storage/schroot/
-
     root@gentop /storage/schroot $ debootstrap oneiric oneiric.schroot
     I: Retrieving InRelease
     I: Failed to retrieve InRelease
@@ -63,14 +62,17 @@ The most intersting here is a `fstab`:
 Other files could be taken from default configuration (`/etc/schroot/default`).
 Also it would be nice to have the following function in a `~/.bashrc`:
 
-    function build-chroot()
-    {
-        cd /home/builder
-        select c in `/usr/bin/schroot -l`; do
-            /usr/bin/schroot -c $c -u builder
-            break
-        done
-    }
+{% highlight bash %}
+function build-chroot()
+{
+    cd /home/builder
+    select c in `/usr/bin/schroot -l`; do
+        /usr/bin/schroot -c $c -u builder
+        break
+    done
+}
+{% endhighlight %}
 
 so u may just run it from the bash prompt to switch into a chroot'ed environment of your choice
 (as user _builder_, so do not forget to add such user or use some other name).
+

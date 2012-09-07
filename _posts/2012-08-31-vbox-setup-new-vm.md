@@ -171,3 +171,6 @@ Before `mount -a` (or reboot) u may clean content of `/var/cache/apt/archives` t
 ### Important Notes
 
 1. After `clonevm` do not forget to remove `/etc/udev/rules.d/70-persistent*`
+2. After removing some packages they may leave config files in a system, so `dpkg-query --list` will show _rc_
+   status for them. It may affect futher (re)installs w/ conflicts in configuration files.
+   To remove them completely use `dpkg -P <package>`...
