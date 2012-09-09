@@ -76,3 +76,5 @@ function build-chroot()
 so u may just run it from the bash prompt to switch into a chroot'ed environment of your choice
 (as user _builder_, so do not forget to add such user or use some other name).
 
+*NOTE* While update packages in a chrooted system install scripts sometimes may fail because theres
+no `upstart` running. To solve this trouble one may symlink `/sbin/initctl` to `/bin/true`
