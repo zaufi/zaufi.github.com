@@ -78,8 +78,11 @@ Ready to start the VM and install an Ubuntu server from the DVD "inserted":
 **NOTE:** Dunno about desktop version, but server has a special mode to install into a VM
 (use F4 at boot screen to select it).
 
-**ATTENTION:** Do not use anything than ext or xfs as root file system in case of minimal setup! Otherwise u'll
-get an unbootable system! (cuz minimal kernel just have no other FS drivers in initrd)
+**ATTENTION:** Do not use anything than ext2/ext3 or xfs as root file system in case of minimal setup! Otherwise u'll
+get an unbootable system! (cuz minimal kernel just have no other FS drivers in initrd).
+
+**NOTE:** If your are ready to boot from CD again (right after installation cmpletes) in rescue mode
+and fix initrd, you may choose anything you want as root fs :)
 
 To eject the DVD disk after installation, stop VM by typing:
 
