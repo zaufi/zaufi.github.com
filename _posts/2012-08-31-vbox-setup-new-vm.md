@@ -174,3 +174,57 @@ Before `mount -a` (or reboot) u may clean content of `/var/cache/apt/archives` t
 2. After removing some packages they may leave config files in a system, so `dpkg-query --list` will show _rc_
    status for them. It may affect futher (re)installs w/ conflicts in configuration files.
    To remove them completely use `dpkg -P <package>`...
+
+### Useful Helpers ###
+
+I found the following scripts pretty useful:
+
+* `bin/startvm`
+   {% highlight bash %}
+#!/bin/bash
+#
+# Script to start a VBox'ed VM
+#
+# Copyright 2012 by Alex Turbov
+#
+
+if [ -z "$*" ]; then
+    select vm in `VBoxManage list vms | sed 's,"\([^"]*\)".*,\1,'`; do
+        break
+    done
+else
+    vm=$1
+fi
+
+if [ -n "$vm" ]; then
+    echo "Going to start '$vm'..."
+    nohup VBoxHeadless -s "$vm" --vrde=config > "/tmp/nohup-$vm.log" 2>&1 &
+else
+    echo "Nothing to do..."
+fi
+   {% endhighlight %}
+* `bin/stopvm`
+   {% highlight bash %}
+#!/bin/bash
+#
+# Script to stop a running VBox'ed VM
+#
+# Copyright 2012 by Alex Turbov
+#
+
+if [ -z "$*" ]; then
+    select vm in `VBoxManage list runningvms | sed 's,"\([^"]*\)".*,\1,'`; do
+        break
+    done
+else
+    vm=$1
+fi
+
+if [ -n "$vm" ]; then
+    echo "Going to stop '$vm'..."
+    VBoxManage controlvm "$vm" poweroff
+else
+    echo "Nothing to do..."
+fi
+   {% endhighlight %}
+* also I have improved bash-completion for `VBoxManage` (I'll share it later...)
