@@ -178,6 +178,11 @@ Before `mount -a` (or reboot) u may clean content of `/var/cache/apt/archives` t
    status for them. It may affect futher (re)installs w/ conflicts in configuration files.
    To remove them completely use `dpkg -P <package>`... (BTW, there is a lot of packages can be removed after
    _minimal_ Ubuntu install which are obviously useless in VM)
+3. If you'd like to add some external keys (like PPA's) use the following command:
+
+        # apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-key D4762858
+
+   **NOTE** `--keyserver` should be **before** any other options!
 
 ### Useful Helpers ###
 
