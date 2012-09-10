@@ -170,10 +170,11 @@ Before `mount -a` (or reboot) u may clean content of `/var/cache/apt/archives` t
 
 ### Important Notes
 
-1. After `clonevm` do not forget to remove `/etc/udev/rules.d/70-persistent*`
+1. After `clonevm` do not forget to remove `/etc/udev/rules.d/70-persistent*` inside of VM
 2. After removing some packages they may leave config files in a system, so `dpkg-query --list` will show _rc_
    status for them. It may affect futher (re)installs w/ conflicts in configuration files.
-   To remove them completely use `dpkg -P <package>`...
+   To remove them completely use `dpkg -P <package>`... (BTW, there is a lot of packages can be removed after
+   _minimal_ Ubuntu install which are obviously useless in VM)
 
 ### Useful Helpers ###
 
@@ -212,17 +213,31 @@ fi
 # Copyright 2012 by Alex Turbov
 #
 
-if [ -z "$*" ]; then
+if [ -z "$1" ]; then
     select vm in `VBoxManage list runningvms | sed 's,"\([^"]*\)".*,\1,'`; do
         break
     done
 else
-    vm=$1
+    vm="$1"
+fi
+
+if [ -z "$2" ]; then
+    a="`basename $0`"
+    case "$a" in
+    poweroffvm|savestatevm|resetvm|resumevm|pausevm)
+        action=${a%%vm}
+        ;;
+    *) # default action
+        action='poweroff'
+        ;;
+    esac
+else
+    action="$2"
 fi
 
 if [ -n "$vm" ]; then
-    echo "Going to stop '$vm'..."
-    VBoxManage controlvm "$vm" poweroff
+    echo "Sending '$action' to '$vm'..."
+    VBoxManage controlvm "$vm" $action
 else
     echo "Nothing to do..."
 fi
