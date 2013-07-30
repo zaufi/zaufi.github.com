@@ -44,8 +44,8 @@ Here we requested:
    (like krdc) later
 
 
-Now it is time to make a 10Gb "disk" (I gave a full path to desired place for image file,
-cuz don't like to have heavy files in my home :) BTW, one may use `--basefolder /storage/soft/vbox` option
+Now it is time to make a 10Gb "disk" (I gave a full path to the desired place for image file,
+cuz I don't like to have heavy files in my home :) BTW, one may use `--basefolder /storage/soft/vbox` option
 in the very first command to move all files related to this VM out of `$HOME` directory...
 
     zaufi@gentop ~ $ VBoxManage createhd --filename /storage/soft/vbox/ubuntu-12.04-sda.vdi --size 10240
@@ -56,12 +56,12 @@ Create an SATA controller (named *storage*) w/ 4 ports:
 
     zaufi@gentop ~ $ VBoxManage storagectl ubuntu-12.04 --name storage --add sata --controller IntelAHCI --sataportcount 4 --hostiocache off
 
-and attach our disk image as HDD to it:
+and attach our disk image as a HDD to it:
 
     zaufi@gentop ~ $ VBoxManage storageattach ubuntu-12.04 --storagectl storage --port 1 --medium /storage/soft/vbox/ubuntu-12.04-sda.vdi --type hdd
 
 I've downloaded an Ubuntu 12.04 server CD before, now we can push it into a virtual DVD drive
-and tell to Virtual Box to use it as first boot device:
+and tell to Virtual Box to use it as a first boot device:
 
     zaufi@gentop ~ $ VBoxManage storageattach ubuntu-12.04 --storagectl storage --port 2 --medium /storage/soft/ubuntu/ubuntu-12.04.1-server-amd64.iso --type dvddrive
     zaufi@gentop ~ $ VBoxManage modifyvm ubuntu-12.04 --boot1 dvd
@@ -79,10 +79,10 @@ Ready to start the VM and install an Ubuntu server from the DVD "inserted":
 (use F4 at boot screen to select it).
 
 **ATTENTION:** Do not use anything than ext2/ext3 or xfs as root file system in case of minimal setup! Otherwise u'll
-get an unbootable system! (cuz minimal kernel just have no other FS drivers in initrd).
+get an unbootable system! (cuz minimal kernel just have no other FS drivers in the `initrd`).
 
 **NOTE:** If your are ready to boot from CD again (right after installation cmpletes) in rescue mode
-and fix initrd, you may choose anything you want as root fs :)
+and fix initrd, you may choose anything you want as a root FS :)
 
 To eject the DVD disk after installation, stop VM by typing:
 
@@ -98,7 +98,7 @@ then detach the disk, and set a primary boot device to HDD:
 
 # Setup just installed Ubuntu 12.04
 
-To make shared folders work VirtualBox Guest Additions must be installed. First of all u have to "insert"
+To make shared folders work VirtualBox Guest Additions must be installed. First of all you have to "insert"
 an ISO image into virtual CD drive:
 
     zaufi@gentop ~ $ VBoxManage storageattach ubuntu-12.04 --storagectl storage --port 2 --medium /usr/share/virtualbox/VBoxGuestAdditions.iso --type dvddrive
@@ -123,11 +123,11 @@ then boot into VM and mount it:
     -r-xr-xr-x 1 root root   282968 Aug 20 18:21 VBoxWindowsAdditions.exe*
     -r-xr-xr-x 1 root root  7431960 Aug 20 18:22 VBoxWindowsAdditions-x86.exe*
 
-**before** run `VBoxLinuxAdditions.run` from it, make sure u have the following packages installed:
+**before** run `VBoxLinuxAdditions.run` from it, make sure you have the following packages installed:
 
     root@ubuntu:/# apt-get install -y dkms build-essential linux-headers-virtual
 
-They are required to build kernel modules. Now u may run additions installer...
+They are required to build kernel modules. Now you may run additions installer...
 
     root@entell:/media/cdrom# ./VBoxLinuxAdditions.run
     Verifying archive integrity... All good.
@@ -146,9 +146,9 @@ Now turn off the VM and lets add some shared folders:
     zaufi@gentop ~ $ VBoxManage sharedfolder add ubuntu-12.04 --name 'soft-storage' --hostpath /storage/soft
     zaufi@gentop ~ $ VBoxManage sharedfolder add ubuntu-12.04 --name 'host-exchange' --hostpath /storage/tmp
 
-In `/storage/soft` I have a collection of .deb packages shared between VMs and schroot'ed systems which I have
+In the `/storage/soft/` I have a collection of .deb packages shared between VMs and schroot'ed systems which I have
 in my host gentoo system -- just to avoid redundand downloads when many systems require updates).
-And `/storage/tmp` will be used to exchange files between host and guest systems.
+And `/storage/tmp/` will be used to exchange files between host and guest systems.
 
 Now boot it again and append the following to the end of `/etc/fstab`:
 
@@ -164,12 +164,12 @@ The alternative way is to create a file `/etc/apt/apt.conf.d/90shared-archives` 
 
     Dir::Cache::Archives "/storage/ubuntu/archives";
 
-so u wouldn't need a rebind entry in the `/etc/fstab` :)
+so you wouldn't need a rebind entry in the `/etc/fstab` :)
 
-**ATTENTION** Make sure the user u r running VM from has write permissions to shared archives directory
+**ATTENTION** Make sure the user you are running VM from has write permissions to shared archives directory
 (on a host system), so `apt` (inside the VM) would be able to create a lock file and download new .deb files.
 
-Before `mount -a` (or reboot) u may clean content of `/var/cache/apt/archives` to save some space whithin the VM.
+Before `mount -a` (or reboot) you may clean content of `/var/cache/apt/archives` to save some space whithin the VM.
 
 ### Important Notes
 
