@@ -250,4 +250,5 @@ else
     echo "Nothing to do..."
 fi
    {% endhighlight %}
+
 * also I have improved bash-completion for `VBoxManage` (I'll share it later...)
