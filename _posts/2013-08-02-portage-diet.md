@@ -7,13 +7,13 @@ tags: [gentoo]
 ---
 {% include JB/setup %}
 
-Recently I've drammatically reduced the portage tree by getting rid of a bunch of categories I
-unlikely will ever use. To do so, you have to add the following to `/etc/paludis/repositories/gentoo.conf`:
+Recently I've drammatically reduced the portage tree by getting rid of a bunch of categories I'm not going to use.
+To do so, you have to add the following to `/etc/paludis/repositories/gentoo.conf`:
 
     sync_options = --exclude-from=/etc/paludis/repositories/gentoo-portage-exclude.list --rsync-option="--delete-excluded"
 
-The `gentoo-portage-exclude.list` actually generated from `gentoo-portage-exclude.list.skel`
-by the following script:
+The `gentoo-portage-exclude.list` file is actually generated from `gentoo-portage-exclude.list.skel`
+by the script below:
 
    {% highlight bash %}
 #!/bin/bash
@@ -48,7 +48,7 @@ cat ${skel} \
   >>$out
    {% endhighlight %}
 
-And here is my _skeleton_ file w/ categories and profiles/architectures I not intended to use:
+And here is my _skeleton_ file w/ categories and profiles/architectures I'm not intended to use:
 
     #
     # Remove some categories I unlikely will use
