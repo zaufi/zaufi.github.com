@@ -6,7 +6,7 @@
   <div class="span8">
     {{ content }}
     <hr>
-    <div class="pagination">
+    <div class="pagination pagination-right">
       <ul>
       {% if page.previous %}
         <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
@@ -38,3 +38,4 @@
   {% endunless %}
   </div>
 </div>
+<!-- kate: indent-width 2; tab-width 2; -->
