@@ -26,9 +26,7 @@ Yes, I know there is a lot of stuff like this, but I have few problems w/ it:
   programs in a different ways.
 2. Some of that stuff is actually abandoned -- even if I can fix or improve smth, there is nobody I can send
   my patch to...
-3. Some of that stuff is <del>too much</del> 
-  <em><a data-original-title="Default tooltip" data-toggle="tooltip" title="" href="#">end-user oriented</a></em>
-  <del>so inflexible</del> -- they can colorize
+3. Some of that stuff is <del>too much</del> _end-user oriented_ <del>so inflexible</del> -- they can colorize
   almost everything via regular expressions and configuration files. The only problem I have w/ them:
   some things I'd like to colorize (or fix formatting) is **damn hard to express via regexes** ... 
   particularly because line-by-line processing implemented in that tools have no _state_... 
