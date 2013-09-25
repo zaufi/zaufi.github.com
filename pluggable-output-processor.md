@@ -136,6 +136,30 @@ and reformat/simplify some loooong error messages...
 </div>
 
 
+mount
+-----
+
+Mount plugin can format columns into a table. Also it can colorize filesystems by types:
+* _kernel_ -- i.e. service filesystems like `cgroup`, `mqueue`, `devpts` & etc
+* _real_ -- i.e. a real devices was mounted
+* _rebind_ -- i.e. filesystems w/ `bind` option
+
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#mount-before">Before</a></li>
+        <li><a data-toggle="tab" href="#mount-after">After</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="mount-before" class="tab-pane active">
+            <img src="assets/images/mount-before.png" class="img-rounded">
+        </div>
+        <div id="mount-after" class="tab-pane">
+            <img src="assets/images/mount-after.png" class="img-rounded">
+        </div>
+    </div>
+</div>
+
+
 Configuration Details
 =====================
 
