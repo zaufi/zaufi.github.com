@@ -121,8 +121,8 @@ to filter them out:
 
     BOOST_(PP_[A-Z_]+_(\d+|[A-Z])|.*_HPP(_INCLUDED)?$|[A-Z_]+_(AUX|DETAIL)_)
 
-Leaving a replacement part empty instruct code completer to remove matched completions. Another practical
-example of usage sanitizer is to beautify some verbose names and transform them into a shorter. For example
+Leaving a replacement part empty instruct the code completer to remove matched completions. Another practical
+example of usage of sanitizer is to beautify some verbose names and transform them into a shorter. For example
 completer may contain items with `std::basic_string<char>`, which is well known as `std::string`, so to make
 a particular completion result slightly shorter I use the regex like on a screen shot...
 
