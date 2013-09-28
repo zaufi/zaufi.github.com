@@ -122,8 +122,8 @@ to filter them out:
     BOOST_(PP_[A-Z_]+_(\d+|[A-Z])|.*_HPP(_INCLUDED)?$|[A-Z_]+_(AUX|DETAIL)_)
 
 Leaving a replacement part empty instruct the code completer to remove matched completions. Another practical
-example of usage of sanitizer is to beautify some verbose names and transform them into a shorter. For example
-completer may contain items with `std::basic_string<char>`, which is well known as `std::string`, so to make
+example of usage of sanitizer is to beautify some verbose names and to make them litle shorter. For example
+the completer may contain items with `std::basic_string<char>`, which is well known as `std::string`, so to make
 a particular completion result slightly shorter I use the regex like on a screen shot...
 
 <div class="tabbable">
@@ -141,10 +141,10 @@ a particular completion result slightly shorter I use the regex like on a screen
     </div>
 </div>
 
-The _Other Settings_ page contains options related to `#include` directives and code completer.
-Plugin has action (default key is `Shift+F10`) to copy `#include` statement with current file
+The _Other Settings_ page contains options related to `#include` directives and a code completer.
+The plugin has action (default key is `Shift+F10`) to copy `#include` statement with current file
 into a clipboard, so you may switch a document and just paste it. The first option in a 
-_`#include` Helper Options_ group specify format of that preprocessor directive.
+_`#include` Helper Options_ group specify the format of that preprocessor directive.
 
 At the end of this group you may find a list of file wildcards to exclude from `#include` completion list.
 
