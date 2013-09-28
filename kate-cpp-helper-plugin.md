@@ -207,8 +207,10 @@ text and starts file completer...
 
 <img src="assets/images/cpphelper/include-completer.png" class="img-rounded" title="Include Files Completer" />
 
+
 See Also
 ========
 
 * [latest release](http://kde-apps.org/content/show.php/?content=148606)
 * [sources repository](https://github.com/zaufi/kate-cpp-helper-plugin)
+* [ChangeLog](https://github.com/zaufi/kate-cpp-helper-plugin/blob/master/Changes.md)
