@@ -81,9 +81,9 @@ The plugin is capable to use a _Precompiled Headers_ file. If you have it for yo
 is it recommended to specify it in _Session PCH header to compile_ option. Typically this header
 consist of `#include` directives for most used header files in your sources. For `cmake` based projects
 I have a [module](https://github.com/mutanabbi/chewy-cmake-rep/blob/master/UsePCHFile.cmake) which helps
-to make it by command `make update-pch-header`. To use it just add `UsePCHFile.cmake` and 
-`PreparePCHHeader.cmake.in` files to your cmake modules directory of your project and in top `CMakeLists.txt`
-call it like this:
+to make it by command `make update-pch-header`. To use it add `UsePCHFile.cmake`,
+`PreparePCHHeader.cmake.in` and `pch_template.h.in` files to your cmake modules directory of your project 
+and in a top level `CMakeLists.txt` call it like this:
 {% highlight cmake %}
 include(UsePCHFile)
 use_pch_file(
@@ -94,18 +94,23 @@ use_pch_file(
 Then you may add this file to _CLang Settings_ page and plugin will build it and use while code completion.
 
 <div class="alert alert-success">
-The mentioned CMake module actually is a part of a <a href="https://github.com/mutanabbi/chewy-cmake-rep" target="_blank">
-collection of reusable modules</a> under control of <a href="https://github.com/mutanabbi/chewy" target="_blank">
-<code>chewy</code> utility</a>. To install it using <code>chewy</code> you can use:
+The mentioned CMake module actually is a part of a 
+<a href="https://github.com/mutanabbi/chewy-cmake-rep" target="_blank" class="alert-link">
+collection of reusable modules</a> under control of 
+<a href="https://github.com/mutanabbi/chewy" target="_blank" class="alert-link">
+chewy utility</a>. To install it using <code>chewy</code>:
 <pre>
 $ chewy install https://raw.github.com/mutanabbi/chewy-cmake-rep/master/UsePCHFile.cmake
+ * Receiving the module file https://raw.github.com/mutanabbi/chewy-cmake-rep/master/UsePCHFile.cmake
+ * Receiving the addon file https://raw.github.com/mutanabbi/chewy-cmake-rep/master/PreparePCHHeader.cmake.in
+ * Receiving the addon file https://raw.github.com/mutanabbi/chewy-cmake-rep/master/pch_template.h.in
 </pre>
 any required additional files will be installed automatically.
 </div>
 
 The next configuration page of the plugin allows you to fine tune completion results.
 
-<div class="alert alert-error">
+<div class="alert alert-danger">
 <em>Automatic code completion</em> option nowadays is a quite stupid: it tries a completion 
 after user enters <em>'.'</em> or <em>'->'</em> in a source code. But more important that it can annoy on
 a heavy project (with <a href="http://boost.org" target="_blank">Boost</a> library for example).
@@ -165,7 +170,7 @@ mode will be applied automatically.
 
 
 <div class="alert alert-info">
-<h6>Open Header/Implementation Motivation</h6>
+<h4>Open Header/Implementation Motivation</h4>
 <p>
 <code>kate</code> shipped with a plugin named <em>Open Header</em>, but sooner after I started to use it I've found
 few cases when it can't helps me. Nowadays I have 2 "real life" <del>really annoying</del> examples when it fails:
