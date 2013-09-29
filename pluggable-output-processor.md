@@ -82,10 +82,10 @@ internally after print) is a subset of the current one, just move one line above
     </ul>
     <div class="tab-content">
         <div id="cmake-before" class="tab-pane active">
-            <img src="assets/images/cmake-before.png" class="img-rounded" />
+            <img src="assets/images/cmake-before.png" class="img-rounded img-responsive" />
         </div>
         <div id="cmake-after" class="tab-pane">
-            <img src="assets/images/cmake-after.png" class="img-rounded" />
+            <img src="assets/images/cmake-after.png" class="img-rounded img-responsive" />
         </div>
     </div>
 </div>
@@ -105,10 +105,10 @@ used to build) -- i.e. it works for cmake-based projects (my favorite build util
     </ul>
     <div class="tab-content">
         <div id="make-before" class="tab-pane active">
-            <img src="assets/images/make-before.png" class="img-rounded" />
+            <img src="assets/images/make-before.png" class="img-rounded img-responsive" />
         </div>
         <div id="make-after" class="tab-pane">
-            <img src="assets/images/make-after.png" class="img-rounded" />
+            <img src="assets/images/make-after.png" class="img-rounded img-responsive" />
         </div>
     </div>
 </div>
@@ -127,10 +127,10 @@ and reformat/simplify some loooong error messages...
     </ul>
     <div class="tab-content">
         <div id="gcc-before" class="tab-pane active">
-            <img src="assets/images/gcc-before.png" class="img-rounded" />
+            <img src="assets/images/gcc-before.png" class="img-rounded img-responsive" />
         </div>
         <div id="gcc-after" class="tab-pane">
-            <img src="assets/images/gcc-after.png" class="img-rounded" />
+            <img src="assets/images/gcc-after.png" class="img-rounded img-responsive" />
         </div>
     </div>
 </div>
@@ -151,10 +151,10 @@ Mount plugin can format columns into a table. Also it can colorize filesystems b
     </ul>
     <div class="tab-content">
         <div id="mount-before" class="tab-pane active">
-            <img src="assets/images/mount-before.png" class="img-rounded" />
+            <img src="assets/images/mount-before.png" class="img-rounded img-responsive" />
         </div>
         <div id="mount-after" class="tab-pane">
-            <img src="assets/images/mount-after.png" class="img-rounded">
+            <img src="assets/images/mount-after.png" class="img-rounded img-responsive">
         </div>
     </div>
 </div>

@@ -205,8 +205,7 @@ One more thing I have mention: typing <code>#in</code> in C++ sources will autom
 text and starts file completer...
 </div>
 
-<img src="assets/images/cpphelper/include-completer.png" class="img-rounded" title="Include Files Completer" />
-
+<img src="assets/images/cpphelper/include-completer.png" class="img-rounded img-responsive" title="Include Files Completer" />
 
 See Also
 ========
