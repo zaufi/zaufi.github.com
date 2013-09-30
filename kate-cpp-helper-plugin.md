@@ -58,12 +58,12 @@ Typical dirs you have to add here is the following:
 The plugin also try to suggest some directories based on opened documents' paths.
 
 <div class="alert alert-info">
-Personally I use only two <code>#include</code> directories in all my projects: source tree root and build root.
-And every source file contains a full path relative to one of above when <code>#include</code> something.
-Particularly this technique helps to simplify configuration management when you have to add a bunch of 
-<code>-I</code> options in your build system configuration files and track inter-components dependencies
+Personally I use only two <code>#include</code> directories in all my projects: a source tree root and a build root.
+And every source file contains a full path relative to one of listed paths when <code>#include</code> something.
+Particularly this technique helps to simplify configuration management when you have to add a bunch of
+<code>-I</code> options in your build system configuration files and track inter-component dependencies
 all the time you've added a new <code>#include</code> directive in you sources... so finally you've got
-a particular compiler command line options the half of your terminal window long :)
+a particular compiler command line options the half of your terminal window height :)
 </div>
 
 ![Session-wide Settings](assets/images/cpphelper/session.png "Session-wide Settings")
