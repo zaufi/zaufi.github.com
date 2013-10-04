@@ -173,7 +173,7 @@ TODO
 * unit tests for tokenizer
 * test files w/ to cause various error messages from gcc (+ unit test for colorizer somehow)
 * continue to improve `cmake` support (+ unit tests)
-* turn `mount` output into a jumab readable look-n-feel
+* turn `mount` output into a human readable look-n-feel
 * colorize `df` depending on free space threshold
 * colorize `diff` (easy! :-)
 * `eselect` module to manage tools under control
@@ -214,3 +214,22 @@ class Processor(outproc.Processor):
         return line
 
 {% endhighlight %}
+
+Actually a plugin may control few more things like:
+
+* what configuration file to use
+* is it want to handle an output for particular command (analyzing command line options)
+  or the engine should just `exec()` a wrapped command
+* it also may want to handle a whole block of output text instead of line-by-line
+
+<div class="alert alert-success">
+More details are coming...
+</div>
+
+
+See Also
+========
+
+* [latest release](http://cli-apps.org/content/show.php?content=160833)
+* [sources repository](https://github.com/zaufi/pluggable-output-processor)
+

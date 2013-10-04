@@ -216,6 +216,6 @@ text and starts file completer...
 See Also
 ========
 
-* [latest release](http://kde-apps.org/content/show.php/?content=148606)
+* [latest release](http://kde-apps.org/content/show.php?content=148606)
 * [sources repository](https://github.com/zaufi/kate-cpp-helper-plugin)
 * [ChangeLog](https://github.com/zaufi/kate-cpp-helper-plugin/blob/master/Changes.md)
