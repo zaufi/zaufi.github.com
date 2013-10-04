@@ -151,7 +151,8 @@ The plugin has action (default key is `Shift+F10`) to copy `#include` statement 
 into a clipboard, so you may switch a document and just paste it. The first option in a 
 _`#include` Helper Options_ group specify the format of that preprocessor directive.
 
-At the end of this group you may find a list of file wildcards to exclude from `#include` completion list.
+At the end of this group you may find a list of file extensions (not a wildcards!) to exclude from 
+`#include` completion list.
 
 ![Other Settings](assets/images/cpphelper/other-settings.png "Other Settings")
 
