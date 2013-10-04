@@ -163,22 +163,42 @@ Mount plugin can format columns into a table. Also it can colorize filesystems b
 Configuration Details
 =====================
 
+Here is mine `/etc/outproc/gcc.conf` for example:
+
+    # Settings for GNU gcc output processor
+
+    # Message colors by severity level
+    error = rgb(5,1,1)
+    warning = rgb(4,2,0)
+    notice = normal
+
+    # Source file and position
+    location = gray(8)+itallic
+
+    # Code snippet colors
+    code = white
+    code-keyword = rgb(4,5,0)+bold
+    code-builtin-type = rgb(5,1,0)
+    code-modifier = rgb(4,3,0)
+    code-std-namespace = rgb(2,5,0)
+    code-boost-namespace = rgb(0,2,1)
+    code-data-member = normal
+    code-preprocessor = green
+    code-numeric-literal = rgb(0,2,4)
+    code-string-literal = magenta+itallic
+    code-comment = rgb(2,2,1)+itallic
+    code-cursor = rgb(2,0,0)
+
+    # Add a new line after source code snippet
+    # NOTE The `gcc` module will remove lines w/ error position indicator ('^')
+    # (error position will be indicated in a source line w/ a background color
+    # specified by `code-cursor` color). As a result error messages become
+    # slightly condensed ;-) -- So this setting allow you to control whether
+    # a new line will be added instead of line w/ error position indicator.
+    new-line-after-code = false
+
 // TBD
 
-
-TODO
-====
-
-* continue to improve C++ tokenizer (few things can be better)
-* unit tests for tokenizer
-* test files w/ to cause various error messages from gcc (+ unit test for colorizer somehow)
-* continue to improve `cmake` support (+ unit tests)
-* turn `mount` output into a human readable look-n-feel
-* colorize `df` depending on free space threshold
-* colorize `diff` (easy! :-)
-* `eselect` module to manage tools under control
-* ask module is it want to handle a current command or we can do `execv` instead
-* implement `STDIN` reader (pipe mode)
 
 
 How to Extend
@@ -225,6 +245,23 @@ Actually a plugin may control few more things like:
 <div class="alert alert-success">
 More details are coming...
 </div>
+
+
+TODO
+====
+
+* <del>continue to improve C++ tokenizer</del>   
+  now it is capable to handle almost everything I wanted to implement. Just one thing remain: 
+  reformat too long template names into a smth shorter than terminal width...
+* <p><del>unit tests for tokenizer</del></p>
+* test files w/ to cause various error messages from gcc (+ unit test for colorizer somehow)
+* continue to improve `cmake` support (+ unit tests)
+* <p><del>turn <code>mount</code> output into a human readable look-n-feel</del></p>
+* colorize `df` depending on free space threshold
+* colorize `diff` (easy! :-)
+* <p><del><code>eselect</code> module to manage tools under control</del></p>
+* <p><del>ask module is it want to handle a current command or we can do <code>execv</code> instead</del></p>
+* implement `STDIN` reader (pipe mode)
 
 
 See Also
