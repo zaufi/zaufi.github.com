@@ -207,7 +207,7 @@ to a list of candidates.
 **That is all!** (briefly ;-)
 
 <div class="alert alert-info">
-One more thing I have mention: typing <code>#in</code> in C++ sources will automatically insert <code>#include</code>
+One more thing I have to mention: typing <code>#in</code> in C++ sources will automatically insert <code>#include</code>
 text and starts file completer...
 </div>
 
