@@ -50,6 +50,10 @@ Installation
 
 Easy!
 
+    $ pip install outproc
+
+or
+
     $ tar -xzf outproc-X.Y.tar.gz
     $ cd outproc-X.Y
     $ sudo easy_install .
@@ -262,6 +266,8 @@ TODO
 * <p><del><code>eselect</code> module to manage tools under control</del></p>
 * <p><del>ask module is it want to handle a current command or we can do <code>execv</code> instead</del></p>
 * implement `STDIN` reader (pipe mode)
+* handle `KeyboardInterrupt` and hide Python crap
+* `ctest` module to colorize test results
 
 
 See Also
