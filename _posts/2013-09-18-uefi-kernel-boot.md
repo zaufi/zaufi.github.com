@@ -44,12 +44,6 @@ Few steps to boot your kernel from UEFI
         CONFIG_EFI=y
         CONFIG_EFI_STUB=y
 
-        CONFIG_CMDLINE_BOOL=y
-        CONFIG_CMDLINE="root=/dev/sdb3 ro"
-    provide your real root partition instead of `sdb3`, as well as add your other
-    kernel options. **The builtin command line is important option!** It is the only (known to me)
-    way to pass required parameters to the kernel (at least on my Asus laptop, w/ damn ugly UI in UEFI
-    configuration page).
 3. compile your EFI ready kernel
 4. copy kernel image (`bzImage`) to the `/EFI/` directory on the `EFI System` partition. Let it be
     just `/EFI/kernel.efi`.
@@ -57,13 +51,16 @@ Few steps to boot your kernel from UEFI
     and your current kernel **must** be already loaded via UEFI :-) Internet has a lot of docs how to achieve that
     using bootable USB flash drive for example... So finally issue the following command:
 
-        root@gentop〉 ~〉 efibootmgr -c -d /dev/sdb -l \\EFI\\kernel.efi -L 'Current Gentoo Linux'
+        root@gentop〉 ~〉 efibootmgr -c -d /dev/sdb -l \\EFI\\kernel.efi -L 'Current Gentoo Linux' -u 'root=/dev/sdb3 ro'
         BootCurrent: 0002
         Timeout: 2 seconds
         BootOrder: 0002,0000,0001
         Boot0000* GRUB2
         Boot0001  Hard Drive
         Boot0002* Current Gentoo Linux
+
+    `-u` option as you may notice used to pass additional params to the kernel. Alternatively,
+    you may compile the kernel w/ that params built-in.
 
     As for me, I prefer to have the following boot entries:
 
@@ -77,4 +74,5 @@ Few steps to boot your kernel from UEFI
     screens or questions (like boot loaders do). Actually using `efibootmgr` you can change boot order from
     linux as well (just read the `man` page).
 
-... so now I'm thinking about to get rid of `grub2` from my system ;-)
+<del>... so now I'm thinking about to get rid of <code>grub2</code> from my system ;-) </del>
+Upd: **DONE**
