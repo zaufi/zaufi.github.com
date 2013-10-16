@@ -276,5 +276,5 @@ See Also
 * [latest release](http://cli-apps.org/content/show.php?content=160833)
 * [sources repository](https://github.com/zaufi/pluggable-output-processor)
 
-[![Downloads](https://pypip.in/d/outproc/badge.png)](https://crate.io/package/outproc)
-[![Downloads](https://pypip.in/v/outproc/badge.png)](https://crate.io/package/outproc)
+[![Downloads](https://pypip.in/d/outproc/badge.png)](https://pypi.python.org/pypi/outproc)
+[![Downloads](https://pypip.in/v/outproc/badge.png)](https://pypi.python.org/pypi/outproc)
