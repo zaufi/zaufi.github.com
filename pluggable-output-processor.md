@@ -22,15 +22,16 @@ Some of them are written on Perl (and I'm not a fun of it :-) and after few hack
 
 Yes, I know there is a lot of stuff like this, but I have few problems w/ it:
 
-1. I'm not a Perl programmer (and don't want to be), but I feel constant intention to improve that
+1. I'm not a Perl programmer (and don't want to be), but I feel a permanent desire to improve that
   programs in a different ways.
-2. Some of that stuff is actually abandoned -- even if I can fix or improve smth, there is nobody I can send
+2. Some of that stuff is actually abandoned -- i.e. even if I can fix or improve smth, there is nobody I can send
   my patch to...
 3. Some of that stuff is <del>too much</del> _end-user oriented_ <del>so inflexible</del> -- they can colorize
   almost everything via regular expressions and configuration files. The only problem I have w/ them:
-  some things I'd like to colorize (or fix formatting) is **damn hard to express via regexes** ... 
+  some things I'd like to colorize (or fix formatting) is impossible or **damn hard to express via regexes** ... 
   particularly because line-by-line processing implemented in that tools have no _state_... 
-  (yep, it will be hard to code, and even harder to use having only configuratin files)
+  Yep, I understand that, it will be hard to code, and even harder to use such a tool for end users 
+  (i.e. ppl w/o programming skills) -- it is why authors took the easy way: allow user to write regexes in configs.
 
 
 Features
@@ -59,14 +60,19 @@ or
     $ sudo easy_install .
 
 For Gentoo users there is a [live ebuild](https://github.com/zaufi/zaufi-overlay/blob/master/dev-util/pluggable-output-processor/pluggable-output-processor-scm.ebuild)
-in my [repository](https://github.com/zaufi/zaufi-overlay/). Also (for Gentoo users again ;-)
-`eselect` module from `contrib/` will be installed by the ebuild. Users of other distros have to
-make a symlinks to required modules manually:
+in my [repository](https://github.com/zaufi/zaufi-overlay/). 
+Also (for Gentoo users again ;-) `eselect` module from `contrib/` will be installed by the ebuild. 
+Users of other distros have to make a symlinks to required modules manually:
 
     $ ln -s /usr/bin/outproc /usr/lib/outproc/bin/<module-name>
 
 and then make sure `/usr/lib/outproc/bin` placed __before__ `/usr/bin` (and anything else) in your 
-user/system `PATH` environment.
+user/system `PATH` environment. Available modules (plugins) can be found at `<python-site-packages-dir>/outproc/pp`.
+For example, to install the `gcc` module do the following:
+
+    $ ln -s /usr/bin/outproc /usr/lib/outproc/bin/gcc
+
+Then you may edit `/etc/outproc/gcc.conf` to adjust color settings. 
 
 
 Usage Examples
