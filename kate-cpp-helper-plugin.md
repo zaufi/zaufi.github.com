@@ -162,6 +162,27 @@ not found. That means you have to add some more paths to the system/session list
 files found (same name, but different paths) background turned to a warning. In that case it depends
 on `-I` compiler options order which one will be actually processed.
 
+The plugin may monitor configured `#incldue` directories, so then a missed file will appear
+(after required package being installed or files generated in a build directory), it will remove an 
+error mark. One may specify that to monitor in the middle options group.
+
+<div class="alert alert-danger">
+<p>Monitoring too much (nested) directories, for example in <code>/usr/include</code> configured as
+system directory, may lead to high resources consumption, so <code>inotify_add_watch</code> would
+return a <code>ENOSPC</code> error (use<code>strace</code> to find out and/or check kate's console log for
+<strong>strange</strong> messages from <code>DirWatch</code>).</p>
+<p>So if your system short of resources (memory) just try to avoid live <code>#include</code> files 
+status updates. Otherwise one may increase a number of available files/dirs watches by doing this:</p>
+<pre>
+# echo 16384 >/proc/sys/fs/inotify/max_user_watches
+</pre>
+<p>To make it permanent add the following to <code>/etc/sysctl.conf</code> or 
+<code>/etc/sysctl.d/inotify.conf</code> (depending on system):</p>
+<pre>
+fs.inotify.max_user_watches = 16384
+</pre>
+</div>
+
 To open a header file just move cursor on a line containing `#include` and press `F10` key.
 If no valid directive recognized on a current line, a dialog with a list of currently included files will appear.
 If you have no write permission to opened file (most likely files from `/usr/include`) read-only
@@ -212,6 +233,76 @@ text and starts file completer...
 </div>
 
 <img src="assets/images/cpphelper/include-completer.png" class="img-rounded img-responsive" title="Include Files Completer" />
+
+
+Indexing Source Code
+====================
+
+Since version 1.0 _Kate C++ Helper_ plugin has indexing feature. One may configure indexed collections via
+_Indexer Settings_ in the tool view.
+
+
+![Indexer Settings](assets/images/cpphelper/indexing-settings.png "Indexer Settings")
+
+After adding a new index and some targets to be indexed, it is ready to rebuild.
+
+<div class="alert alert-info">
+<h4>Note that...</h4>
+when build, current compiler options, configured for a session will be used. Diagnostic tab will contain
+indexing progress details. In case of too many errors, consider to fix compiler options (like add some missed 
+<code>-I</code> options for third party libraries).
+</div>
+
+After rebuilding completed and collection available for search, one may use search tab to find something.
+There are few _special terms_ (filters) can be passed to the search engine. Generic format of them is:
+
+        keyword:value
+
+_value_ can be a boolean, string or numeric type. In fact only one (true) value needed for boolean type, 
+so as a _value_ only _"y"_ is accepted. For example to find virtual functions just add _"virtual:y"_ filter, 
+otherwise (if no filter specified) all kinds of symbols will be found.
+
+* `access:public|protected|private` filter by visibility inside the class scope
+* `anon:y` or `anonymous:y` should a symbol be in some anonymous scope (namespace, struct, union)
+* `base:<class-name>` to find a symbols (classes or structures) inherited from the specified class/struct.  
+
+        base:QAbastractItemModel
+        base:basic_ios
+* `inheritance:public|protected|private` every kind of inheritance could be prefixed with `virtual-`.
+   The short form of this filter is `inh`. Example, to find classes virtually inherited from the `basic_ios`:
+
+        inh:virtual-public base:basic_ios
+* `decl:<name>` or `ref:<name>` filters to lookup only declarations or references (usage) of the specified _name_
+* `def:y` sometimes declaration and definition could be in different places (lexical containers). This 
+    boolean filter allows to find that cases.
+* `kind:<value>` filter symbols of specified _kind_, where _value_ can be of one of the following:
+    `ns`, `ns-alias`, `typedef`, `type-alias`, `struct`, `class`, `union`, `enum`, `enum-const`, `fn`,
+    `method`, `ctor`, `dtor`, `conversion`, `param`, `var`, `field`, `bitfield`
+* `pod:y` show only <abbr title="Plain Old Data structures">POD</abbr>s
+* `scope:<name>` restrict search only withing given scope. _name_ paramater could be a name (possible 
+    fully qualified) of a namespace, class, struct, union, or enum. For example to get all public typedefs
+    of `std::basic_string`:
+
+        access:public scope:std::basic_string kind:typedef
+* `static:y` show only static data or function members.
+* `template:y|ps|fs` show only template symbols, which can be a _partial specialization_ (`ps` value),
+    _full specialization_ (`fs` value) or just a template (`y` value).
+* `virtual:y` show only virtual function members (i.e. declared w/ a `virtual` keyword)
+* `arity:M..N` restrict search for functions (including member functions, constructors or conversion functions)
+    with arity in a given range `[M,N]`
+* `align:M..N`, `size:M..N` restrict search for types with `alignof()` or `sizeof()` limited by the range `[M,N]`
+* `line:M..N`, `column:M..N` restrict search for symbols in a specified range of lines/columns
+
+Search terms can be combined into a logical expressions with the following keywords: `AND`, `OR`, `NOT`, `XOR`
+and/or parentheses.
+
+Everything else considered as search terms (symbol names). Wildcards are supported.
+
+Enjoy searching! :-)
+
+![Search](assets/images/cpphelper/search.png "Search")
+
+
 
 See Also
 ========
