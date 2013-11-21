@@ -251,6 +251,8 @@ After adding a new index and some targets to be indexed, it is ready to rebuild.
 when build, current compiler options, configured for a session will be used. Diagnostic tab will contain
 indexing progress details. In case of too many errors, consider to fix compiler options (like add some missed 
 <code>-I</code> options for third party libraries).
+
+After index has built you can use it from any other session despite of any options.
 </div>
 
 After rebuilding completed and collection available for search, one may use search tab to find something.
