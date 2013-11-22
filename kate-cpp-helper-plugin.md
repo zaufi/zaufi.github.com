@@ -11,6 +11,20 @@ Mini HowTo
 
 This page describe actions to configure the plugin for your project.
 
+Requirements
+------------
+
+* C++11 compatible compiler (gcc >= 4.8)
+* [clang](http://clang.llvm.org) >= 3.3
+* [cmake](http://cmake.org) >= 2.8
+* [Kate](http://kate-editor.org) editor version >= 3.8
+* [KDE](http://kde.org) >= 4.8
+* [boost](http://boost.org) library >= 1.49 required since version 0.8.7
+* [xapian](http://xapian.org) library >= 1.2.12 required since version 1.0
+
+__NOTE:__ Mentioned package versions are known to work, but maybe lesser versions could work for you.
+Try to fix them in `CMakeLists.txt` (around corresponding `find_package()`).
+
 Installation
 ------------
 
