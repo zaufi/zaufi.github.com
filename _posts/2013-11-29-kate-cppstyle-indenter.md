@@ -3,7 +3,7 @@ layout: post
 title: "Kate: C++/boost style (not quite) indenter"
 description: "Few words about my C++ style^W indenter"
 category: programming
-tags: [KDE, howto]
+tags: [kde, howto]
 ---
 {% include JB/setup %}
 
