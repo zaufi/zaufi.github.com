@@ -104,7 +104,7 @@ Some features in brief
 ----------------------
 
 * to start a C-style comment block type `/*` and press _ENTER_ key -- it gives you   
-    {% highlight cpp %}
+{% highlight cpp %}
 /*
  * |
  */ 
