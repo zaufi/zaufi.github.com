@@ -31,7 +31,7 @@ Yes, I know there is a lot of stuff like this, but I have few problems w/ it:
   some things I'd like to colorize (or fix formatting) is impossible or **damn hard to express via regexes** ... 
   particularly because line-by-line processing implemented in that tools have no _state_... 
   Yep, I understand that, it will be hard to code, and even harder to use such a tool for end users 
-  (i.e. ppl w/o programming skills) -- it is why authors took the easy way: allow user to write regexes in configs.
+  (i.e. ppl w/o programming skills) -- it is why authors took the easy way: allow to user to write regexes in configs.
 
 
 Features
@@ -134,6 +134,7 @@ and reformat/simplify some loooong error messages...
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#gcc-before">Before</a></li>
         <li><a data-toggle="tab" href="#gcc-after">After</a></li>
+        <li><a data-toggle="tab" href="#gcc-help">GCC help</a></li>
     </ul>
     <div class="tab-content">
         <div id="gcc-before" class="tab-pane active">
@@ -141,6 +142,9 @@ and reformat/simplify some loooong error messages...
         </div>
         <div id="gcc-after" class="tab-pane">
             <img src="assets/images/gcc-after.png" class="img-rounded img-responsive" />
+        </div>
+        <div id="gcc-help" class="tab-pane">
+            <img src="assets/images/gcc-help.png" class="img-rounded img-responsive" />
         </div>
     </div>
 </div>
@@ -261,19 +265,20 @@ TODO
 ====
 
 * <del>continue to improve C++ tokenizer</del>   
-  now it is capable to handle almost everything I wanted to implement. Just one thing remain: 
+  now it is capable to handle almost everything I wanted to implement. Just one thing remains: 
   reformat too long template names into a smth shorter than terminal width...
-* <p><del>unit tests for tokenizer</del></p>
+* <del>unit tests for tokenizer</del>
 * test files w/ to cause various error messages from gcc (+ unit test for colorizer somehow)
 * continue to improve `cmake` support (+ unit tests)
 * <p><del>turn <code>mount</code> output into a human readable look-n-feel</del></p>
 * colorize `df` depending on free space threshold
-* colorize `diff` (easy! :-)
+* colorize `diff` (easy! :-) -- Done for `-u` mode
 * <p><del><code>eselect</code> module to manage tools under control</del></p>
 * <p><del>ask module is it want to handle a current command or we can do <code>execv</code> instead</del></p>
 * implement `STDIN` reader (pipe mode)
 * handle `KeyboardInterrupt` and hide Python crap
 * `ctest` module to colorize test results
+* <del>handle</del> `gcc -Q --help=target|optimizers|warnings` Done!
 
 
 See Also
