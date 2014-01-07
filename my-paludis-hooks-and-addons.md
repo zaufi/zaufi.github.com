@@ -21,7 +21,8 @@ and thanks to them, feature like _autopatch_ works much more better (and reliabl
 
 To install all that stuff here is a 
 [ebuild](https://github.com/zaufi/zaufi-overlay/blob/master/sys-apps/paludis-hooks/paludis-hooks-scm.ebuild)
-in my overlay. And yes, that `scm` is the only version ;-) cuz I'm permanently doing some improvements...
+in my overlay. And yes, that `scm` is the only version ;-) cuz I'm permanently doing some improvements
+w/o any release plan.
 
 **NOTE**: To use it w/ Python 3 as a default interpreter make sure you have an 
 [appropriate](/gentoo/2013/12/11/paludis-python3/) paludis version installed.
@@ -45,7 +46,7 @@ where the `stage` is one of the following: `ebuild_compile_post`, `ebuild_compil
 `ebuild_configure_post`, `ebuild_configure_pre`, `ebuild_install_pre` or `ebuild_unpack_post`.
 
 Recently I've killed all out of date patches from my local vault and made it 
-[public](https://github.com/zaufi/paludis-autopatches). For example w/o a patch `cmake` wont colorize its
+[public](https://github.com/zaufi/paludis-autopatches). For example w/o a patch `cmake` won't colorize its
 output even if color explicitly requested when running w/ captured output. So to allow my 
 [Pluggable Output Processor](/pluggable-output-processor.html) works w/ suppressing colors of CMake I have 
 `/var/db/paludis/autopatches/ebuild_unpack_post/dev-utils/cmake-2.8.11.2/cmake-2.8.11.2-do-not-check-isatty.patch`
@@ -92,11 +93,11 @@ The package's `spec` attribute specify the order how actions are matched and app
                 </thead>
                 <tr><td>8</td> <td>package-ver-rv:slot::repo</td></tr>
                 <tr><td>7</td> <td>package-ver-rv:slot</td></tr>
-                <tr><td>6</td> <td>package-ver-rv:repo</td></tr>
+                <tr><td>6</td> <td>package-ver-rv::repo</td></tr>
                 <tr><td>5</td> <td>package-ver-rv</td></tr>
                 <tr><td>4</td> <td>package:slot::repo</td></tr>
                 <tr><td>3</td> <td>package:slot</td></tr>
-                <tr><td>2</td> <td>package:repo</td></tr>
+                <tr><td>2</td> <td>package::repo</td></tr>
                 <tr><td>1</td> <td>cat/*</td></tr>
                 <tr><td>0</td> <td>*/*</td></tr>
             </table>
