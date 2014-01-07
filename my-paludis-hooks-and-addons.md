@@ -150,16 +150,16 @@ a symbolic link `boost` pointing to `boost-1.55-r1/html/`.
 
 I have `*/* -nls` in my `/etc/paludis/use.conf`, but some packages just don't have that USE flag,
 but install localizations anyway (yep, cuz ebuild authors just lazy ppl... most of the time).
-So `app-admin/localpurge` was "invented" to cleanup unused locales (ALL in my case). But `localepurge`
-will remove `*.mo` files after install, so when uninstall a package, some files will be marked as _gone_.
+So `app-admin/localpurge` was "invented" to cleanup unused locales (allof them in my case). But `localepurge`
+will remove `*.mo` files after install, so when a package gets uninstalled, some files will be marked as _gone_.
 One simple rule will do the job better:
 {% highlight xml %}
     <package spec="*/*" descr="locale-cleaner">
         <rm cd="/usr/share/locale/" dst="*/LC_MESSAGES/*.mo" />
     </package>
 {% endhighlight %}
-Because manipulations (deleting `*.mo` files) will be done **before** install, all that files even
-won't be counted by package manager. And I'm not telling about that you don't need to run any tool periodically
+Because manipulations (deleting `*.mo` files) will be done **before** merge, all that files even
+won't be counted by a package manager. And I'm not telling about that you don't need to run any tool periodically
 (or via cron) -- all your packages will be already clean w/o any manual actions :)
 
 Translations is a part of the "problem": some packages (like `alsa-utils`) want to install translated manual pages
