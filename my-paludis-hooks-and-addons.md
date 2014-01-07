@@ -14,8 +14,8 @@ I've done to <del>survive w/</del> for [paludis](http://paludis.exherbo.org) -- 
 Yep, initially there was only [hooks](http://paludis.exherbo.org/configuration/hooks.html), but later I've
 added some other helpful things I'm using for awhile... so probably the repo should be renamed.
 
-Personally I like hooks cuz that facility out of the box turns paludis into a really flexible package manager
-and thanks to them feature like _autopatch_ works much more better (and reliable) than 
+Personally I like hooks, cuz that facility, out of the box, turns paludis into a really flexible package manager
+and thanks to them, feature like _autopatch_ works much more better (and reliable) than 
 [same feature](https://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=3&chap=6#doc_chap6) of 
 `emerge` became available long time after.
 
