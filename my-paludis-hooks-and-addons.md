@@ -215,17 +215,17 @@ any particular package. For example I have it like this:
 
 
 Every line has a package spec and a space separated list of environment modifiers. Every modifier actually
-is a file from `/etc/paludis/env.conf.d`. In that file (an ordinal bash script actually) defined some actions to 
-modify `CFLAGS`, `LDFLAGS` or anything else you want. There are two helpful functions `add-options` 
-and `remove-options` to add/remove some options to/from some variable. For example I have the following
-`LDFLAGS` definition in my `bashrc`:
+is a file from `/etc/paludis/env.conf.d/`. In that file (an ordinal bash script actually to be sourced if
+package name matched) defined some actions to modify `CFLAGS`, `LDFLAGS` or anything else you want. There are two 
+helpful functions `add-options` and `remove-options` to add/remove some options to/from some variable. 
+For example I have the following `LDFLAGS` definition in my `bashrc`:
 
 {% highlight bash %}
 LDFLAGS="-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,--enable-new-dtags -Wl,--gc-sections -Wl,--hash-style=gnu"
 {% endhighlight %}
 
-Unfortunately, not all packages like `--gc-sections` option. For example `app-emulation/virtualbox`, it is why
-it mentioned in my `package_env.conf`. So here is mine `/etc/paludis/env.conf.d/no-gc-sections.conf`:
+Unfortunately, not all packages can link with `--gc-sections` option. For example `app-emulation/virtualbox`, 
+it is why it mentioned in my `package_env.conf`. So here is mine `/etc/paludis/env.conf.d/no-gc-sections.conf`:
 
 {% highlight bash %}
 einfo "Remove --gc-sections from linker flags"
@@ -246,10 +246,10 @@ and it use `add-option` helper function to update `LDFLAGS`. Being an _ordinal b
 other programs, `sed` for example, to modify environment and/or build flags for particular package.
 
 
-New `cave` Command
-------------------
+New `cave` Subcommand
+---------------------
 
-This package also add a "new" command `cave print-ebuild-path <spec>` which just prints a full path to the
+This package also add a "new" subcommand `cave print-ebuild-path <spec>` which just prints a full path to the
 ebuild according a given `spec`.
 
     zaufi@gentop〉~〉 cave print-ebuild-path firefox
@@ -295,12 +295,14 @@ installed package and just changed (and added as a target to rebuild on `world-u
 
 To show differences between ebuilds of installed and the next best available version use `pkg-next-diff <pkg-name>`.
 
+
 TODO
 ====
 
 * add some `USE` flags to `paludis-hooks` 
   [ebuild](https://github.com/zaufi/zaufi-overlay/blob/master/sys-apps/paludis-hooks/paludis-hooks-scm.ebuild)
   to be able to choose what components to install...
+
 
 See Also
 ========
