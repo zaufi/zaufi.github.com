@@ -15,15 +15,13 @@ Yep, initially there was only [hooks](http://paludis.exherbo.org/configuration/h
 added some other helpful things I'm using for awhile... so probably the repo should be renamed.
 
 Personally I like hooks, cuz that facility, out of the box, turns paludis into a really flexible package manager
-and thanks to them, feature like _autopatch_ works much more better (and reliable) than 
+and thanks to them, feature like _autopatch_ works much more better (and reliably) than the
 [same feature](https://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=3&chap=6#doc_chap6) of 
 `emerge` became available long time after.
 
 To install all that stuff here is a 
 [ebuild](https://github.com/zaufi/zaufi-overlay/blob/master/sys-apps/paludis-hooks/paludis-hooks-scm.ebuild)
 in my overlay. And yes, that `scm` is the only version ;-) cuz I'm permanently doing some improvements...
-
-**TODO**: Need to add at least `USE=python` (and inherit `python-r1`)
 
 **NOTE**: To use it w/ Python 3 as a default interpreter make sure you have an 
 [appropriate](/gentoo/2013/12/11/paludis-python3/) paludis version installed.
