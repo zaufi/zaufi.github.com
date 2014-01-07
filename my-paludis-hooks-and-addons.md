@@ -10,7 +10,7 @@ Short Intro
 -----------
 
 In my [paludis-hooks](https://github.com/zaufi/paludis-hooks) repo I'm trying to accumulate everything 
-I've done to <del>survive w/</del> for [paludis](http://paludis.exherbo.org) -- The Other Package Manager.
+I've done <del>to survive w/</del> for [paludis](http://paludis.exherbo.org) -- The Other Package Manager™.
 Yep, initially there was only [hooks](http://paludis.exherbo.org/configuration/hooks.html), but later I've
 added some other helpful things I'm using for awhile... so probably the repo should be renamed.
 
