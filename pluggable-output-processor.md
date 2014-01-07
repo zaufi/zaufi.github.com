@@ -67,7 +67,14 @@ Users of other distros have to make a symlinks to required modules manually:
     $ ln -s /usr/bin/outproc /usr/lib/outproc/bin/<module-name>
 
 and then make sure `/usr/lib/outproc/bin` placed __before__ `/usr/bin` (and anything else) in your 
-user/system `PATH` environment. Available modules (plugins) can be found at `<python-site-packages-dir>/outproc/pp`.
+user/system `PATH` environment. Personally I use the following piece of code in `/etc/profile.d/set_outproc_path.sh`,
+because setting `PATH` via `/etc/env.d` files will not give desired place inside a list of paths:
+{% highlight bash %}
+if [ -d /usr/lib/outproc/bin ]; then
+    export PATH="/usr/lib/outproc/bin:$PATH"
+fi
+{% endhighlight %}
+Available modules (plugins) can be found at `<python-site-packages-dir>/outproc/pp`.
 For example, to install the `gcc` module do the following:
 
     $ ln -s /usr/bin/outproc /usr/lib/outproc/bin/gcc

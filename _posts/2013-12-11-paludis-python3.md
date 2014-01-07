@@ -15,4 +15,4 @@ Here is a
 * gentoo [bug](https://bugs.gentoo.org/show_bug.cgi?id=493906)
 * upstream [bug](http://paludis.exherbo.org/trac/ticket/1297)
 
-
+**Update**: upstream has accepted the patch... waiting for gentoo team...
