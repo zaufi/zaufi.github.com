@@ -129,12 +129,14 @@ Documentation for `=dev-lib/boost-1.54`, for example, will be installed to `/usr
 Firefox will remember that location and next time will show me a some hint of most visited pages, when I
 type something in a location bar. Unfortunately after upgrade to `=dev-libs/boost-1.55-r1` path to documentation
 obviously will be changed and that hits from firefox will not work without fixing. The second problem with that:
-I have to remember exact package version with ebuild revision and should type it in a location bar a long time
-until firefox realized that visits count of some `1.55-r1` page is greater than same but with `1.54` in the path
-and will offer it instead.
+I have to remember an exact package version with a ebuild revision and should type it in a location bar a long time
+until firefox realized that visits count of some `1.55-r1` page is greater than same, but with `1.54` in the path
+and will offer it instead. Except `boost`, I've got about 10 more packages w/ `USE=doc` flag enabled and I don't want
+to remember all versions and revisions I currently have in my system... and bookmarks in firefox can't help much
+in this case!
 
-The solution is to make a "permanent" symbolic link which will stay the same for any version installed. 
-Moreover it can be a little shorter :-) So instead of `/usr/share/doc/boost-1.55.0-r1/html/index.html` I have 
+The solution is to make a "permanent" symbolic link which will stay the same for any version installed.
+Moreover it can be a little shorter :-) So instead of `/usr/share/doc/boost-1.55.0-r1/html/index.html` I have
 `/usr/share/doc/boost/index.html` as a hint in a location bar and don't care about particular version installed.
 
 To achieve that I've added a simple rule to my config:
@@ -175,6 +177,8 @@ should be removed.
 
 Other usage examples can be found 
 [here](https://github.com/zaufi/paludis-config/blob/master/hooks/configs/filesystem-manager.conf).
+They are mostly targeted to remove unused/redundand/useless files installed by various packages to
+`/usr/share/doc` and some other places.
 
 
 Manage Build Environments
