@@ -48,7 +48,7 @@ where the `stage` is one of the following: `ebuild_compile_post`, `ebuild_compil
 Recently I've killed all out of date patches from my local vault and made it 
 [public](https://github.com/zaufi/paludis-autopatches). For example w/o a patch `cmake` won't colorize its
 output even if color explicitly requested when running w/ captured output. So to allow my 
-[Pluggable Output Processor](/pluggable-output-processor.html) works w/ suppressing colors of CMake I have 
+[Pluggable Output Processor](/pluggable-output-processor.html) works w/o suppressing colors of CMake I have 
 `/var/db/paludis/autopatches/ebuild_unpack_post/dev-utils/cmake-2.8.11.2/cmake-2.8.11.2-do-not-check-isatty.patch`
 
 
