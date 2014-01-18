@@ -115,6 +115,9 @@ There are few children tags possible under the `package` element:
     * `dst` -- what to remove
     * `reverse` -- optional attribute to specify that command should remove **everything** except
       selected target(s)
+* `if` -- used to check some (limited nowadays) constraints and execute nested actions if latter is `true`
+    * `use` -- the only mandatory attribute nowadays to check if given `USE` flag is turned on for matched package
+    * `negate` -- boolean attribute to negate result of a use check
 
 Paths in a rule may refer to shell variables like `P`, `PN`, `PF`, `PV`, `PVR` and everything else
 declared by [PMS](http://wiki.gentoo.org/wiki/Project:PMS).
@@ -180,6 +183,33 @@ Other usage examples can be found
 They are mostly targeted to remove unused/redundand/useless files installed by various packages to
 `/usr/share/doc` and some other places.
 
+
+#### Even more extreme rule
+
+Recently I've added one more element: `if` -- to check if a matched package has some desired `USE` flag turned on.
+Nowadays I have the following __extreme__ rule in my config:
+
+{% highlight xml %}
+    <package spec="*/*" descr="USE=-doc remover">
+        <if use="doc" negate="true">
+            <rm cd="/usr/share" dst="doc" />
+        </if>
+    </package>
+{% endhighlight %}
+
+<div class="alert alert-danger">
+<h4>Attention</h4>
+This rule will prevent to install any files to `/usr/share/doc` from all packages which do not have `USE=doc`!
+</div>
+
+Unfortunately some packages, I want docs for, do not have that `USE` at all, so to stop this rule triggering,
+I've got a bunch of _stoppers_ like this:
+
+{% highlight xml %}
+    <package spec="clang-docs" stop="true" />
+    <package spec="python-docs" stop="true" />
+    <package spec="valgrind" stop="true" />
+{% endhighlight %}
 
 Manage Build Environments
 -------------------------
