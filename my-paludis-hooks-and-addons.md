@@ -326,9 +326,9 @@ completions are still available.
 Note that `-km` and `-Km` [options are used](/gentoo/2013/12/21/gpotw-5/). So when gentoo team adds some changes
 to ebuild w/o version bump, that options will add a target to rebuild. To show differences between ebuilds of
 installed package and just changed (and added as a target to rebuild on `world-up` "command") one may use
-`pkg-meta-diff <pkg-name>` command.
+`pkg_meta_diff <pkg-name>` command.
 
-To show differences between ebuilds of installed and the next best available version use `pkg-next-diff <pkg-name>`.
+To show differences between ebuilds of installed and the next best available version use `pkg_ebuild_diff <pkg-name>`.
 
 
 TODO
