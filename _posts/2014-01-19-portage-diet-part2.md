@@ -47,7 +47,7 @@ to add that rules **above**:
     - /profiles/arch**
 
 Unfortunately that approach do not scale well ;-( Particularly because the way `rsync` visits subdirectories:
-**shortest paths matched first**. I.e. you can't write smth like this:
+**shortest path visited first**. I.e. you can't write smth like this:
 
     + /profiles/default/linux/amd64/**
     - /profiles/default/**
