@@ -13,8 +13,8 @@ After getting a feedback about not quite complete clean and a
 rerun all the time after `.skel` file has modified, I've (re)read `man rsync` 
 again paying attention to filtering rules description.
 
-I was given a hint that script actually is not required. Everything can be done using only `rsync`
-filtering rules. The key feature is (I missed that first time reading it ;-)
+I was given a hint, that the script actually is not required. Everything can be done using only `rsync`
+filtering rules. The key feature is (I missed that, first time reading it ;-)
 
 <blockquote><p class="text-info">
     If pattern starts w/ a slash it is matched to the root of transfer, otherwise it is matched 
@@ -22,7 +22,7 @@ filtering rules. The key feature is (I missed that first time reading it ;-)
 </p></blockquote>
 
 Hence is it possible to remove a whole category or a particular directory (package) whithing some
-category and its cached files from `metadata/md5-cache/` with the single rule.
+category and its cached files from `metadata/md5-cache/` with a single rule.
 
     # rule to ignore a whole category
     - cat/***
@@ -32,7 +32,7 @@ category and its cached files from `metadata/md5-cache/` with the single rule.
     - cat/**
 
 One more implication to consider when you writing filetering rules: **rules order is important**. 
-You have to specify _include_ rules, then _exclude_. It stops matching if first match 
+You have to specify _include_ rules, then more generic _exclude_. It stops matching if first match 
 (include or exclude) was found. So if you want to remove everything, but `amd64/` from `/profiles/arch/`
 
     + /profiles/arch/amd64/**
