@@ -56,7 +56,7 @@ But you can't write smth like this:
 because before visit nested `amd64/` the `/profiles/default/linux/` dir will be visited, but the only 
 rule it matches is the second one: _kill all inside of `/profiles/default/`_, and the first rule will never match!
 So to do a pedantic cleanup of `/profiles` one have to write a lot of rules to explicitly enumerate things
-deep inside of profiles related dirs...
+deep inside of profiles related dirs... <del>like it was in my first version</del>
 
 But there is a other side of a coin: the way `rsync` visits and applies rules actually can help to describe desired
 cleanups in a **shorter functional-like** way! :-)
