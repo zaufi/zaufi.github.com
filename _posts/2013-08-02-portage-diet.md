@@ -7,6 +7,12 @@ tags: [gentoo]
 ---
 {% include JB/setup %}
 
+
+<div class="alert alert-info">
+<h4>Update</h4>
+I've done a far improved way to do that! The story has a <a href="{% post_url 2014-01-19-portage-diet-part2 %}" class="alert-link">continue...</a>
+</div>
+
 Recently I've drammatically reduced the portage tree by getting rid of a bunch of categories I'm not going to use.
 To do so, you have to add the following to `/etc/paludis/repositories/gentoo.conf`:
 
