@@ -88,8 +88,7 @@ that desired things to keep are placed in a dirs named after architecture or fea
     + /profiles/**/desktop
     + /profiles/**/kde
 
-And the final part: **just kill everything else!!** That `/profile/arch/base/` dir must be kept due referenced
-from particular arch dir.
+And the final part: **just kill everything else!!** 
 
     + /profiles/arch/base**
     - /profiles/arch/**
@@ -102,6 +101,7 @@ from particular arch dir.
     - /profiles/targets/**
     - /profiles/uclibc/***
 
+That `/profile/arch/base/` dir must be kept due referenced from a particular arch dir (`arch/amd64/` in my case).
 
 ### Measure the effect
 
