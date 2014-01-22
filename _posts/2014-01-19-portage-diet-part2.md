@@ -9,7 +9,7 @@ tags: [gentoo]
 
 
 After getting a feedback about not quite complete clean and a
-[generator script]({% post_url 2013-08-02-portage-diet %}), which needs to be (not forgetten to) 
+[generator script]({% post_url 2013-08-02-portage-diet %}), which needs to be (not forgotten to) 
 rerun all the time after `.skel` file has modified, I've (re)read `man rsync` 
 again paying attention to filtering rules description.
 
@@ -21,7 +21,7 @@ filtering rules. The key feature is (I missed that, first time reading it ;-)
     against the end of current item path...
 </p></blockquote>
 
-Hence is it possible to remove a whole category or a particular directory (package) whithing some
+Hence is it possible to remove a whole category or a particular directory (package) within some
 category and its cached files from `metadata/md5-cache/` with a single rule.
 
     # rule to ignore a whole category
@@ -31,7 +31,7 @@ category and its cached files from `metadata/md5-cache/` with a single rule.
     + cat/some-package**
     - cat/**
 
-One more implication to consider when you writing filetering rules: **rules order is important**. 
+One more implication to consider when you writing filtering rules: **rules order is important**. 
 You have to specify _include_ rules, then more generic _exclude_. It stops matching if first match 
 (include or exclude) was found. So if you want to remove everything, but `amd64/` from `/profiles/arch/`
 
@@ -144,4 +144,3 @@ Now lets count files+dirs before/after and total directory size I've got with my
     <li><strong>58,962</strong> directory entries are eliminated</li>
 </ul>
 </div>
-

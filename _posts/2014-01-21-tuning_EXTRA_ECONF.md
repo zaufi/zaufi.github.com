@@ -85,5 +85,5 @@ EXTRA_ECONF="--disable-dependency-tracking --enable-silent-rules"
 CMAKE_VERBOSE=OFF
 {% endhighlight %}
 
-**NOTE** The last option (I have to mention) has the same effect (reduce spam) for cmake based projects which
+**NOTE** The last option (I have to mention) has the same effect (reduce spam) for cmake based packages which
 are by default (in eclass) too verbose.
