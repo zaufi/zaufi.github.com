@@ -3,7 +3,7 @@ layout: post
 title: "Kate: C++/boost style (not quite) indenter"
 description: "Few words about my C++ style^W indenter"
 category: programming
-tags: [kde, howto]
+tags: [kde, kate, C++, howto]
 ---
 {% include JB/setup %}
 
@@ -103,13 +103,13 @@ indenter"™  designed to help you to __"do little more with less typing"__ for 
 Some features in brief
 ----------------------
 
-* to start a C-style comment block type `/*` and press _ENTER_ key -- it gives you   
-{% highlight cpp %}
+* to start a C-style comment block type `/*` and press _ENTER_ key -- it gives you
+    {% highlight cpp %}
 /*
  * |
- */ 
-{% endhighlight%}
-    to start `doxygen` comment block use `/**` + _ENTER_. Every following _ENTER_ just extend the current block.
+ */
+{% endhighlight %}
+* to start `doxygen` comment block use `/**` + _ENTER_. Every following _ENTER_ just extend the current block.
 * to start C++ style comment just type `//` it will add a one space after ;)
 * I prefer to have on-line-comments (i.e. C++-style comments after some expression) to be aligned at
  60th position. So typing `//` will automatically move comment to that position if there was some code before. 
@@ -121,15 +121,15 @@ some_call_with_long parameters_list(|param1, ..., paramN);  // Comment starts he
 // After pressing ENTER: keep comment at the original line
 some_call_with_long parameters_list(                        // Comment starts here...
     |param1, ..., paramN);
-{% endhighlight%}
-    Also try to use _ENTER_ in the middle of a comment text ;-)
+{% endhighlight %}
+* ...also try to use _ENTER_ in the middle of a comment text ;-)
 * typing `///` gives you `/// ` (with a space) or `///< ` depending on presence of code at the current line
 * from time to time I use grouping in a doxygen documentation, so typing `//@` gives you:
     {% highlight cpp %}
 //@{
 |
 //@}
-{% endhighlight%}
+{% endhighlight %}
 * always add a space after `,` character -- simple, but really convenient! really soon you've stopped typing 
   a space after any comma and feel yourself inconvenient with other indenters ;)
 * typing `<` without a space after some identifier adds a closing angle bracket (like notorious autobrackets 
@@ -152,9 +152,10 @@ some_call_with_long parameters_list(                        // Comment starts he
     }                                       \
   , manage_config_keys::action::GET         \
   },
-{% endhighlight%}
+{% endhighlight %}
 * typing `R"` will initiate a raw string literal
 
 This _not-quite-indenter_™ has some other (smaller) features to reduce typing. Hope, you'll like them if found! ;)
 
-PS: The other things I've found useful when typing C++ code can be plugged w/ some Python plugins dedicated to C++.
+PS: The other things I've found useful when typing C++ code can be plugged w/
+[some Python plugins dedicated to C++]({% post_url 2014-01-29-kate-c++-stuff %}).
