@@ -236,7 +236,7 @@ Here are couple few decorators defined in `expand` module to use by expand funct
 Both are accept a string to be displayed in a completion popup. The first one is a short description. The second one
 is a _details_ (or usage) text accessible by pressing `Alt` key for selected completion item. Because most of completions are
 really short names, completions will not appear in automatic mode, so to see them, one have to call that popup manually.
-Here are few expansion functions available for C++ code "ot of the box", and the most complicated (but powerful if compare 
+Here are few expansion functions available for C++ code "out of the box", and the most complicated (but powerful if compare 
 with trivial snippets) is `cl`. It is capable to generate template or non-template class, possible with zero (default) 
 or N-arity constructor, maybe with defaulted or deleted copy and/or move constructor and/or assign operator, maybe with 
 virtual destructor, where a class name and possible template and/or constructor parameters are (post)editable fields.
