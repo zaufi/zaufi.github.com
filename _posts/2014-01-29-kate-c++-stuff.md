@@ -346,7 +346,7 @@ copy, move constructors and/or destructor. Also class can be templated with desi
 
 Examples:
 * `;clcd;` class with default constructor and destructor
-* `;clcc2;` class with default constructor and another one with 2 parameters
+* `;clc2;` class with constructor with 2 parameters
 * `;clc1@cc@mc;` class with "conversion" constructor (single parameter), defaulted copy and move constructor/assign
 * `;cl@mv-cc;` class with defaulted move constructor/assign and delete copy constructor/assign
 * `;clt2vd` class with two template parameters and virtual destructor
