@@ -165,7 +165,7 @@ struct templated_test
 {% endhighlight %}
 
 The only mandatory parameter (the first one) is a structure name to insert. The optional rest, if present,
-turned into a template parameters… That is how `st` function was look like before KDE CS 4.13.
+turned into a template parameters… That is how `st` function was look like before KDE SC 4.13.
 
 But, sooner after trying to use builtin Python's `format` function with "template"
 strings intensively, I've realized that it is time to use a real _template engine_ ;-)
@@ -174,8 +174,8 @@ strings intensively, I've realized that it is time to use a real _template engin
 ## Level 3: Metatemplates
 
 Template engines are widely used in web programming to split _business logic_ from a _representation_.
-One of the famous one for Python is [jinja](http://jinja.pocoo.org/) (yeah, it is not an all-inclusive-framework… 
-just a template engine ;-) can be used with `expand` plugin.
+One of the famous one for Python is [jinja](http://jinja.pocoo.org/). Yep, it is not an all-inclusive-framework… 
+just a template engine ;-) and now can be used with `expand` plugin.
 
 Lets rewrite structure expansion function using jinja templates:
 
