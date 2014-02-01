@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; top: 0.300003px;" width="380.8333330154419" version="1.1" height="53.75">
+  <path stroke-width="2" d="M231.16666889190674,31.875H241.16666889190674" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M45.583333015441895,31.875H55.583333015441895" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M241.16666889190674,31.875Q251.16666889190674,31.875,251.16666889190674,21.875V20Q251.16666889190674,10,261.16666889190674,10H340.8333330154419Q350.8333330154419,10,350.8333330154419,20V21.875Q350.8333330154419,31.875,360.8333330154419,31.875" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M360.8333330154419,31.875H340.8333330154419" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M241.16666889190674,31.875H261.16666889190674" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M55.583333015441895,31.875Q65.5833330154419,31.875,65.5833330154419,21.875V20Q65.5833330154419,10,75.5833330154419,10H211.16666889190674Q221.16666889190674,10,221.16666889190674,20V21.875Q221.16666889190674,31.875,231.16666889190674,31.875" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M231.16666889190674,31.875H211.16666889190674" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M55.583333015441895,31.875H75.5833330154419" stroke="#000000" fill="none" style=""/>
+  <defs/>
+  <rect style="" stroke="#dae9e5" fill="#dae9e5" ry="3" rx="3" r="0" height="23.75" width="25.583333015441895" y="20" x="20"/>
+  <text font-size="12px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="31.875" x="32.79166650772095" style="text-anchor: middle; font: 12px &quot;Arial&quot;;">
+    <tspan dy="4.125">"e"</tspan>
+  </text>
+  <rect style="" stroke="#dae9e5" fill="#dae9e5" ry="3" rx="3" r="0" height="23.75" width="135.58333587646484" y="20" x="75.5833330154419"/>
+  <text font-size="12px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="31.875" x="143.37500095367432" style="text-anchor: middle; font: 12px &quot;Arial&quot;;">
+    <tspan dy="4.125">"c" - strong typed enum</tspan>
+  </text>
+  <rect style="" stroke="#dae9e5" fill="#dae9e5" ry="3" rx="3" r="0" height="23.75" width="79.66666412353516" y="20" x="261.16666889190674"/>
+  <text font-size="12px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="31.875" x="301.0000009536743" style="text-anchor: middle; font: 12px &quot;Arial&quot;;">
+    <tspan dy="4.125">":" - has type</tspan>
+  </text>
+  <path stroke-width="2" d="M10,31.875H20" stroke="#000000" fill="none" style=""/>
+  <circle stroke-width="2" style="" stroke="#000" fill="#6b6659" r="5" cy="31.875" cx="10"/>
+  <path stroke-width="2" d="M370.8333330154419,31.875H360.8333330154419" stroke="#000000" fill="none" style=""/>
+  <circle stroke-width="2" style="" stroke="#000" fill="#6b6659" r="5" cy="31.875" cx="370.8333330154419"/>
+</svg>

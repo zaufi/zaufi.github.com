@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; top: 0.300003px;" width="270.6666650772095" version="1.1" height="97.5">
+  <path stroke-width="2" d="M49.25,65.625H59.25" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M59.25,65.625Q69.25,65.625,69.25,55.625V20Q69.25,10,79.25,10H230.66666507720947Q240.66666507720947,10,240.66666507720947,20V55.625Q240.66666507720947,65.625,250.66666507720947,65.625" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M250.66666507720947,65.625H230.66666507720947" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M59.25,65.625H79.25" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M230.66666507720947,65.625H220.66666507720947" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M79.25,65.625H89.25" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M112.0833330154419,65.625H122.0833330154419" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M122.0833330154419,65.625Q132.0833330154419,65.625,132.0833330154419,55.625V53.75Q132.0833330154419,43.75,142.0833330154419,43.75H200.66666507720947Q210.66666507720947,43.75,210.66666507720947,53.75V55.625Q210.66666507720947,65.625,220.66666507720947,65.625" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M220.66666507720947,65.625H200.66666507720947" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M122.0833330154419,65.625H142.0833330154419" stroke="#000000" fill="none" style=""/>
+  <defs/>
+  <rect style="" stroke="#dae9e5" fill="#dae9e5" ry="3" rx="3" r="0" height="23.75" width="29.25" y="53.75" x="20"/>
+  <text font-size="12px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="65.625" x="34.625" style="text-anchor: middle; font: 12px &quot;Arial&quot;;">
+    <tspan dy="4.125">"st"</tspan>
+  </text>
+  <rect stroke-width="2" stroke-dasharray="6,2" style="" stroke="#a0a0a0" fill="none" ry="3" rx="3" r="0" height="53.75" width="151.41666507720947" y="33.75" x="79.25"/>
+  <text font-size="10px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="26.875" x="103.54166603088379" style="text-anchor: middle; font: 10px &quot;Arial&quot;;">
+    <tspan dy="4.125">Template</tspan>
+  </text>
+  <rect style="" stroke="#dae9e5" fill="#dae9e5" ry="3" rx="3" r="0" height="23.75" width="58.58333206176758" y="53.75" x="142.0833330154419"/>
+  <text font-size="12px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="65.625" x="171.37499904632568" style="text-anchor: middle; font: 12px &quot;Arial&quot;;">
+    <tspan dy="4.125">&lt;number&gt;</tspan>
+  </text>
+  <rect style="" stroke="#dae9e5" fill="#dae9e5" ry="3" rx="3" r="0" height="23.75" width="22.833333015441895" y="53.75" x="89.25"/>
+  <text font-size="12px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="65.625" x="100.66666650772095" style="text-anchor: middle; font: 12px &quot;Arial&quot;;">
+    <tspan dy="4.125">"t"</tspan>
+  </text>
+  <path stroke-width="2" d="M10,65.625H20" stroke="#000000" fill="none" style=""/>
+  <circle stroke-width="2" style="" stroke="#000" fill="#6b6659" r="5" cy="65.625" cx="10"/>
+  <path stroke-width="2" d="M260.6666650772095,65.625H250.66666507720947" stroke="#000000" fill="none" style=""/>
+  <circle stroke-width="2" style="" stroke="#000" fill="#6b6659" r="5" cy="65.625" cx="260.6666650772095"/>
+</svg>

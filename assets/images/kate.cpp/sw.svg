@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; top: 0.300003px;" width="422.3333349227905" version="1.1" height="97.5">
+  <path stroke-width="2" d="M257.9999990463257,65.625H267.9999990463257" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M53.83333396911621,65.625H63.83333396911621" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M267.9999990463257,65.625Q277.9999990463257,65.625,277.9999990463257,55.625V53.75Q277.9999990463257,43.75,287.9999990463257,43.75H382.3333349227905Q392.3333349227905,43.75,392.3333349227905,53.75V55.625Q392.3333349227905,65.625,402.3333349227905,65.625" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M402.3333349227905,65.625H382.3333349227905" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M267.9999990463257,65.625H287.9999990463257" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M63.83333396911621,65.625Q73.83333396911621,65.625,73.83333396911621,55.625V20Q73.83333396911621,10,83.83333396911621,10H237.99999904632568Q247.99999904632568,10,247.99999904632568,20V55.625Q247.99999904632568,65.625,257.9999990463257,65.625" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M257.9999990463257,65.625H237.99999904632568" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M63.83333396911621,65.625H83.83333396911621" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M237.99999904632568,65.625H227.99999904632568" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M83.83333396911621,65.625H93.83333396911621" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M192.4166660308838,65.625H202.4166660308838" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M93.83333396911621,65.625Q103.83333396911621,65.625,103.83333396911621,55.625V53.75Q103.83333396911621,43.75,113.83333396911621,43.75H172.4166660308838Q182.4166660308838,43.75,182.4166660308838,53.75V55.625Q182.4166660308838,65.625,192.4166660308838,65.625" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M192.4166660308838,65.625H172.4166660308838" stroke="#000000" fill="none" style=""/>
+  <path stroke-width="2" d="M93.83333396911621,65.625H113.83333396911621" stroke="#000000" fill="none" style=""/>
+  <defs/>
+  <rect style="" stroke="#dae9e5" fill="#dae9e5" ry="3" rx="3" r="0" height="23.75" width="33.83333396911621" y="53.75" x="20"/>
+  <text font-size="12px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="65.625" x="36.916666984558105" style="text-anchor: middle; font: 12px &quot;Arial&quot;;">
+    <tspan dy="4.125">"sw"</tspan>
+  </text>
+  <rect stroke-width="2" stroke-dasharray="6,2" style="" stroke="#a0a0a0" fill="none" ry="3" rx="3" r="0" height="53.75" width="154.16666507720947" y="33.75" x="83.83333396911621"/>
+  <text font-size="10px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="26.875" x="108.125" style="text-anchor: middle; font: 10px &quot;Arial&quot;;">
+    <tspan dy="4.125">Case options</tspan>
+  </text>
+  <rect style="" stroke="#dae9e5" fill="#dae9e5" ry="3" rx="3" r="0" height="23.75" width="25.583333015441895" y="53.75" x="202.4166660308838"/>
+  <text font-size="12px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="65.625" x="215.20833253860474" style="text-anchor: middle; font: 12px &quot;Arial&quot;;">
+    <tspan dy="4.125">"c"</tspan>
+  </text>
+  <rect style="" stroke="#dae9e5" fill="#dae9e5" ry="3" rx="3" r="0" height="23.75" width="58.58333206176758" y="53.75" x="113.83333396911621"/>
+  <text font-size="12px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="65.625" x="143.125" style="text-anchor: middle; font: 12px &quot;Arial&quot;;">
+    <tspan dy="4.125">&lt;number&gt;</tspan>
+  </text>
+  <rect style="" stroke="#dae9e5" fill="#dae9e5" ry="3" rx="3" r="0" height="23.75" width="94.33333587646484" y="53.75" x="287.9999990463257"/>
+  <text font-size="12px" fill="#000000" stroke="none" font="10px &quot;Arial&quot;" text-anchor="middle" y="65.625" x="335.1666669845581" style="text-anchor: middle; font: 12px &quot;Arial&quot;;">
+    <tspan dy="4.125">"d" - default-case</tspan>
+  </text>
+  <path stroke-width="2" d="M10,65.625H20" stroke="#000000" fill="none" style=""/>
+  <circle stroke-width="2" style="" stroke="#000" fill="#6b6659" r="5" cy="65.625" cx="10"/>
+  <path stroke-width="2" d="M412.3333349227905,65.625H402.3333349227905" stroke="#000000" fill="none" style=""/>
+  <circle stroke-width="2" style="" stroke="#000" fill="#6b6659" r="5" cy="65.625" cx="412.3333349227905"/>
+</svg>
