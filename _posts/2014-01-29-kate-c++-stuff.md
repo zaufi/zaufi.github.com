@@ -316,9 +316,10 @@ it will replace it with a result.
 </div>
 
 To add your own _dynamic expand function_ one have to use `@expand.dynamic` decorator,
-which accepts a compiled regular expression. If latter matchs to typed key sequence a megic function will be fired
-passing two parameters: a source "magic" sequence (string) and result of `re.search()` (which is some 
-match object). Here is an example of that kind of function to expand `enum` definition:
+which accepts a compiled regular expression. If latter matchs to a typed key sequence, a megic function will be fired
+passing two parameters: a source "magic" sequence (string) and a result of `re.search()` (which is some 
+[match object](http://docs.python.org/3/library/re.html?highlight=re.search#match-objects)). 
+Here is an example of that kind of function to expand `enum` definition:
 
 {% highlight python %}
 @expand.dynamic(re.compile('^e(?P<is_class>c)?(?P<has_type>:)?'))
@@ -349,7 +350,7 @@ Examples:
 * `;clc2;` class with constructor with 2 parameters
 * `;clc1@cc@mc;` class with "conversion" constructor (single parameter), defaulted copy and move constructor/assign
 * `;cl@mv-cc;` class with defaulted move constructor/assign and delete copy constructor/assign
-* `;clt2vd` class with two template parameters and virtual destructor
+* `;clt2vd;` class with two template parameters and virtual destructor
 
 
 
