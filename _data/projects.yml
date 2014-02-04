@@ -1,0 +1,38 @@
+- name: Pluggable Output Processor
+  uri: pluggable-output-processor.html
+  local: true
+
+- name: Kate C++ Helper Plugin
+  uri: kate-cpp-helper-plugin.html
+  local: true
+
+- name: My Paludis Hooks and Addons
+  uri: my-paludis-hooks-and-addons.html
+  local: true
+
+- name: ---
+
+- name: Smart <code>bash</code> Prompt
+  uri: http://cli-apps.org/content/show.php/smart-prompt?content=160498
+
+- name: Team Expence Calculator (XSLT)
+  uri: https://github.com/zaufi/team-expense-calc
+
+- name: ---
+
+- name: "Chewy Tool: <em>CMake Helpers Easy Way sYnchronizer</em>"
+  uri: https://github.com/mutanabbi/chewy
+
+- name: "Chewy Repository: <em>Collection of reusable CMake modules</em>"
+  uri: https://github.com/mutanabbi/chewy-cmake-rep
+
+- name: ---
+
+- name: My Paludis Overlay
+  uri: https://github.com/zaufi/zaufi-overlay
+
+
+- name: My Paludis Configuration
+  uri: https://github.com/zaufi/paludis-config
+
+

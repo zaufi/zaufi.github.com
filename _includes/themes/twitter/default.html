@@ -23,7 +23,7 @@
     <!-- Override defaults from bootstrap-->
     <link href="{{ ASSET_PATH }}/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
     <!-- Code snippets styles -->
-    <link href="/assets/css/syntax.css " rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/css/syntax.css" rel="stylesheet" type="text/css" media="all">
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -54,54 +54,21 @@
               <span class="glyphicon glyphicon-list"></span> My Projects <b class="caret"></b>
             </a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="my-projects">
-              <li role="presentation">
-                <a href="{{ BASE_PATH }}/pluggable-output-processor.html" role="menuitem" tabindex="-1">
-                  Pluggable Output Processor
-                </a>
-              </li>
-              <li role="presentation">
-                <a href="{{ BASE_PATH }}/kate-cpp-helper-plugin.html" role="menuitem" tabindex="-1">
-                  Kate C++ Helper Plugin
-                </a>
-              </li>
-              <li role="presentation">
-                <a href="{{ BASE_PATH }}/my-paludis-hooks-and-addons.html" role="menuitem" tabindex="-1">
-                  My Paludis Hooks and Addons
-                </a>
-              </li>
-              <li role="presentation" class="divider"></li>
-              <li role="presentation">
-                <a href="http://cli-apps.org/content/show.php/smart-prompt?content=160498" target="_blank" role="menuitem" tabindex="-1">
-                  Smart <code>bash</code> Prompt
-                </a>
-              </li>
-              <li role="presentation">
-                <a href="https://github.com/zaufi/team-expense-calc" target="_blank" role="menuitem" tabindex="-1">
-                  Team Expence Calculator (XSLT)
-                </a>
-              </li>
-              <li role="presentation" class="divider"></li>
-              <li role="presentation">
-                <a href="https://github.com/mutanabbi/chewy" target="_blank" role="menuitem" tabindex="-1">
-                  Chewy Tool: <em>CMake Helpers Easy Way sYnchronizer</em>
-                </a>
-              </li>
-              <li role="presentation">
-                <a href="https://github.com/mutanabbi/chewy-cmake-rep" target="_blank" role="menuitem" tabindex="-1">
-                  Chewy Repository: <em>Collection of reusable CMake modules</em>
-                </a>
-              </li>
-              <li role="presentation" class="divider"></li>
-              <li role="presentation">
-                <a href="https://github.com/zaufi/zaufi-overlay" target="_blank" role="menuitem" tabindex="-1">
-                  My Paludis Overlay
-                </a>
-              </li>
-              <li role="presentation">
-                <a href="https://github.com/zaufi/paludis-config" target="_blank" role="menuitem" tabindex="-1">
-                  My Paludis Configuration
-                </a>
-              </li>
+              {% for project in site.data.projects %}
+                {% if project.name == '---' %}
+                  <li role="presentation" class="divider"></li>
+                {% else %}
+                  <li role="presentation">
+                    {% if project.local %}
+                    <a href="{{ BASE_PATH }}/{{ project.uri }}" role="menuitem" tabindex="-1">
+                    {% else %}
+                    <a href="{{ project.uri }}" target="_blank" role="menuitem" tabindex="-1">
+                    {% endif %}
+                      {{ project.name }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
             </ul>
           </li>
         </ul>

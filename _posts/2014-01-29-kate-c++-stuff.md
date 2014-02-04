@@ -36,7 +36,7 @@ Few words about working with comments
 * The next example show how to _Comment Block with `#if 0`_, _Toggle `#if0`/`#if1`_, and _Remove `#if 0`_ part
     <img src="/assets/images/kate.cpp/if0-block.gif" class="img-rounded img-responsive" title="Block Comment" />
 
-* _Transform Doxygen Comments_ (between `/** ... */` and `///` forms) and _Shink/Expand Comment Paragraph_
+* _Transform Doxygen Comments_ (between `/** ... */` and `///` forms) and _Shrink/Expand Comment Paragraph_
     <img src="/assets/images/kate.cpp/dox.gif" class="img-rounded img-responsive" title="Shrink/Expand Paragraph" />
 
 
