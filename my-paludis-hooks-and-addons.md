@@ -228,11 +228,12 @@ To workaround this issue, one may just remove some variables in a mentioned cach
 
 Related part of my `/etc/paludis/bashrc` nowadays has the following:
 
-    # Tell to autotools (if used) not to create useless,
-    # for one time build, `.d' files, reduce compilation messages
-    # and use cache for config results
-    EXTRA_ECONF="--disable-dependency-tracking --enable-silent-rules -C --cache-file=/var/cache/autotools/config.cache"
-
+{% highlight bash %}
+# Tell to autotools (if used) not to create useless,
+# for one time build, `.d' files, reduce compilation messages
+# and use cache for config results
+EXTRA_ECONF="--disable-dependency-tracking --enable-silent-rules -C --cache-file=/var/cache/autotools/config.cache"
+{% endhighlight %}
 
 
 Manage Build Environments

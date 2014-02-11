@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Tuning autotoolized packages via EXTRA_ECONF"
+title: "Tuning autotoolized packages via <code>EXTRA_ECONF</code>"
 description: ""
 category: gentoo
 tags: [gentoo, autotools, ebuild, optimization]
@@ -15,7 +15,7 @@ without necessity to hack a particular ebuild.
 
 But actually there is at least one candidate to be added for **all**
 (autotoolized) packages: `--disable-dependency-tracking`. It is responsible to add special options to 
-compiler CLI (like `-MD`, `-MP`, `-MF`), so latter, along w/ outout of object file, will generate a 
+compiler CLI (like `-MD`, `-MP`, `-MF`), so latter, along w/ output of object file, will generate a 
 `make` formatted dependencies for particular source. That is quite useful when develop software, but 
 completely useless (and waste time, CPU, disk I/O and space) for one time compilation (like emerging 
 a package).
@@ -87,3 +87,6 @@ CMAKE_VERBOSE=OFF
 
 **NOTE** The last option (I have to mention) has the same effect (reduce spam) for cmake based packages which
 are by default (in eclass) too verbose.
+
+**NOTE2** Another useful option for `EXTRA_ECONF` described at 
+[my paludis hooks](/my-paludis-hooks-and-addons.html) page.
