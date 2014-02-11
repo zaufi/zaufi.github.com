@@ -211,6 +211,30 @@ I've got a bunch of _stoppers_ like this:
     <package spec="valgrind" stop="true" />
 {% endhighlight %}
 
+
+Autotools' `config.cache` Cleaner Hook
+--------------------------------------
+
+To reduce time for configuration stage, autotools based packages may use and share so called `config.cache`
+file, which contains results for some tests. Using `EXTRA_ECONF`, it is possible to share that file
+for packages when emerge them. Unfortunately, some <del>ugly</del> ebuilds wanted to update 
+`CFLAGS`/`CXXFLAGS` and/or `LDFLAGS` **before** `./configure`. So latter, will comlain about
+_"changes in the environment"_ which can _"can compromise the build"_.
+
+To workaround this issue, one may just remove some variables in a mentioned cache file right after 
+`./configure` script will update it:
+`ac_cv_env_CFLAGS_set`, `ac_cv_env_CFLAGS_value`, `ac_cv_env_CXXFLAGS_set`, `ac_cv_env_CXXFLAGS_value`,
+`ac_cv_env_LDFLAGS_set`, `ac_cv_env_LDFLAGS_value`. That is exacly this hook is doing ;-)
+
+Related part of my `/etc/paludis/bashrc` nowadays has the following:
+
+    # Tell to autotools (if used) not to create useless,
+    # for one time build, `.d' files, reduce compilation messages
+    # and use cache for config results
+    EXTRA_ECONF="--disable-dependency-tracking --enable-silent-rules -C --cache-file=/var/cache/autotools/config.cache"
+
+
+
 Manage Build Environments
 -------------------------
 
@@ -334,6 +358,10 @@ To show differences between ebuilds of installed and the next best available ver
 TODO
 ====
 
+* Add more commands! Like `*zip` smth...
+* Add ability to find target objects (files, dirs, whatever) by introducing smth
+  like `find` item and iterate over results applying some other actions (`ln`, `rm`, & etc...)
+* Implement FSM commands as **real** plugins... need to think about how to update (merge) DTD then.
 * add some `USE` flags to `paludis-hooks` 
   [ebuild](https://github.com/zaufi/zaufi-overlay/blob/master/sys-apps/paludis-hooks/paludis-hooks-scm.ebuild)
   to be able to choose what components to install...
