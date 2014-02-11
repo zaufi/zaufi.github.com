@@ -58,7 +58,7 @@ Using <code>expand</code> plugin
 Since a long time ago <del>in a galaxy far, far away</del> Pâté has the `expand` plugin. The (initial) idea
 behind was quite simple: user writes a function which returns a string to be inserted into a document
 (by _Expand_ action) instead of a corresponding function name under cursor. Expand functions may have
-parameters. Running in a context of emebbed Python, that functions may have an access to kate's API.
+parameters. Running in a context of embedded Python, that functions may have an access to kate's API.
 The other benefit: this is still a (full functional) Python with a lot of third party libraries.
 
 
@@ -167,7 +167,7 @@ struct templated_test
 The only mandatory parameter (the first one) is a structure name to insert. The optional rest, if present,
 turned into a template parameters… That is how `st` function was look like before KDE SC 4.13.
 
-But, sooner after trying to use builtin Python's `format` function with "template"
+But, sooner after trying to use built-in Python's `format` function with "template"
 strings intensively, I've realized that it is time to use a real _template engine_ ;-)
 
 
@@ -316,8 +316,9 @@ it will replace it with a result.
 </div>
 
 To add your own _dynamic expand function_ one have to use `@expand.dynamic` decorator,
-which accepts a compiled regular expression. If latter matchs to a typed key sequence, a megic function will be fired
-passing two parameters: a source "magic" sequence (string) and a result of `re.search()` (which is some 
+which accepts a compiled regular expression. If latter matched to a typed key sequence, a magic function 
+will be executed, passing two parameters: a source "magic" sequence (string) and a result of `re.search()` 
+(which is some 
 [match object](http://docs.python.org/3/library/re.html?highlight=re.search#match-objects)). 
 Here is an example of that kind of function to expand `enum` definition:
 
@@ -335,14 +336,14 @@ def __dynamic_enum(params, match):
 Yeah, it is quite similar to the "usual" (jijna templated) functions except a one more decorator ;-)
 
 Below is a list of available dynamic snippets for C++. Every item starts with a simplified graphic image
-of an underlaid regex (for visialization and better remembering ;-), which is used to match that snippet.
+of an underlaid regex (for visualization and better remembering ;-), which is used to match that snippet.
 
 
 ### `;cl;` Synopsis
 
 <img src="/assets/images/kate.cpp/cl.svg" class="img-responsive" title=";cl; Synopsis" />
 
-Insert a `class` declaration. Depending on options it is capable to add a default, parameterised,
+Insert a `class` declaration. Depending on options it is capable to add a default, parameterized,
 copy, move constructors and/or destructor. Also class can be templated with desired number of parameters.
 
 Examples:
@@ -382,7 +383,7 @@ Examples:
 
 <img src="/assets/images/kate.cpp/for.svg" class="img-responsive" title=";for; Synopsis" />
 
-Generate a `for` statement with various flavours. It capable to expand into a range-based `for`
+Generate a `for` statement with various flavors. It capable to expand into a range-based `for`
 and more "traditional" iterators-based. Latter can use C++03 or C++11 semantic -- i.e.
 when `begin()` is a member or free function, possible matched by ADL. Type for a range-based `for`
 can be `const` and/or `ref`/`ref-ref` qualified.
