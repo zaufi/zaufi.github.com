@@ -215,10 +215,10 @@ I've got a bunch of _stoppers_ like this:
 Autotools' `config.cache` Cleaner Hook
 --------------------------------------
 
-To reduce time for configuration stage, autotools based packages may use and share so called `config.cache`
+To reduce time for configuration stage, GNU autotools based packages may use and share so called `config.cache`
 file, which contains results for some tests. Using `EXTRA_ECONF`, it is possible to share that file
-for packages when emerge them. Unfortunately, some <del>ugly</del> ebuilds wanted to update 
-`CFLAGS`/`CXXFLAGS` and/or `LDFLAGS` **before** `./configure`. So latter, will comlain about
+for packages when emerge them. Unfortunately, some <del>ugly</del> ebuilds want to update 
+`CFLAGS`/`CXXFLAGS` and/or `LDFLAGS` **before** `./configure`. So latter, will complain about
 _"changes in the environment"_ which can _"can compromise the build"_.
 
 To workaround this issue, one may just remove some variables in a mentioned cache file right after 
