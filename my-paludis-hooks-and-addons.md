@@ -348,7 +348,7 @@ Variables `CAVE_SEARCH_INDEX` and `CAVE_RESUME_FILE_OPT` are defined in `/etc/en
 Also here some trick used to reintroduce bash completions for all that commands, so even if alias is used
 completions are still available.
 
-Note that `-km` and `-Km` [options are used](/gentoo/2013/12/21/gpotw-5/). So when gentoo team adds some changes
+Note that `-km` and `-Km` [options are used]({% post_url 2013-12-21-gpotw-5 %}). So when gentoo team adds some changes
 to ebuild w/o version bump, that options will add a target to rebuild. To show differences between ebuilds of
 installed package and just changed (and added as a target to rebuild on `world-up` "command") one may use
 `pkg_meta_diff <pkg-name>` command.
