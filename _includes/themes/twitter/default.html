@@ -48,7 +48,6 @@
           {% include JB/pages_list %}
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <!-- TODO How to make it other way than edit template??? -->
           <li class="dropdown">
             <a href="#" id="my-projects" class="dropdown-toggle" role="button" data-toggle="dropdown">
               <span class="glyphicon glyphicon-list"></span> My Projects <b class="caret"></b>
@@ -76,9 +75,9 @@
     </nav>
 
     <div class="container">
-      <div class="content">
+      <article class="content">
         {{ content }}
-      </div>
+      </article>
       <footer>
         <p class="text-center">
           &copy; {{ site.author.name }} 2012-2014 with help from

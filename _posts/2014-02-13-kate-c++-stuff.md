@@ -23,14 +23,14 @@ Few words about working with comments
 
 
 * _Inline comment_ means that it is placed on a line w/ code. Just like on the screenshot above. To add it
-    to the current line use `Alt-D`. The cursor will move to 60th (default) position and `// ` will be added.
-    To transform it into a doxygen comment (`///<`) just press one `/` (this part works w/ 
+    to the current line use <kbd>Alt+D</kbd>. The cursor will move to 60th (default) position and `// ` will be added.
+    To transform it into a doxygen comment (`///<`) just press one <kbd>/</kbd> (this part works w/ 
     [my C++ not-quite-indenter™]({% post_url 2013-11-29-kate-cppstyle-indenter %}) ;-)
     To configure the default position use the _Commentar plugin_ config page (take a look at the pages
     available at the first screenshot). Pressing on a selection will add (if possible) inline
     comments to every selected line.
 
-* To move inline comment to a line above use `Meta+Left` and `Meta+Right` to move it back
+* To move inline comment to a line above use <kbd>Meta+Left</kbd> and <kbd>Meta+Right</kbd> to move it back
     <img src="/assets/images/kate.cpp/inline-comment.gif" class="img-rounded img-responsive" title="Inline Comment" />
 
 * The next example shows how to _Comment Block with `#if 0`_, _Toggle `#if0`/`#if1`_, and _Remove `#if 0`_ part
@@ -45,9 +45,9 @@ Boost MPL-like parameters fold/unfold
 =====================================
 
 To format template or function parameters in the boost (MPL) style, move cursor inside the parenthesis or
-angle brackets and use _Boost Like Format Params_ (`Meta+F`) action from the _Pâté_ menu. 
+angle brackets and use _Boost Like Format Params_ (<kbd>Meta+F</kbd>) action from the _Pâté_ menu. 
 Every time invoked this action will expand the nesting level. To unfold parameters use the reverse
-_Unformat_ (`Meta+Shift+F`) action.
+_Unformat_ (<kbd>Meta+Shift+F</kbd>) action.
 <img src="/assets/images/kate.cpp/boost-format.gif" class="img-rounded img-responsive" title="Boost Format" />
 
 
@@ -74,7 +74,7 @@ To make this expand available put this function into a file named after a MIME t
 For example use `~/.kde4/share/apps/kate/pate/expand/text_html.expand` to make it available in a HTML documents
 or `text_x-python.expand` for Python source code.
 
-Then open a document with a corresponding MIME type, add `hi` text and press `Ctrl+E` (default) shortcut --
+Then open a document with a corresponding MIME type, add `hi` text and press <kbd>Ctrl+E</kbd> (default) shortcut --
 `hi` will be replaced w/ `Hello from expand plugin` text.
 
 Lets rewrite the code a little and introduce an optional parameter:
@@ -84,7 +84,7 @@ def hi(name=None):
     return 'Hello {}'.format(name if name is not None else 'anonymous')
 {% endhighlight %}
 
-To pass a parameter type `hi(John)` + `Ctrl+E`. Note, that the expand function may have positional and named parameters,
+To pass a parameter type `hi(John)` + <kbd>Ctrl+E</kbd>. Note, that the expand function may have positional and named parameters,
 just like any other ordinary python function.
 
 
@@ -234,7 +234,7 @@ characters from jinja tags.
 
 Here are a couple more decorators defined in the `expand` module for use by expand functions: `@expand.description` and `@expand.details`.
 Both accept a string to be displayed in a completion popup. The first one is a short description. The second one
-is the _details_ (or usage) text accessible by pressing an `Alt` key for the selected completion item. Because most of the completions are
+is the _details_ (or usage) text accessible by pressing an <kbd>Alt</kbd> key for the selected completion item. Because most of the completions are
 really short names, completions will not appear in automatic mode, so in order to see them, one has to bring up this popup manually.
 There are a few expansion functions available for C++ code out-of-the-box. The most complicated one (but powerful compared
 to trivial snippets) is `cl`. It is capable to generate template or non-template classes, possibly with a constructor with zero (default) 
