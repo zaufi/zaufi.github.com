@@ -242,6 +242,10 @@ EXTRA_ECONF="--disable-dependency-tracking --enable-silent-rules --cache-file=/v
 Working Directory in a RAM
 --------------------------
 
+Some users have a paludis woking directory mounted to a `tmpfs`. The big problem w/ this solution:
+some packages are too fat to be build in a RAM. Then to build them one have to `umount` selected location
+temporarily to build that packages. `workdir-tmpfs` hook is designed to solve that "problem".
+
 This hook record a disk space usage while a package gets build and the next time will try to move
 the working directory to the `/dev/shm` (providing a symbolic link to the original location) if there
 is enough space. Disk usage stats will be recorded only if a package builds successful.
@@ -259,7 +263,13 @@ DISK_USAGE_STATS_CACHE="/var/cache/paludis/disk_usage_stats.cache"
 
 `MIN_RESERVED_SPACE` is a value to be used as an amount of a reserved space if 10% of a stored disk usage 
 counter is less than it. The `MAX_RESERVED_SPACE` is an upper bound of that 10% -- i.e. max reserved space
-can not exceed it.
+can not exceed it. Defaults are 10M and 100M correspondingly.
+
+<div class="alert alert-info">
+<h4>Note</h4>
+If some package fails to build, its working directory will be moved back to its original location
+from the RAM disk (i.e. <code>/dev/shm</code>)…
+</div>
 
 Manage Build Environments
 -------------------------
