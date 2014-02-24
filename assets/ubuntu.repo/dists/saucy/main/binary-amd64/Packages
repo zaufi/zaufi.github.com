@@ -49,19 +49,19 @@ MD5sum: 9599c4ed05434bd51e0b269bf30a4e22
 Description: ZEN C++ library API documentation
 
 Package: segnetics-test-dbg
-Version: 0.1.0-0ubuntu2
+Version: 0.1.0-0ubuntu4
 Architecture: amd64
 Depends: libstdc++6 (>= 4.8), libzencxx-dbg, libboost-filesystem1.54.0, libboost-system1.54.0, libboost-thread1.54.0, liblog4cxx10
 Homepage: https://zaufi.github.io
-Replaces: segnetics-test-dbg (<= 0.1.0-0ubuntu2)
-Installed-Size: 10323
+Replaces: segnetics-test-dbg (<= 0.1.0-0ubuntu4)
+Installed-Size: 10310
 Maintainer: Alex Turbov <i.zaufi@gmail.com>
 Priority: optional
 Section: libs
-Filename: pool/main/s/segnetics-test-dbg/segnetics-test-dbg_0.1.0-0ubuntu2_amd64.deb
-Size: 2788112
-SHA256: a5a7ff3b7da01c8b08ecbccf266b9e457d9e5aca06596197af2ea20c05a04599
-SHA1: d39a43f3505febedfc4b0230c4614a187c524727
-MD5sum: 47c8f7cc3565c94f6e1cb73f3e3d9ceb
+Filename: pool/main/s/segnetics-test-dbg/segnetics-test-dbg_0.1.0-0ubuntu4_amd64.deb
+Size: 2788220
+SHA256: 227aecfd0f166011938162d3cebabc1b4a6bd929486007b4633f2db66b09581f
+SHA1: 97d2c50f6b9963523d654947bc8259f7f2f7c205
+MD5sum: cf4819a9b568a5e7bb86c88f971907bb
 Description: SegneticsTest
 
