@@ -1,0 +1,8 @@
+Origin: Alex Turbov
+Label: My packages for Ubuntu 13.10 (Saucy)
+Suite: unstable
+Codename: saucy
+Architectures: amd64 i386 src
+Components: main non-free contrib
+Description: Repository for my open source projects
+SignWith: 37925FE2

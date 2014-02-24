@@ -1,0 +1,50 @@
+Package: libzencxx-dbg
+Version: 0.2.0.1-0ubuntu2
+Architecture: amd64
+Depends: libstdc++6 (>= 4.6), libboost-system1.54.0, libboost-thread1.54.0
+Homepage: https://github.com/zaufi/zencxx
+Replaces: libzencxx-dbg (<= 0.2.0.1-0ubuntu2), SIGN_WITH
+Installed-Size: 8275
+Maintainer: Alex Turbov <i.zaufi@gmail.com>
+Priority: optional
+Section: libs
+Filename: pool/main/libz/libzencxx-dbg/libzencxx-dbg_0.2.0.1-0ubuntu2_amd64.deb
+Size: 2593160
+SHA256: d5afe4232c824dd87837678eef88ea5474b817f34243fe475f0482fab4fde295
+SHA1: d78144ab5a0a741868d9a7e0b5805c4f64ffa29a
+MD5sum: 69b3e344c8e28353ac3a455610043480
+Description: ZEN C++ library
+
+Package: libzencxx-dev-dbg
+Version: 0.2.0.1-0ubuntu2
+Architecture: amd64
+Depends: libzencxx-dbg (= 0.2.0.1-0ubuntu2), libboost1.54-all-dev
+Homepage: https://github.com/zaufi/zencxx
+Replaces: libzencxx-dev (<= 0.2.0.1-0ubuntu2)
+Installed-Size: 315
+Maintainer: Alex Turbov <i.zaufi@gmail.com>
+Priority: optional
+Section: devel
+Filename: pool/main/libz/libzencxx-dev-dbg/libzencxx-dev-dbg_0.2.0.1-0ubuntu2_amd64.deb
+Size: 57034
+SHA256: 04d18ee11e75f6cd24867cf52c9210ab1db310280331d2e5e0ff6a7e4ea9fe4e
+SHA1: d631eb9751cc805dd906fc90e840ed48da0815e6
+MD5sum: 94eccb9405c74cd2a61e2751d5018db9
+Description: Developer files for ZEN C++ library
+
+Package: libzencxx-doc-dbg
+Version: 0.2.0.1-0ubuntu2
+Architecture: amd64
+Homepage: https://github.com/zaufi/zencxx
+Replaces: libzencxx-doc (<= 0.2.0.1-0ubuntu2)
+Installed-Size: 9361
+Maintainer: Alex Turbov <i.zaufi@gmail.com>
+Priority: optional
+Section: devel
+Filename: pool/main/libz/libzencxx-doc-dbg/libzencxx-doc-dbg_0.2.0.1-0ubuntu2_amd64.deb
+Size: 1089730
+SHA256: 6e8d0abf62688452e8514f299e8fa8f24a99fc53a2e9f1b03f9961d4f14fa9d5
+SHA1: a463faaf576e45c7433b9853ed85eb1f768da76a
+MD5sum: ff6eb93e9be86a68931c6e86cf007b8c
+Description: ZEN C++ library API documentation
+
