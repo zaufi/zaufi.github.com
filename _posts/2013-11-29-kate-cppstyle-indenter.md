@@ -15,7 +15,7 @@ This indenter (initially) was designed to help **code typing** in a `boost::mpl`
 (i.e. w/ leading comma in formatted (template) parameters list). One may read rationale of such
 approach in the _"C++ Template Metaprogramming: Concepts, Tools, and Techniques from Boost and Beyond"_
 by David Abrahams and Aleksey Gurtovoy. It is really easy to miss a comma when invoke metafunctions and
-it would leads to really complicated compile errors (a lot of). This technique help to visually control syntax
+it would lead to really complicated compile errors (a lot of). This technique help to visually control syntax
 and prevent stupid errors like missed comma.
 
 Example:
@@ -35,9 +35,9 @@ typedef typename boost::mpl::fold<
   >::type type;
 {% endhighlight %}
 
-In practice I've noticed that this style can be used to format long function calls or even
-`for` statements. Actually everything that can be split into several lines could be formatted that way.
-And yes, it is convenient to have a delimiter (comma, semicolon, whatever) as a leading character to
+In practice I've noticed that this style also can be used to format a long function calls or even
+`for` statements. Actually, everything that can be split into several lines could be formatted that way.
+And yes, it is (really!) convenient to have a delimiter (comma, semicolon, whatever) as a leading character to
 make it visually noticeable.
 
 {% highlight cpp %}
@@ -75,17 +75,18 @@ struct sample
 {% endhighlight %}
 
 It looks unusual for awhile :) but later it become (quite) "normally" and easily to read and edit :)
-Really! When you want to add one more parameter to a function declaration it takes less 
+Really! When you want to add another one parameter to a function declaration, it takes less 
 typing if compare to a "traditional" way :) (especially if you have some help from an editor,
-like move/duplicate the current line or a selected block up/down by a hot-key or having an indenter like this :)
+like move/duplicate the current line and/or a selected block up/down by a hot-key or having an 
+indenter like this :)
 
 Next improvements was designed to simplify typing C++ code, using most common syntactic rules, like 
 _"add spaces around operators and after a comma"_, _"add space after control keywords, but not after a function name 
 in a call expression"_, & etc.
 
 Further improvements bring to the "indenter" some cute features and nowadays I'd prefer to consider it
-similar to a T9 (input method) for C++ coding, but not as a _real indenter_ in contrast to others, shipped with 
-[kate](http://kate-editor.org) out of the box :)
+similar to a T9 (an input method for cell phones) for C++ coding, but not as a _real indenter_ in contrast to others, 
+shipped with [kate](http://kate-editor.org) out of the box :)
 Particularly this indenter <del>exploit</del> can see "impossible" syntax and (try to) transform it to
 something "reasonable" -- i.e. just like T9 it tries to be a predictive.
 
@@ -95,9 +96,10 @@ indicating a current cursor position. If you press `,` at this position, it give
 looks like you've done with that nested calls and gives you the `some(nested());|` snippet. Both cases help you
 to avoid couple of redundant key presses ;)
 
-... but do not even try to use this indenter to (re)format blocks of code! :)
+… but do not even try to use this indenter to (re)format blocks of code! :)
 It can do some really simple/primitive formatting, but far from good -- as I've mentioned above: this "not quite
-indenter"™  designed to help you to __"do little more with less typing"__ for C++ ;)
+indenter"™  designed to help you to __"do little more with little less typing"__ for C++ and code formatting 
+is not a "primary" task for it ;-)
 
 
 Some features in brief
