@@ -105,18 +105,19 @@ is not a "primary" task for it ;-)
 Some features in brief
 ----------------------
 
-* to start a C-style comment block type `/*` and press _ENTER_ key -- it gives you
+* to start a C-style comment block type `/*` and press <kbd>ENTER</kbd> key -- it gives you
     {% highlight cpp %}
 /*
  * |
  */
 {% endhighlight %}
-* to start `doxygen` comment block use `/**` + _ENTER_. Every following _ENTER_ just extend the current block.
+* to start `doxygen` comment block use `/**` + <kbd>ENTER</kbd>. Every following <kbd>ENTER</kbd> just extends 
+  the current block.
 * to start C++ style comment just type `//` it will add a one space after ;)
 * I prefer to have on-line-comments (i.e. C++-style comments after some expression) to be aligned at
  60th position. So typing `//` will automatically move comment to that position if there was some code before. 
- Moreover the indenter tries to keep that comments when you use _ENTER_ key to break some complex expressions 
- into a few lines   
+ Moreover the indenter tries to keep that comments when you use <kbd>ENTER</kbd> key to break some complex 
+ expressions into a few lines   
     {% highlight cpp %}
 // Before pressing ENTER at position marked by '|'
 some_call_with_long parameters_list(|param1, ..., paramN);  // Comment starts here...
@@ -124,7 +125,7 @@ some_call_with_long parameters_list(|param1, ..., paramN);  // Comment starts he
 some_call_with_long parameters_list(                        // Comment starts here...
     |param1, ..., paramN);
 {% endhighlight %}
-* ...also try to use _ENTER_ in the middle of a comment text ;-)
+* ...also try to use <kbd>ENTER</kbd> in the middle of a comment text ;-)
 * typing `///` gives you `/// ` (with a space) or `///< ` depending on presence of code at the current line
 * from time to time I use grouping in a doxygen documentation, so typing `//@` gives you:
     {% highlight cpp %}
@@ -156,8 +157,19 @@ some_call_with_long parameters_list(                        // Comment starts he
   },
 {% endhighlight %}
 * typing `R"` will initiate a raw string literal
+* alsto try to split a string literal across multiple lines pressing <kbd>ENTER</kbd> in the middle ;-)
 
 This _not-quite-indenter_™ has some other (smaller) features to reduce typing. Hope, you'll like them if found! ;)
 
 PS: The other things I've found useful when typing C++ code can be plugged w/
 [some Python plugins dedicated to C++]({% post_url 2014-02-13-kate-c++-stuff %}).
+
+<div class="alert alert-info">
+<h4>TODO</h4>
+<ul>
+    <li>
+        Unfortunately JS indenters in kate nowdays can't have any GUI, so it is impossible to
+        have a "user firendly" configuration…
+    </li>
+</ul>
+</div>
