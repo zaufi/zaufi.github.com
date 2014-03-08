@@ -7,7 +7,7 @@ tags: [kde, kate, css, howto]
 ---
 {% include JB/setup %}
 
-Since KDE SC 11 `kate` has a Python plugin which can help to edit colors in various files
+Since KDE SC 4.12 `kate` has a Python plugin which can help to edit colors in various files
 like CSS, kate syntax, HTML, QML… First of all, one ought to enable that plugin in the
 _Python plugins manager_ dialog.
 
