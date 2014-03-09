@@ -171,5 +171,8 @@ PS: The other things I've found useful when typing C++ code can be plugged w/
         Unfortunately JS indenters in kate nowdays can't have any GUI, so it is impossible to
         have a "user firendly" configuration…
     </li>
+    <li>
+        Support for other color syntaxes like `rgb(R,G,B)`, `rgba(R,G,B,A)`, `hsl(...)`, & etc.
+    </li>
 </ul>
 </div>
