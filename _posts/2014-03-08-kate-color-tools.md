@@ -7,6 +7,7 @@ tags: [kde, kate, css, howto]
 ---
 {% include JB/setup %}
 
+
 Since KDE SC 4.12 `kate` has a Python plugin which can help to edit colors in various files
 like CSS, kate syntax, HTML, QML… First of all, one ought to enable that plugin in the
 _Python plugins manager_ dialog.
@@ -42,3 +43,17 @@ so it is easy to choose some, using a keyboard or mouse.
     title="Color insert completion popup" 
   />
 
+<div class="alert alert-warning">
+<h4>Note</h4>
+<strong>Screenshots 1 and 3 are made of KDE SC 4.13</strong>
+</div>
+
+
+<div class="alert alert-info">
+<h4>TODO</h4>
+<ul>
+    <li>
+        Support for other color syntaxes like `rgb(R,G,B)`, `rgba(R,G,B,A)`, `hsl(...)`, &amp; etc.
+    </li>
+</ul>
+</div>
