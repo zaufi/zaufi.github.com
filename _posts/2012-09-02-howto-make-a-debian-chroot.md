@@ -78,3 +78,35 @@ so u may just run it from the bash prompt to switch into a chroot'ed environment
 
 *NOTE* While update packages in a chrooted system install scripts sometimes may fail because theres
 no `upstart` running. To solve this trouble one may symlink `/sbin/initctl` to `/bin/true`
+
+Minimal Ubuntu install do not have `en_US.UTF-8` (I dunno why! Or maybe I'm doing smth wrong), so
+it myst be generated (if your host locale is UTF as in example):
+
+    (saucy)root@gentop:/home/builder# locale-gen en_US en_US.UTF-8
+    Generating locales...
+    en_US.ISO-8859-1... done
+    en_US.UTF-8... done
+    Generation complete.
+
+To prepare a build "work horse" install the following packages as (chrooted) root:
+
+    # apt-get install build-essential devscripts doxygen cmake software-properties-common pkg-config
+
+Then add some PPAs:
+
+    (saucy)root@gentop:/home/builder# add-apt-repository ppa:boost-latest
+    You are about to add the following PPA to your system:
+    Providing the most up-to-date version of the Boost C++ Libraries.
+    More info: https://launchpad.net/~boost-latest/+archive/ppa
+    Press [ENTER] to continue or ctrl-c to cancel adding it
+
+    gpg: keyring `/tmp/tmpi67dku/secring.gpg' created
+    gpg: keyring `/tmp/tmpi67dku/pubring.gpg' created
+    gpg: requesting key 029DB5C7 from hkp server keyserver.ubuntu.com
+    gpg: /tmp/tmpi67dku/trustdb.gpg: trustdb created
+    gpg: key 029DB5C7: public key "Launchpad boost-latest" imported
+    gpg: Total number processed: 1
+    gpg:               imported: 1  (RSA: 1)
+    OK
+
+Also consider to add `ppa:likemartinma/devel` for fresh CMake. Now update packages and install boost libraries…
