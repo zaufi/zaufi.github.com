@@ -9,22 +9,22 @@ description: "Tips and tricks"
 Short Intro
 -----------
 
-In my [paludis-hooks](https://github.com/zaufi/paludis-hooks) repo I'm trying to accumulate everything 
+In my [paludis-hooks](https://github.com/zaufi/paludis-hooks) repo I'm trying to accumulate everything
 I've done <del>to survive w/</del> for [paludis](http://paludis.exherbo.org) -- The Other Package Manager™.
 Yep, initially there was only [hooks](http://paludis.exherbo.org/configuration/hooks.html), but later I've
 added some other helpful things, I'm using for awhile... so probably the repo should be renamed.
 
 Personally I like hooks, cuz that facility, out of the box, turns `paludis` into a really flexible package manager
 and thanks to them, feature like _autopatch_ works much more better (and reliably) than the
-[same feature](https://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=3&chap=6#doc_chap6) of 
+[same feature](https://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=3&chap=6#doc_chap6) of
 `emerge` became available long time after.
 
-To install all that stuff, here is a 
+To install all that stuff, here is a
 [ebuild](https://github.com/zaufi/zaufi-overlay/blob/master/sys-apps/paludis-hooks/paludis-hooks-scm.ebuild)
 in my overlay. And yes, that `scm` is the only version nowadays ;-) cuz I'm permanently doing some improvements
 w/o any release plan.
 
-**NOTE**: To use it w/ Python 3 as a default interpreter make sure you have an 
+**NOTE**: To use it w/ Python 3 as a default interpreter make sure you have an
 [appropriate](/gentoo/2013/12/11/paludis-python3/) paludis version installed.
 
 
@@ -36,7 +36,7 @@ Autopatch Hook
 
 One of my first hooks inspired by an already dead repo of paludis' hooks, I've found soon after migrated to
 paludis. That was one from a bunch of reasons to forget about `emerge` -- a really easy way to apply my patches
-for broken packages w/o "writing" a my own ebuild and put it to my repo. 
+for broken packages w/o "writing" a my own ebuild and put it to my repo.
 
 The idea is simple and straightforward: at any desired stage of ebuild processing apply some _user provided patches_
 placed into a some special place (configurable via `/etc/paludis/hooks/configs/auto-patch.conf`).
@@ -45,10 +45,10 @@ To apply a patch one have to put it into a directory under `${PATCH_DIR}/stage/c
 where the `stage` is one of the following: `ebuild_compile_post`, `ebuild_compile_pre`,
 `ebuild_configure_post`, `ebuild_configure_pre`, `ebuild_install_pre` or `ebuild_unpack_post`.
 
-Recently I've killed all out of date patches from my local vault and made it 
+Recently I've killed all out of date patches from my local vault and made it
 [public](https://github.com/zaufi/paludis-autopatches). For example w/o a patch `cmake` won't colorize its
-output even if color explicitly requested when running w/ captured output. So to allow my 
-[Pluggable Output Processor](/pluggable-output-processor.html) works w/o suppressing colors of CMake I have 
+output even if color explicitly requested when running w/ captured output. So to allow my
+[Pluggable Output Processor](/pluggable-output-processor.html) works w/o suppressing colors of CMake I have
 `/var/db/paludis/autopatches/ebuild_unpack_post/dev-utils/cmake-2.8.11.2/cmake-2.8.11.2-do-not-check-isatty.patch`
 
 
@@ -62,7 +62,7 @@ symlinks to a documentation for some packages I use in my work or to prevent und
 
 Every action to apply described in terms of XML items of the configuration file
 `/etc/paludis/hooks/configs/filesystem-manager.conf`, where the root element is `commands`.
-A commands container consists of `package` elements which must have at least the `spec` attribute of a package 
+A commands container consists of `package` elements which must have at least the `spec` attribute of a package
 to apply actions for. The other attributes are `stop`, with boolean `true`/`false` value to disable/enable
 further processing, if a given rule matched, and the `descr` attribute with a human readable action description.
 The package's `spec` attribute specify the order how actions are matched and applied:
@@ -134,9 +134,9 @@ Firefox will remember that location and next time shows me hints (in a popup) wi
 type something in a location bar. Unfortunately after upgrade to `=dev-libs/boost-1.55-r1` path to documentation
 obviously will be changed and that hints will not work without fixing. The second problem with that:
 I have to remember an exact package version with a ebuild's revision number and should type it in a location bar a
-long time until firefox realized that visits count of some `1.55-r1` page is greater than same, but with `1.54` 
-in the path, and will offer it instead. Except `boost`, I've got about 10 more packages w/ `USE=doc` flag enabled 
-and I don't want to remember all versions and revisions I currently have in my system... and bookmarks in 
+long time until firefox realized that visits count of some `1.55-r1` page is greater than same, but with `1.54`
+in the path, and will offer it instead. Except `boost`, I've got about 10 more packages w/ `USE=doc` flag enabled
+and I don't want to remember all versions and revisions I currently have in my system... and bookmarks in
 firefox can't help much in this case!
 
 The solution is to make a "permanent" symbolic link which will stay the same for any version installed.
@@ -179,7 +179,7 @@ as well. To remove them (everything except English) one may use the following ru
 Note the attribute `reverse` tells to the hook that everything except specified items (directories actually)
 should be removed.
 
-Other usage examples can be found 
+Other usage examples can be found
 [here](https://github.com/zaufi/paludis-config/blob/master/hooks/configs/filesystem-manager.conf).
 They are mostly targeted to remove unused/redundant/useless files installed by various packages to
 the `/usr/share/doc` and some other places.
@@ -200,7 +200,7 @@ Nowadays I have the following __extreme__ rule in my config:
 
 <div class="alert alert-danger">
 <h4>Attention</h4>
-This rule will prevent to install any files to the <code>/usr/share/doc</code> from all packages, 
+This rule will prevent to install any files to the <code>/usr/share/doc</code> from all packages,
 which do not have <code>USE=doc</code> enabled!
 </div>
 
@@ -211,31 +211,6 @@ I've got a bunch of _stoppers_ like this:
     <package spec="clang-docs" stop="true" />
     <package spec="python-docs" stop="true" />
     <package spec="valgrind" stop="true" />
-{% endhighlight %}
-
-
-Autotools' `config.cache` Cleaner Hook
---------------------------------------
-
-To reduce the time for a configuration stage, GNU autotools based packages may use and share so called 
-`config.cache` file, which contains results for some tests. Using `EXTRA_ECONF`, it is possible to share 
-that file for packages when emerge them. Unfortunately, some <del>ugly</del> ebuilds want to update 
-`CC`/`CXX`, `CFLAGS`/`CXXFLAGS` and/or `LDFLAGS` **before** `./configure`. So configuration script, will 
-complain about _"changes in the environment"_ which can _"can compromise the build"_. Some other variables
-could be updated by the running `./configure` script -- like `PKG_CONFIG_PATH`. Things are even worse:
-some packages may try to update this cache file at _compile_ phase, so hooking at `ebuild_configure_post`
-to clean the cache will not work!
-
-To workaround that issues, this hook do the cleaning **right before configure phase**, removing all cached 
-environment variables (i.e. all that starts with the `'ac_cv_env_'` substring).
-
-Related part of my `/etc/paludis/bashrc` nowadays has the following:
-
-{% highlight bash %}
-# Tell to autotools (if used) not to create useless,
-# for one time build, `.d' files, reduce compilation messages
-# and use cache for config results
-EXTRA_ECONF="--disable-dependency-tracking --enable-silent-rules --cache-file=/var/tmp/config.cache"
 {% endhighlight %}
 
 
@@ -261,7 +236,7 @@ MAX_RESERVED_SPACE=$(( 1024 * 1024 * 100 ))
 DISK_USAGE_STATS_CACHE="/var/cache/paludis/disk_usage_stats.cache"
 {% endhighlight %}
 
-`MIN_RESERVED_SPACE` is a value to be used as an amount of a reserved space if 10% of a stored disk usage 
+`MIN_RESERVED_SPACE` is a value to be used as an amount of a reserved space if 10% of a stored disk usage
 counter is less than it. The `MAX_RESERVED_SPACE` is an upper bound of that 10% -- i.e. max reserved space
 can not exceed it. Defaults are 10M and 100M correspondingly.
 
@@ -278,7 +253,7 @@ This feature is not a hook actually, but some add-on to be used from the `/etc/p
 It allows to manage compiler flags (as well as any other environments variables) on a per package basis,
 like it is possible in the portage via the [`package.env` file](https://wiki.gentoo.org/wiki//etc/portage/env).
 
-To use it, one have to add the following to the `/etc/paludis/bashrc` somewhere after the `CFLAGS` 
+To use it, one have to add the following to the `/etc/paludis/bashrc` somewhere after the `CFLAGS`
 and/or other definitions.
 
 {% highlight bash %}
@@ -311,15 +286,15 @@ any particular package. For example, I have it like this:
 
 Every line has a package spec and a space separated list of environment modifiers. Every modifier actually
 is a file from the `/etc/paludis/env.conf.d/`. In that file (an ordinal bash script actually to be sourced if
-a package name matched) defined some actions to modify `CFLAGS`, `LDFLAGS` or anything else you want. 
-There are two helpful functions `add-options` and `remove-options` available to add/remove some options 
+a package name matched) defined some actions to modify `CFLAGS`, `LDFLAGS` or anything else you want.
+There are two helpful functions `add-options` and `remove-options` available to add/remove some options
 to/from some variable. For example I have the following `LDFLAGS` definition in my `bashrc`:
 
 {% highlight bash %}
 LDFLAGS="-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,--enable-new-dtags -Wl,--gc-sections -Wl,--hash-style=gnu"
 {% endhighlight %}
 
-Unfortunately, not all packages can link with `--gc-sections` option. For example `app-emulation/virtualbox`. 
+Unfortunately, not all packages can link with `--gc-sections` option. For example `app-emulation/virtualbox`.
 It is why it mentioned in my `package_env.conf`. So here is mine `/etc/paludis/env.conf.d/no-gc-sections.conf`:
 
 {% highlight bash %}
@@ -327,9 +302,9 @@ einfo "Remove --gc-sections from linker flags"
 remove-options LDFLAGS -Wl,--gc-sections
 {% endhighlight %}
 
-Yes, you can use logging functions as well ;-) The last command will remove undesired option from default 
+Yes, you can use logging functions as well ;-) The last command will remove undesired option from default
 ("global") `LDFLAGS`. Unfortunately `app-emulation/virtualbox` also fails to build if default linker is `ld.gold`.
-It is why its entry has two modifiers in `package_env.conf`. The second one 
+It is why its entry has two modifiers in `package_env.conf`. The second one
 `/etc/paludis/env.conf.d/use-bfd-linker.conf` will tell to use `ld.bfd` to link that package:
 
 {% highlight bash %}
@@ -383,9 +358,9 @@ Variables `CAVE_SEARCH_INDEX` and `CAVE_RESUME_FILE_OPT` are defined in `/etc/en
 Also here some trick used to reintroduce bash completions for all that commands, so even if alias is used
 completions are still available.
 
-Note that `-km` and `-Km` [options are used]({% post_url 2013-12-21-gpotw-5 %}). So when gentoo team adds 
-some changes to ebuild w/o version bump, that options will add a target to rebuild. To show differences 
-between ebuilds of installed package and just changed (and added as a target to rebuild on `world-up` 
+Note that `-km` and `-Km` [options are used]({% post_url 2013-12-21-gpotw-5 %}). So when gentoo team adds
+some changes to ebuild w/o version bump, that options will add a target to rebuild. To show differences
+between ebuilds of installed package and just changed (and added as a target to rebuild on `world-up`
 "command") one may use `pkg_meta_diff <pkg-name>` command.
 
 To show differences between installed and the next best available ebuilds use `pkg_ebuild_diff <pkg-name>`.
@@ -401,7 +376,7 @@ TODO
 * Add ability to find target objects (files, dirs, whatever) by introducing smth
   like `find` item and iterate over results applying some other actions (`ln`, `rm`, & etc...)
 * Implement FSM commands as **real** plugins... need to think about how to update (merge) DTD then.
-* add some `USE` flags to `paludis-hooks` 
+* add some `USE` flags to `paludis-hooks`
   [ebuild](https://github.com/zaufi/zaufi-overlay/blob/master/sys-apps/paludis-hooks/paludis-hooks-scm.ebuild)
   to be able to choose what components to install...
 
