@@ -55,3 +55,10 @@ The 60th position is the last (in my code), where an _inline-comment_ may appear
 comments are detected only _before_ this position… To properly align _inline-comments_ I'm using
 my ["Not quite indenter"]({% post_url 2013-11-29-kate-cppstyle-indenter %})™ and/or a
 [Pâtè plugins dedicated to C++ progrmmers]({% post_url 2014-02-13-kate-c++-stuff %}).
+
+
+See Also
+--------
+
+* [Download](http://kde-files.org/content/show.php?content=90660) alternative pure C++ syntax
+* Git [repository](https://github.com/zaufi/kate-stuff/tree/master/syntax) on GitHub
