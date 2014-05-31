@@ -28,7 +28,7 @@ has been added. Partial change log:
 
 * support for quote digits separator
 * support for user defined literals defined by The Standard for strings, complex numbers and
-  `std::chorono` constants
+  `std::chrono` constants
 * highlighting for header files `#incldue` defined by The Standard to make them visually different
   than ordinal `#include`, to give a hint that you write it's name correctly ;)
 * support for user defined literals for floating point numbers (C++11 actually)
