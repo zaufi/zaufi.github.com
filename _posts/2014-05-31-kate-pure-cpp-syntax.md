@@ -32,7 +32,7 @@ has been added. Partial change log:
 * highlighting for header files `#incldue` defined by The Standard to make them visually different
   than ordinal `#include`, to give a hint that you write it's name correctly ;)
 * support for user defined literals for floating point numbers (C++11 actually)
-* _Aligned Comments_ now is a separate attribute and by default has same style as _Comment_.
+* _Aligned Comments_ now is a separate attribute and by default has the same style as _Comment_.
   To reduce a number of attributes it was a _Regon Marker_, so a lot of users was wondered
   why some comments (at some positions) was highlighted as a _Region Marker_.
 
