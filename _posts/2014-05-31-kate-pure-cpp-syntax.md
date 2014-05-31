@@ -20,8 +20,8 @@ Also I have plans to add a separate C++/Qt5 syntax for Qt5 based project (and ma
 stuff in it as deprecated).
 
 
-Changes against "official" syntax
----------------------------------
+Changes against the "official" syntax
+-------------------------------------
 
 I've aready done a bunch of bug fixes and refactorings. Also support for upcoming C++14 features
 has been added. Partial change log:
