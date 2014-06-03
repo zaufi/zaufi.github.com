@@ -28,7 +28,7 @@ Try to fix them in `CMakeLists.txt` (around corresponding `find_package()`).
 Installation
 ------------
 
-Unpack (or <a data-original-title="$ git clone https://github.com/zaufi/kate-cpp-helper-plugin.git" 
+Unpack (or <a data-original-title="$ git clone https://github.com/zaufi/kate-cpp-helper-plugin.git"
 href="#" data-toggle="tooltip" data-placement="top" title="">clone</a>) sources to some workng directory, then execute the following commands from it:
 
     $ cd <plugin-sources-dir>
@@ -48,7 +48,7 @@ To enable the plugin for your current session use _Settings -> Configure Kate...
 
 Now use plugins' configuration page to ajdust some settings. First of all make sure the _System Paths List_
 have a proper directories list used by your compiler (`gcc` by default). Initially, the plugin try to detect
-known compilers (gcc and clang) from your path. If current list is not suitable for you, clear it and 
+known compilers (gcc and clang) from your path. If current list is not suitable for you, clear it and
 choose appropriate compiler from a list below the page and press _Add to List_.
 
 <div class="alert alert-info">
@@ -96,7 +96,7 @@ is it recommended to specify it in _Session PCH header to compile_ option. Typic
 consist of `#include` directives for most used header files in your sources. For `cmake` based projects
 I have a [module](https://github.com/mutanabbi/chewy-cmake-rep/blob/master/UsePCHFile.cmake) which helps
 to make it by command `make update-pch-header`. To use it add `UsePCHFile.cmake`,
-`PreparePCHHeader.cmake.in` and `pch_template.h.in` files to your cmake modules directory of your project 
+`PreparePCHHeader.cmake.in` and `pch_template.h.in` files to your cmake modules directory of your project
 and in a top level `CMakeLists.txt` call it like this:
 {% highlight cmake %}
 include(UsePCHFile)
@@ -108,9 +108,9 @@ use_pch_file(
 Then you may add this file to _CLang Settings_ page and plugin will build it and use while code completion.
 
 <div class="alert alert-success">
-The mentioned CMake module actually is a part of a 
+The mentioned CMake module actually is a part of a
 <a href="https://github.com/mutanabbi/chewy-cmake-rep" target="_blank" class="alert-link">
-collection of reusable modules</a> under control of 
+collection of reusable modules</a> under control of
 <a href="https://github.com/mutanabbi/chewy" target="_blank" class="alert-link">
 chewy utility</a>. To install it using <code>chewy</code>:
 <pre>
@@ -125,7 +125,7 @@ any required additional files will be installed automatically.
 The next configuration page of the plugin allows you to fine tune completion results.
 
 <div class="alert alert-danger">
-<em>Automatic code completion</em> option nowadays is a quite stupid: it tries a completion 
+<em>Automatic code completion</em> option nowadays is a quite stupid: it tries a completion
 after user enters <em>'.'</em> or <em>'->'</em> in a source code. But more important that it can annoy on
 a heavy project (with <a href="http://boost.org" target="_blank">Boost</a> library for example).
 </div>
@@ -161,11 +161,11 @@ a particular completion result slightly shorter I use the regex like on a screen
 </div>
 
 The _Other Settings_ page contains options related to `#include` directives and a code completer.
-The plugin has action (default key is `Shift+F10`) to copy `#include` statement with current file
-into a clipboard, so you may switch a document and just paste it. The first option in a 
+The plugin has action (default key is <kbd>Shift+F10</kbd>) to copy `#include` statement with current file
+into a clipboard, so you may switch a document and just paste it. The first option in a
 _`#include` Helper Options_ group specify the format of that preprocessor directive.
 
-At the end of this group you may find a list of file extensions (not a wildcards!) to exclude from 
+At the end of this group you may find a list of file extensions (not a wildcards!) to exclude from
 `#include` completion list.
 
 ![Other Settings](assets/images/cpphelper/other-settings.png "Other Settings")
@@ -177,7 +177,7 @@ files found (same name, but different paths) background turned to a warning. In 
 on `-I` compiler options order which one will be actually processed.
 
 The plugin may monitor configured `#incldue` directories, so then a missed file will appear
-(after required package being installed or files generated in a build directory), it will remove an 
+(after required package being installed or files generated in a build directory), it will remove an
 error mark. One may specify that to monitor in the middle options group.
 
 <div class="alert alert-danger">
@@ -185,19 +185,19 @@ error mark. One may specify that to monitor in the middle options group.
 system directory, may lead to high resources consumption, so <code>inotify_add_watch</code> would
 return a <code>ENOSPC</code> error (use<code>strace</code> to find out and/or check kate's console log for
 <strong>strange</strong> messages from <code>DirWatch</code>).</p>
-<p>So if your system short of resources (memory) just try to avoid live <code>#include</code> files 
+<p>So if your system short of resources (memory) just try to avoid live <code>#include</code> files
 status updates. Otherwise one may increase a number of available files/dirs watches by doing this:</p>
 <pre>
 # echo 16384 >/proc/sys/fs/inotify/max_user_watches
 </pre>
-<p>To make it permanent add the following to <code>/etc/sysctl.conf</code> or 
+<p>To make it permanent add the following to <code>/etc/sysctl.conf</code> or
 <code>/etc/sysctl.d/inotify.conf</code> (depending on system):</p>
 <pre>
 fs.inotify.max_user_watches = 16384
 </pre>
 </div>
 
-To open a header file just move cursor on a line containing `#include` and press `F10` key.
+To open a header file just move cursor on a line containing `#include` and press <kbd>F10</kbd> key.
 If no valid directive recognized on a current line, a dialog with a list of currently included files will appear.
 If you have no write permission to opened file (most likely files from `/usr/include`) read-only
 mode will be applied automatically.
@@ -215,7 +215,7 @@ few cases when it can't helps me. Nowadays I have 2 "real life" <del>really anno
 <ul>
 <li>
 Often one may find a source tree with separate <code>${project}/src/</code> and <code>${project}/include</code> dirs.
-So, when you are at some header from <code>include/</code> dir, that plugin obviously never will find 
+So, when you are at some header from <code>include/</code> dir, that plugin obviously never will find
 your source file. And vise versa.
 </li>
 
@@ -223,8 +223,8 @@ your source file. And vise versa.
 The second case: sometimes I have a really big class defined in a header file
 (let it be <code>my_huge_application.hh</code>). It may consist of few dickers of methods each of which is
 hundred lines or so. In that case I prefer to split implementation into several files and name them
-after a base header like <code>my_huge_application_cmd_line.cc</code> (for everything related to command 
-line parsing), <code>my_huge_application_networking.cc</code> (for everything related to network I/O), 
+after a base header like <code>my_huge_application_cmd_line.cc</code> (for everything related to command
+line parsing), <code>my_huge_application_networking.cc</code> (for everything related to network I/O),
 and so on. As you may guess <em>Open Header</em> plugin will fail to find a corresponding header for that
 source files.
 </li>
@@ -233,7 +233,7 @@ source files.
 
 Last settings group on _Other Settings_ page allow you to tune _Open Header/Implementation_ behaviour.
 It is a good practice to have the very first `#include` directive in a `.cc`/`.cpp` file to be a corresponding
-header. So, checking the first option in that group will add it to a list of candidates when you press `F11` key.
+header. So, checking the first option in that group will add it to a list of candidates when you press <kbd>F11</kbd> key.
 
 The second option (_Use wildcard source files search_) aimed to solve the second "real life" problem:
 being in a header file and pressing `F11` it appends all `.cc`/`.cpp` files started w/ a current header name
@@ -263,7 +263,7 @@ After adding a new index and some targets to be indexed, it is ready to rebuild.
 <div class="alert alert-info">
 <h4>Note that...</h4>
 when build, current compiler options, configured for a session will be used. Diagnostic tab will contain
-indexing progress details. In case of too many errors, consider to fix compiler options (like add some missed 
+indexing progress details. In case of too many errors, consider to fix compiler options (like add some missed
 <code>-I</code> options for third party libraries).
 
 After index has built you can use it from any other session despite of any options.
@@ -274,13 +274,13 @@ There are few _special terms_ (filters) can be passed to the search engine. Gene
 
         keyword:value
 
-_value_ can be a boolean, string or numeric type. In fact only one (true) value needed for boolean type, 
-so as a _value_ only _"y"_ is accepted. For example to find virtual functions just add _"virtual:y"_ filter, 
+_value_ can be a boolean, string or numeric type. In fact only one (true) value needed for boolean type,
+so as a _value_ only _"y"_ is accepted. For example to find virtual functions just add _"virtual:y"_ filter,
 otherwise (if no filter specified) all kinds of symbols will be found.
 
 * `access:public|protected|private` filter by visibility inside the class scope
 * `anon:y` or `anonymous:y` should a symbol be in some anonymous scope (namespace, struct, union)
-* `base:<class-name>` to find a symbols (classes or structures) inherited from the specified class/struct.  
+* `base:<class-name>` to find a symbols (classes or structures) inherited from the specified class/struct.
 
         base:QAbastractItemModel
         base:basic_ios
@@ -289,13 +289,13 @@ otherwise (if no filter specified) all kinds of symbols will be found.
 
         inh:virtual-public base:basic_ios
 * `decl:<name>` or `ref:<name>` filters to lookup only declarations or references (usage) of the specified _name_
-* `def:y` sometimes declaration and definition could be in different places (lexical containers). This 
+* `def:y` sometimes declaration and definition could be in different places (lexical containers). This
     boolean filter allows to find that cases.
 * `kind:<value>` filter symbols of specified _kind_, where _value_ can be of one of the following:
     `ns`, `ns-alias`, `typedef`, `type-alias`, `struct`, `class`, `union`, `enum`, `enum-const`, `fn`,
     `method`, `ctor`, `dtor`, `conversion`, `param`, `var`, `field`, `bitfield`
 * `pod:y` show only <abbr title="Plain Old Data structures">POD</abbr>s
-* `scope:<name>` restrict search only withing given scope. _name_ paramater could be a name (possible 
+* `scope:<name>` restrict search only withing given scope. _name_ paramater could be a name (possible
     fully qualified) of a namespace, class, struct, union, or enum. For example to get all public typedefs
     of `std::basic_string`:
 
