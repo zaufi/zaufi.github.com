@@ -236,7 +236,7 @@ It is a good practice to have the very first `#include` directive in a `.cc`/`.c
 header. So, checking the first option in that group will add it to a list of candidates when you press <kbd>F11</kbd> key.
 
 The second option (_Use wildcard source files search_) aimed to solve the second "real life" problem:
-being in a header file and pressing `F11` it appends all `.cc`/`.cpp` files started w/ a current header name
+being in a header file and pressing <kbd>F11</kbd> it appends all `.cc`/`.cpp` files started w/ a current header name
 to a list of candidates.
 
 **That is all!** (briefly ;-)
