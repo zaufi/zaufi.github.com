@@ -3,7 +3,7 @@ layout: post
 title: "HOWTO: Make a chroot'ed Debian/Ubuntu"
 description: "Step by step instruction to create a chrooted Debian/Ubuntu environment"
 category: administration
-tags: [chroot, howto]
+tags: [chroot, howto, debian, ubuntu]
 ---
 {% include JB/setup %}
 
