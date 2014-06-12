@@ -145,9 +145,9 @@ Moreover it can be a little shorter :-) So instead of `/usr/share/doc/boost-1.55
 
 To achieve that I've added a simple rule to my config:
 {% highlight xml %}
-    <package spec="dev-libs/boost">
-        <symlink cd="/usr/share/doc" src="${PF}/html" dst="${PN}" />
-    </package>
+<package spec="dev-libs/boost">
+    <symlink cd="/usr/share/doc" src="${PF}/html" dst="${PN}" />
+</package>
 {% endhighlight %}
 So, this rule will change current directory to `/usr/share/doc` inside an image directory and create
 a symbolic link `boost` pointing to `boost-1.55-r1/html/`.
@@ -161,9 +161,9 @@ So `app-admin/localpurge` was "invented" to cleanup unused locales (all of them 
 will remove `*.mo` files after install, so when a package gets uninstalled, some files will be marked as _gone_.
 One simple rule will do the job better:
 {% highlight xml %}
-    <package spec="*/*" descr="locale-cleaner">
-        <rm cd="/usr/share/locale/" dst="*/LC_MESSAGES/*.mo" />
-    </package>
+<package spec="*/*" descr="locale-cleaner">
+    <rm cd="/usr/share/locale/" dst="*/LC_MESSAGES/*.mo" />
+</package>
 {% endhighlight %}
 Because manipulations (deleting `*.mo` files) will be done **before** merge, all that files even
 won't be counted by a package manager. And I'm not telling about that you don't need to run any tool periodically
@@ -172,9 +172,9 @@ won't be counted by a package manager. And I'm not telling about that you don't 
 Translations is a part of the "problem": some packages (like `alsa-utils`) want to install translated manual pages
 as well. To remove them (everything except English) one may use the following rule:
 {% highlight xml %}
-    <package spec="*/*" descr="man-pages-cleaner">
-        <rm cd="/usr/share/man/" dst="man{0p,1,1p,2,3,3p,4,5,6,7,8}" reverse="true" />
-    </package>
+<package spec="*/*" descr="man-pages-cleaner">
+    <rm cd="/usr/share/man/" dst="man{0p,1,1p,2,3,3p,4,5,6,7,8}" reverse="true" />
+</package>
 {% endhighlight %}
 Note the attribute `reverse` tells to the hook that everything except specified items (directories actually)
 should be removed.
@@ -191,26 +191,27 @@ Recently I've added one more element: `if` -- to check if a matched package has 
 Nowadays I have the following __extreme__ rule in my config:
 
 {% highlight xml %}
-    <package spec="*/*" descr="USE=-doc remover">
-        <if use="doc" negate="true">
-            <rm cd="/usr/share" dst="doc" />
-        </if>
-    </package>
+<package spec="*/*" descr="USE=-doc remover">
+    <if use="doc" negate="true">
+        <rm cd="/usr/share" dst="doc" />
+    </if>
+</package>
 {% endhighlight %}
 
-<div class="alert alert-danger">
-<h4>Attention</h4>
-This rule will prevent to install any files to the <code>/usr/share/doc</code> from all packages,
-which do not have <code>USE=doc</code> enabled!
+<div class="alert alert-danger" markdown="1">
+#### Attention
+
+This rule will prevent to install any files to the `/usr/share/doc/` from all packages,
+which do not have `USE=doc` enabled!
 </div>
 
 Unfortunately some packages, I want docs for, do not have that `USE` at all, so to stop this rule triggering,
 I've got a bunch of _stoppers_ like this:
 
 {% highlight xml %}
-    <package spec="clang-docs" stop="true" />
-    <package spec="python-docs" stop="true" />
-    <package spec="valgrind" stop="true" />
+<package spec="clang-docs" stop="true" />
+<package spec="python-docs" stop="true" />
+<package spec="valgrind" stop="true" />
 {% endhighlight %}
 
 
@@ -240,10 +241,11 @@ DISK_USAGE_STATS_CACHE="/var/cache/paludis/disk_usage_stats.cache"
 counter is less than it. The `MAX_RESERVED_SPACE` is an upper bound of that 10% -- i.e. max reserved space
 can not exceed it. Defaults are 10M and 100M correspondingly.
 
-<div class="alert alert-info">
-<h4>Note</h4>
+<div class="alert alert-info" markdown="1">
+#### Note
+
 If some package fails to build, its working directory will be moved back to its original location
-from the RAM disk (i.e. <code>/dev/shm</code>)…
+from the RAM disk (i.e. `/dev/shm`)...
 </div>
 
 Manage Build Environments

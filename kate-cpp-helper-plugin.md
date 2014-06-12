@@ -51,9 +51,9 @@ have a proper directories list used by your compiler (`gcc` by default). Initial
 known compilers (gcc and clang) from your path. If current list is not suitable for you, clear it and
 choose appropriate compiler from a list below the page and press _Add to List_.
 
-<div class="alert alert-info">
-Support for compilers not in the <code>PATH</code> in my TODO list (for example manually built fresh or crosscompiler gcc).
-The <em>Other</em> (disabled now) option has reserved for this purpose.
+<div class="alert alert-info" markdown="1">
+Support for compilers not in the `PATH` in my TODO list (for example manually built fresh or crosscompiler gcc).
+The _Other_ (disabled now) option has reserved for this purpose.
 </div>
 
 ![System-wide Settings](assets/images/cpphelper/system.png "System-wide Settings")
@@ -71,12 +71,12 @@ Typical dirs you have to add here is the following:
 
 The plugin also try to suggest some directories based on opened documents' paths.
 
-<div class="alert alert-info">
-Personally I use only two <code>#include</code> directories in all my projects: a source tree root and a build root.
-And every source file contains a full path relative to one of listed paths when <code>#include</code> something.
+<div class="alert alert-info" markdown="1">
+Personally I use only two `#include` directories in all my projects: a source tree root and a build root.
+And every source file contains a full path relative to one of listed paths when `#include` something.
 Particularly this technique helps to simplify configuration management when you have to add a bunch of
-<code>-I</code> options in your build system configuration files and track inter-component dependencies
-all the time you've added a new <code>#include</code> directive in you sources... so finally you've got
+`-I` options in your build system configuration files and track inter-component dependencies
+all the time you've added a new `#include` directive in you sources... so finally you've got
 a particular compiler command line options the half of your terminal window height :)
 </div>
 
@@ -107,27 +107,26 @@ use_pch_file(
 {% endhighlight %}
 Then you may add this file to _CLang Settings_ page and plugin will build it and use while code completion.
 
-<div class="alert alert-success">
+<div class="alert alert-success" markdown="1">
 The mentioned CMake module actually is a part of a
-<a href="https://github.com/mutanabbi/chewy-cmake-rep" target="_blank" class="alert-link">
-collection of reusable modules</a> under control of
-<a href="https://github.com/mutanabbi/chewy" target="_blank" class="alert-link">
-chewy utility</a>. To install it using <code>chewy</code>:
-<pre>
-$ chewy install https://raw.github.com/mutanabbi/chewy-cmake-rep/master/UsePCHFile.cmake
- * Receiving the module file https://raw.github.com/mutanabbi/chewy-cmake-rep/master/UsePCHFile.cmake
- * Receiving the addon file https://raw.github.com/mutanabbi/chewy-cmake-rep/master/PreparePCHHeader.cmake.in
- * Receiving the addon file https://raw.github.com/mutanabbi/chewy-cmake-rep/master/pch_template.h.in
-</pre>
+[collection of reusable modules](https://github.com/mutanabbi/chewy-cmake-rep){: .alert-link target="_blank"}
+under control of [chewy utility](https://github.com/mutanabbi/chewy){: .alert-link target="_blank"}
+To install it using `chewy`:
+
+    $ chewy install https://raw.github.com/mutanabbi/chewy-cmake-rep/master/UsePCHFile.cmake
+    * Receiving the module file https://raw.github.com/mutanabbi/chewy-cmake-rep/master/UsePCHFile.cmake
+    * Receiving the addon file https://raw.github.com/mutanabbi/chewy-cmake-rep/master/PreparePCHHeader.cmake.in
+    * Receiving the addon file https://raw.github.com/mutanabbi/chewy-cmake-rep/master/pch_template.h.in
+
 any required additional files will be installed automatically.
 </div>
 
 The next configuration page of the plugin allows you to fine tune completion results.
 
-<div class="alert alert-danger">
-<em>Automatic code completion</em> option nowadays is a quite stupid: it tries a completion
-after user enters <em>'.'</em> or <em>'->'</em> in a source code. But more important that it can annoy on
-a heavy project (with <a href="http://boost.org" target="_blank">Boost</a> library for example).
+<div class="alert alert-danger" markdown="1">
+_Automatic code completion_ option nowadays is a quite stupid: it tries a completion
+after user enters <kbd>.</kbd> or <kbd>-></kbd> in a source code. But more important that it can annoy on
+a heavy project (with [boost](http://boost.org){: .alert-link target="_blank"} library for example).
 </div>
 
 ![Code Completion Settings](assets/images/cpphelper/completion-settings.png "Code Completion Settings")
@@ -180,21 +179,23 @@ The plugin may monitor configured `#incldue` directories, so then a missed file 
 (after required package being installed or files generated in a build directory), it will remove an
 error mark. One may specify that to monitor in the middle options group.
 
-<div class="alert alert-danger">
-<p>Monitoring too much (nested) directories, for example in <code>/usr/include</code> configured as
-system directory, may lead to high resources consumption, so <code>inotify_add_watch</code> would
-return a <code>ENOSPC</code> error (use<code>strace</code> to find out and/or check kate's console log for
-<strong>strange</strong> messages from <code>DirWatch</code>).</p>
-<p>So if your system short of resources (memory) just try to avoid live <code>#include</code> files
-status updates. Otherwise one may increase a number of available files/dirs watches by doing this:</p>
-<pre>
-# echo 16384 >/proc/sys/fs/inotify/max_user_watches
-</pre>
-<p>To make it permanent add the following to <code>/etc/sysctl.conf</code> or
-<code>/etc/sysctl.d/inotify.conf</code> (depending on system):</p>
-<pre>
-fs.inotify.max_user_watches = 16384
-</pre>
+<div class="alert alert-danger" markdown="1">
+#### Attention
+
+Monitoring too much (nested) directories, for example in `/usr/include` configured as
+system directory, may lead to high resources consumption, so `inotify_add_watch` would
+return a `ENOSPC` error (use `strace` to find out and/or check kate's console log for
+**strange** messages from `DirWatch`.
+
+So if your system short of resources (memory) just try to avoid live `#include` files
+status updates. Otherwise one may increase a number of available files/dirs watches by doing this:
+
+    # echo 16384 >/proc/sys/fs/inotify/max_user_watches
+
+To make it permanent add the following to `/etc/sysctl.conf` or
+`/etc/sysctl.d/inotify.conf` (depending on system):
+
+    fs.inotify.max_user_watches = 16384
 </div>
 
 To open a header file just move cursor on a line containing `#include` and press <kbd>F10</kbd> key.
@@ -205,30 +206,23 @@ mode will be applied automatically.
 ![Choose Header File](assets/images/cpphelper/choose-header-dialog.png "Choose Header File")
 
 
-<div class="alert alert-info">
-<h4>Open Header/Implementation Motivation</h4>
-<p>
-<code>kate</code> shipped with a plugin named <em>Open Header</em>, but sooner after I started to use it I've found
+<div class="alert alert-info" markdown="1">
+#### Open Header/Implementation Motivation
+
+`kate` shipped with a plugin named _Open Header_, but sooner after I started to use it I've found
 few cases when it can't helps me. Nowadays I have 2 "real life" <del>really annoying</del> examples when it fails:
-</p>
 
-<ul>
-<li>
-Often one may find a source tree with separate <code>${project}/src/</code> and <code>${project}/include</code> dirs.
-So, when you are at some header from <code>include/</code> dir, that plugin obviously never will find
-your source file. And vise versa.
-</li>
+* Often one may find a source tree with separate `${project}/src/` and `${project}/include` dirs.
+  So, when you are at some header from `include/` dir, that plugin obviously never will find
+  your source file. And vise versa.
 
-<li>
-The second case: sometimes I have a really big class defined in a header file
-(let it be <code>my_huge_application.hh</code>). It may consist of few dickers of methods each of which is
-hundred lines or so. In that case I prefer to split implementation into several files and name them
-after a base header like <code>my_huge_application_cmd_line.cc</code> (for everything related to command
-line parsing), <code>my_huge_application_networking.cc</code> (for everything related to network I/O),
-and so on. As you may guess <em>Open Header</em> plugin will fail to find a corresponding header for that
-source files.
-</li>
-</ul>
+* The second case: sometimes I have a really big class defined in a header file
+  (let it be `my_huge_application.hh`). It may consist of few dickers of methods each of which is
+  hundred lines or so. In that case I prefer to split implementation into several files and name them
+  after a base header like `my_huge_application_cmd_line.cc` (for everything related to command
+  line parsing), `my_huge_application_networking.cc` (for everything related to network I/O),
+  and so on. As you may guess _Open Header_ plugin will fail to find a corresponding header for that
+  source files.
 </div>
 
 Last settings group on _Other Settings_ page allow you to tune _Open Header/Implementation_ behaviour.
@@ -241,13 +235,12 @@ to a list of candidates.
 
 **That is all!** (briefly ;-)
 
-<div class="alert alert-info">
-One more thing I have to mention: typing <code>#in</code> in C++ sources will automatically insert <code>#include</code>
+<div class="alert alert-info" markdown="1">
+One more thing I have to mention: typing <kbd>#in</kbd> in C++ sources will automatically insert `#include`
 text and starts file completer...
 </div>
 
-<img src="assets/images/cpphelper/include-completer.png" class="img-rounded img-responsive" title="Include Files Completer" />
-
+![Include Files Completer](assets/images/cpphelper/include-completer.png "Include Files Completer"){: .img-rounded .img-responsive}
 
 Indexing Source Code
 ====================
@@ -256,15 +249,16 @@ Since version 1.0 _Kate C++ Helper_ plugin has indexing feature. One may configu
 _Indexer Settings_ in the tool view.
 
 
-![Indexer Settings](assets/images/cpphelper/indexing-settings.png "Indexer Settings")
+![Indexer Settings](assets/images/cpphelper/indexing-settings.png "Indexer Settings"){: .img-rounded .img-responsive}
 
 After adding a new index and some targets to be indexed, it is ready to rebuild.
 
-<div class="alert alert-info">
-<h4>Note that...</h4>
+<div class="alert alert-info" markdown="1">
+#### Note that...
+
 when build, current compiler options, configured for a session will be used. Diagnostic tab will contain
 indexing progress details. In case of too many errors, consider to fix compiler options (like add some missed
-<code>-I</code> options for third party libraries).
+`-I` options for third party libraries).
 
 After index has built you can use it from any other session despite of any options.
 </div>
@@ -272,7 +266,7 @@ After index has built you can use it from any other session despite of any optio
 After rebuilding completed and collection available for search, one may use search tab to find something.
 There are few _special terms_ (filters) can be passed to the search engine. Generic format of them is:
 
-        keyword:value
+    keyword:value
 
 _value_ can be a boolean, string or numeric type. In fact only one (true) value needed for boolean type,
 so as a _value_ only _"y"_ is accepted. For example to find virtual functions just add _"virtual:y"_ filter,
@@ -316,8 +310,7 @@ Everything else considered as search terms (symbol names). Wildcards are support
 
 Enjoy searching! :-)
 
-![Search](assets/images/cpphelper/search.png "Search")
-
+![Search](assets/images/cpphelper/search.png "Search"){: .img-rounded .img-responsive}
 
 
 See Also

@@ -28,9 +28,9 @@ Yes, I know there is a lot of stuff like this, but I have few problems w/ it:
   my patch to...
 3. Some of that stuff is <del>too much</del> _end-user oriented_ <del>so inflexible</del> -- they can colorize
   almost everything via regular expressions and configuration files. The only problem I have w/ them:
-  some things I'd like to colorize (or fix formatting) is impossible or **damn hard to express via regexes** ... 
-  particularly because line-by-line processing implemented in that tools have no _state_... 
-  Yep, I understand that, it will be hard to code, and even harder to use such a tool for end users 
+  some things I'd like to colorize (or fix formatting) is impossible or **damn hard to express via regexes** ...
+  particularly because line-by-line processing implemented in that tools have no _state_...
+  Yep, I understand that, it will be hard to code, and even harder to use such a tool for end users
   (i.e. ppl w/o programming skills) -- it is why authors took the easy way: allow to user to write regexes in configs.
 
 
@@ -38,9 +38,9 @@ Features
 ========
 
 * easy (to Python programmers ;-) to extend
-* 256 color terminal support ;-) configuration files in addition to standard named colors
+* 256 and 16M color terminal support ;-) Configuration files in addition to standard named colors
   may contain color definitions as `rgb(r,g,b)` or `gray(n)`
-* colorizers for `make`, `cmake`, `gcc` out of the box (more plugins to come ;-)
+* colorizers for `make`, `cmake`, `gcc`, `mount` and `diff` out of the box (more plugins to come ;-)
 * some modules are not just a stupid colorizers ;-) For example `gcc` can reformat text for
   better readability (really helps to understand template errors). Also `cmake` module can reduce
   amount of lines printed during test by collapsing test _intro_ message and _result_ into a single one.
@@ -60,13 +60,13 @@ or
     $ sudo easy_install .
 
 For Gentoo users there is a [live ebuild](https://github.com/zaufi/zaufi-overlay/blob/master/dev-util/pluggable-output-processor/pluggable-output-processor-scm.ebuild)
-in my [repository](https://github.com/zaufi/zaufi-overlay/). 
-Also (for Gentoo users again ;-) `eselect` module from `contrib/` will be installed by the ebuild. 
+in my [repository](https://github.com/zaufi/zaufi-overlay/).
+Also (for Gentoo users again ;-) `eselect` module from `contrib/` will be installed by the ebuild.
 Users of other distros have to make a symlinks to required modules manually:
 
     $ ln -s /usr/bin/outproc /usr/lib/outproc/bin/<module-name>
 
-and then make sure `/usr/lib/outproc/bin` placed __before__ `/usr/bin` (and anything else) in your 
+and then make sure `/usr/lib/outproc/bin` placed __before__ `/usr/bin` (and anything else) in your
 user/system `PATH` environment. Personally I use the following piece of code in `/etc/profile.d/set_outproc_path.sh`,
 because setting `PATH` via `/etc/env.d` files will not give desired place inside a list of paths:
 {% highlight bash %}
@@ -79,7 +79,7 @@ For example, to install the `gcc` module do the following:
 
     $ ln -s /usr/bin/outproc /usr/lib/outproc/bin/gcc
 
-Then you may edit `/etc/outproc/gcc.conf` to adjust color settings. 
+Then you may edit `/etc/outproc/gcc.conf` to adjust color settings.
 
 
 Usage Examples
@@ -112,7 +112,7 @@ GNU make
 --------
 
 This module can colorize _error_ and _service messages_ from `make` (like _entering/leaving_ directory).
-Also it can recognize some "information" messages from `cmake` and/or `gcc` command line (when `make VERBOSE=1` 
+Also it can recognize some "information" messages from `cmake` and/or `gcc` command line (when `make VERBOSE=1`
 used to build) -- i.e. it works for cmake-based projects (my favorite build utility nowadays).
 
 <div class="tabbable">
@@ -134,7 +134,7 @@ used to build) -- i.e. it works for cmake-based projects (my favorite build util
 GNU gcc
 --------
 
-This module is capable to colorize errors, warnings, C++ code snippets (best viewed w/ 256 color terminals ;-)
+This module is capable to colorize errors, warnings, C++ code snippets (best viewed w/ 16M color terminals ;-)
 and reformat/simplify some loooong error messages...
 
 <div class="tabbable">
@@ -227,7 +227,7 @@ How to Extend
 
 To add a new module you have to name it after a tool you want to wrap (process output from) +
 `.py` extension and put that module into `${python-site-packages-dir}/outproc/pp/` dir.
-Then make a symlink from `/usr/bin/outproc` to `/usr/lib/outproc/bin/<wrapped-executable>` or 
+Then make a symlink from `/usr/bin/outproc` to `/usr/lib/outproc/bin/<wrapped-executable>` or
 use `eselect` in Gentoo. Being executed `outproc` will realize (from the symlink name) what binary
 to execute and capture output from. All captured lines will be _piped_ through `your-module.Processor.handle_line()`.
 
@@ -271,8 +271,8 @@ More details are coming...
 TODO
 ====
 
-* <del>continue to improve C++ tokenizer</del>   
-  now it is capable to handle almost everything I wanted to implement. Just one thing remains: 
+* <del>continue to improve C++ tokenizer</del>
+  now it is capable to handle almost everything I wanted to implement. Just one thing remains:
   reformat too long template names into a smth shorter than terminal width...
 * <del>unit tests for tokenizer</del>
 * test files w/ to cause various error messages from gcc (+ unit test for colorizer somehow)
