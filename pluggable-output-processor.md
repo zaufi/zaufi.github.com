@@ -18,7 +18,7 @@ Motivation
 _Pluggable Output Processor_ is my attempt to get rid of a bunch of various colorizers
 from my system (like `colorgcc`, `colordiff`, `colorsvn`, ...) <del>and take everything under control</del> ;-).
 Some of them are written on Perl (and I'm not a fun of it :-) and after few hacks I've made to improve
-`colorgcc`, I realized that I don't want to <del>waste my time</del> learning Perl.
+`colorgcc`, I realized that I don't want to <del>waste my time</del> learn Perl.
 
 Yes, I know there is a lot of stuff like this, but I have few problems w/ it:
 
@@ -31,13 +31,14 @@ Yes, I know there is a lot of stuff like this, but I have few problems w/ it:
   some things I'd like to colorize (or fix formatting) is impossible or **damn hard to express via regexes** ...
   particularly because line-by-line processing implemented in that tools have no _state_...
   Yep, I understand that, it will be hard to code, and even harder to use such a tool for end users
-  (i.e. ppl w/o programming skills) -- it is why authors took the easy way: allow to user to write regexes in configs.
+  (i.e. ppl w/o programming skills) -- it is why authors took the easy way: allow to user to write regexes
+  in configs.
 
 
 Features
 ========
 
-* easy (to Python programmers ;-) to extend
+* pluggable architecture -- easy (to Python programmers ;-) to extend
 * 256 and 16M color terminal support ;-) Configuration files in addition to standard named colors
   may contain color definitions as `rgb(r,g,b)` or `gray(n)`
 * colorizers for `make`, `cmake`, `gcc`, `mount` and `diff` out of the box (more plugins to come ;-)
@@ -64,16 +65,18 @@ in my [repository](https://github.com/zaufi/zaufi-overlay/).
 Also (for Gentoo users again ;-) `eselect` module from `contrib/` will be installed by the ebuild.
 Users of other distros have to make a symlinks to required modules manually:
 
-    $ ln -s /usr/bin/outproc /usr/lib/outproc/bin/<module-name>
+    # ln -s /usr/bin/outproc /usr/lib/outproc/bin/<module-name>
 
 and then make sure `/usr/lib/outproc/bin` placed __before__ `/usr/bin` (and anything else) in your
 user/system `PATH` environment. Personally I use the following piece of code in `/etc/profile.d/set_outproc_path.sh`,
 because setting `PATH` via `/etc/env.d` files will not give desired place inside a list of paths:
+
 {% highlight bash %}
 if [ -d /usr/lib/outproc/bin ]; then
     export PATH="/usr/lib/outproc/bin:$PATH"
 fi
 {% endhighlight %}
+
 Available modules (plugins) can be found at `<python-site-packages-dir>/outproc/pp`.
 For example, to install the `gcc` module do the following:
 
@@ -132,7 +135,7 @@ used to build) -- i.e. it works for cmake-based projects (my favorite build util
 
 
 GNU gcc
---------
+-------
 
 This module is capable to colorize errors, warnings, C++ code snippets (best viewed w/ 16M color terminals ;-)
 and reformat/simplify some loooong error messages...
