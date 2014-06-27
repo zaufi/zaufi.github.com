@@ -19,7 +19,7 @@ Then we can initialize RPMs database (I'll do my chroot environment in the `/sto
     $ rpm --root=/storage/schroot/centos-6.5 --rbuilddb
 
 This will add an empty database to `/storage/schroot/onixs.centos-6.5/var/lib/rpm`.
-To enforce `yum` work we have to install some configuration files for it.
+To enforce `yum` to work we have to install some configuration files for it.
 The easiest way to get them for your desired distro is to install `centos-release` package.
 
     $ wget http://mirror.centos.org/centos/6.5/os/x86_64/Packages/centos-release-6-5.el6.centos.11.1.x86_64.rpm
