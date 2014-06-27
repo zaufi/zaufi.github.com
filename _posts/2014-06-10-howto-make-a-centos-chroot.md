@@ -13,7 +13,7 @@ package for RPM based distros in Gentoo, so some sort of manual work is inevitab
 Ok, lets go!
 
 First of all we need `rpm` and `yum` programs to be installed (yeah, you can `emerge` them).
-Then we can initialize RPMs database (I'll to my chroot environment in the `/storage/schroot/centos-6.5`):
+Then we can initialize RPMs database (I'll do my chroot environment in the `/storage/schroot/centos-6.5`):
 
     $ mkdir -p /storage/schroot/centos-6.5
     $ rpm --root=/storage/schroot/centos-6.5 --rbuilddb
