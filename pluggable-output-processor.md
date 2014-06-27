@@ -18,7 +18,7 @@ Motivation
 _Pluggable Output Processor_ is my attempt to get rid of a bunch of various colorizers
 from my system (like `colorgcc`, `colordiff`, `colorsvn`, ...) <del>and take everything under control</del> ;-).
 Some of them are written on Perl (and I'm not a fun of it :-) and after few hacks I've made to improve
-`colorgcc`, I realized that I don't want to <del>waste my time</del> learn Perl.
+`colorgcc`, I realized that I don't want to <del>waste my time</del> learning Perl.
 
 Yes, I know there is a lot of stuff like this, but I have few problems w/ it:
 
