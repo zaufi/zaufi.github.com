@@ -164,6 +164,7 @@ mount
 -----
 
 Mount plugin can format columns into a table. Also it can colorize filesystems by types:
+
 * _kernel_ -- i.e. service filesystems like `cgroup`, `mqueue`, `devpts` & etc
 * _real_ -- i.e. a real devices was mounted
 * _rebind_ -- i.e. filesystems w/ `bind` option
