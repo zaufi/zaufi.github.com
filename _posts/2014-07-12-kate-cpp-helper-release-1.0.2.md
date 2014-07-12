@@ -3,7 +3,7 @@ layout: post
 title: "Kate C++ Helper plugin release 1.0.2"
 description: "Kate C++ Helper plugin release 1.0.2"
 category: programming
-tags: [kate,C++]
+tags: [kde,kate,C++]
 ---
 {% include JB/setup %}
 
