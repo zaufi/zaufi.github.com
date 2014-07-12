@@ -182,9 +182,9 @@ error mark. One may specify that to monitor in the middle options group.
 <div class="alert alert-danger" markdown="1">
 #### Attention
 
-Monitoring too much (nested) directories, for example in `/usr/include` configured as
-system directory, may lead to high resources consumption, so `inotify_add_watch` would
-return a `ENOSPC` error (use `strace` to find out and/or check kate's console log for
+Monitoring too much (nested) directories, for example at `/usr/include` configured as
+a system directory, may lead to high resources consumption, so `inotify_add_watch` would
+return a `ENOSPC` error. Use `strace` to find out and/or check kate's console log for
 **strange** messages from `DirWatch`.
 
 So if your system short of resources (memory) just try to avoid live `#include` files
