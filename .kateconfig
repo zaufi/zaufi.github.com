@@ -1,0 +1,8 @@
+kate: space-indent on;
+kate: tab-width 4;
+kate: indent-width 4;
+kate: replace-tabs true;
+kate: show-trailing-spaces true;
+kate: show-tabs true;
+kate: keep-extra-spaces true;
+kate: remove-trailing-spaces none;
