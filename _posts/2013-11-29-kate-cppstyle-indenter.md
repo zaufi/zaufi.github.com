@@ -164,12 +164,10 @@ This _not-quite-indenter_™ has some other (smaller) features to reduce typing.
 PS: The other things I've found useful when typing C++ code can be plugged w/
 [some Python plugins dedicated to C++]({% post_url 2014-02-13-kate-c++-stuff %}).
 
-<div class="alert alert-info">
-<h4>TODO</h4>
-<ul>
-    <li>
-        Unfortunately JS indenters in kate nowdays can't have any GUI, so it is impossible to
-        have a "user firendly" configuration…
-    </li>
-</ul>
+<div class="alert alert-info" markdown="1">
+#### TODO
+
+* Unfortunately JS indenters in kate nowdays can't have any GUI, so it is impossible to
+    have a "user firendly" configuration…
 </div>
+
