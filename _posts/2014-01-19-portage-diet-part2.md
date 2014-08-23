@@ -137,10 +137,9 @@ Now lets count files+dirs before/after and total directory size I've got with my
     503M    portage.stripped
 
 
-<div class="alert alert-success">
-<h4>Results</h4>
-<ul>
-    <li><strong>236M</strong> freed</li>
-    <li><strong>58,962</strong> directory entries are eliminated</li>
-</ul>
+<div class="alert alert-success" markdown="1">
+#### Results
+
+* **236M** freed
+* **58,962** directory entries eliminated
 </div>

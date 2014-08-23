@@ -74,5 +74,5 @@ Few steps to boot your kernel from UEFI
     screens or questions (like boot loaders do). Actually using `efibootmgr` you can change boot order from
     linux as well (just read the `man` page).
 
-<del>... so now I'm thinking about to get rid of <code>grub2</code> from my system ;-) </del>
+<del markdown="1">... so now I'm thinking about to get rid of `grub2` from my system ;-)</del>
 Upd: **DONE**

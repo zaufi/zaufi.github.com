@@ -76,13 +76,16 @@ function build-chroot()
 so u may just run it from the bash prompt to switch into a chroot'ed environment of your choice
 (as user _builder_, so do not forget to add such user or use some other name).
 
-*NOTE* While update packages in a chrooted system install scripts sometimes may fail because theres
+<div class="alert alert-info" markdown="1">
+#### Note
+While update packages in a chrooted system install scripts sometimes may fail because theres
 no `upstart` running. To solve this trouble one may symlink `/sbin/initctl` to `/bin/true`
+</div>
 
 Minimal Ubuntu install do not have `en_US.UTF-8` (I dunno why! Or maybe I'm doing smth wrong), so
 it myst be generated (if your host locale is UTF as in example):
 
-    (saucy)root@gentop:/home/builder# locale-gen en_US en_US.UTF-8
+    (oneiric)root@gentop:/home/builder# locale-gen en_US en_US.UTF-8
     Generating locales...
     en_US.ISO-8859-1... done
     en_US.UTF-8... done
@@ -94,7 +97,7 @@ To prepare a build "work horse" install the following packages as (chrooted) roo
 
 Then add some PPAs:
 
-    (saucy)root@gentop:/home/builder# add-apt-repository ppa:boost-latest
+    (oneiric)root@gentop:/home/builder# add-apt-repository ppa:boost-latest
     You are about to add the following PPA to your system:
     Providing the most up-to-date version of the Boost C++ Libraries.
     More info: https://launchpad.net/~boost-latest/+archive/ppa

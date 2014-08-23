@@ -12,10 +12,10 @@ Nowadays [kate](http://kate-editor.org) has a few things implemented as Python p
 to C++ programmers. Some of them (like working w/ comments) can be used wth Python, CMake, Bash or JS
 code as well. To start playing w/ them one has to enable the following plugins:
 
-<img src="/assets/images/kate.cpp/pate-plugins.png" class="img-rounded img-responsive" title="Plugins to be enabled" />
+![Plugins to be enabled](/assets/images/kate.cpp/pate-plugins.png){:.img-rounded.img-responsive}
 
 Then take a look to Pâté menu:
-<img src="/assets/images/kate.cpp/pate-menu.png" class="img-rounded img-responsive" title="Actions became available" />
+![Actions became available](/assets/images/kate.cpp/pate-menu.png){:.img-rounded.img-responsive}
 
 
 Few words about working with comments
@@ -31,13 +31,13 @@ Few words about working with comments
     comments to every selected line.
 
 * To move inline comment to a line above use <kbd>Meta+Left</kbd> and <kbd>Meta+Right</kbd> to move it back
-    <img src="/assets/images/kate.cpp/inline-comment.gif" class="img-rounded img-responsive" title="Inline Comment" />
+    ![Inline Comment](/assets/images/kate.cpp/inline-comment.gif){:.img-rounded.img-responsive}
 
 * The next example shows how to _Comment Block with `#if 0`_, _Toggle `#if0`/`#if1`_, and _Remove `#if 0`_ part
-    <img src="/assets/images/kate.cpp/if0-block.gif" class="img-rounded img-responsive" title="Block Comment" />
+    ![Block Comment](/assets/images/kate.cpp/if0-block.gif){:.img-rounded.img-responsive}
 
 * _Transform Doxygen Comments_ (between `/** ... */` and `///` forms) and _Shrink/Expand Comment Paragraph_
-    <img src="/assets/images/kate.cpp/dox.gif" class="img-rounded img-responsive" title="Shrink/Expand Paragraph" />
+    ![Shrink/Expand Paragraph](/assets/images/kate.cpp/dox.gif){:.img-rounded.img-responsive}
 
 
 
@@ -48,7 +48,7 @@ To format template or function parameters in the boost (MPL) style, move cursor 
 angle brackets and use _Boost Like Format Params_ (<kbd>Meta+F</kbd>) action from the _Pâté_ menu. 
 Every time invoked this action will expand the nesting level. To unfold parameters use the reverse
 _Unformat_ (<kbd>Meta+Shift+F</kbd>) action.
-<img src="/assets/images/kate.cpp/boost-format.gif" class="img-rounded img-responsive" title="Boost Format" />
+![Boost Format](/assets/images/kate.cpp/boost-format.gif){:.img-rounded.img-responsive}
 
 
 
@@ -242,9 +242,10 @@ or more argumentis, maybe with defaulted or deleted copy and/or move constructor
 virtual destructor, where the class name and the possible template and/or constructor parameters are (post)editable fields.
 All parameters, and also the expand function's name should be really short to reduce the typing effort and be memorizable.
 
-<img src="/assets/images/kate.cpp/cl-completion.png" class="img-rounded img-responsive" title="Expand Functions Completions" />
+![Expand Functions Completions](/assets/images/kate.cpp/cl-completion.png){:.img-rounded.img-responsive}
 
 One example is worth more than 1K words… lets generate a class with:
+
 * template parameter `Iter` followed by `T0`, `T1`, `T2`, `T3`
 * default constructor
 * constructor accepting two parameters
@@ -295,23 +296,14 @@ like cheat codes in a game ;-) The `expand` plugin tracks single key press event
 and if it finds a <del>cheat</del> magic code among the last consequently pressed keys,
 it will replace it with a result.
 
-<div class="alert alert-info">
-<h4>Important Usage Notes</h4>
-<ul>
-    <li> 
-        every magic sequence starts and ends with a semicolon 
-    </li>
-    <li>
-        if you type something wrong, <strong>you can't "fix" it</strong> with cursor movement keys
-        + delete/backspace keys!
-    </li>
-    <li>
-        <strong>you have to type «cheat codes» without "errors" from start to end</strong>
-    </li>
-    <li>
-        so remove the wrong text and start over again… repeat until you can type them as if it were an unconditioned reflex ;-)
-    </li>
-</ul>
+<div class="alert alert-info" markdown="1">
+#### Important Usage Notes
+* every magic sequence starts and ends with a semicolon
+* if you type something wrong, **you can't "fix" it** with cursor movement keys
+  + delete/backspace keys!
+* **you have to type «cheat codes» without "errors" from start to end**
+* so remove the wrong text and start over again… repeat until you can type them 
+  as if it were an unconditioned reflex ;-)
 </div>
 
 To add your own _dynamic expand function_ one has to use the `@expand.dynamic` decorator,
@@ -340,7 +332,7 @@ of a regex (for visualization and better remembering ;-) that is used to match t
 
 ### `;cl;` Synopsis
 
-<img src="/assets/images/kate.cpp/cl.svg" class="img-responsive" title=";cl; Synopsis" />
+![;cl; Synopsis](/assets/images/kate.cpp/cl.svg){:.img-rounded.img-responsive}
 
 Insert a `class` declaration. Depending on the options it is capable to add a default, parameterized,
 copy, move constructors and/or destructor. Also the class can be templated with a desired number of parameters.
@@ -355,7 +347,8 @@ Examples:
 
 
 ### `;e;` Synopsis
-<img src="/assets/images/kate.cpp/e.svg" class="img-responsive" title=";e; Synopsis" />
+
+![;e; Synopsis](/assets/images/kate.cpp/e.svg){:.img-rounded.img-responsive}
 
 Examples:
 * `;e;` insert C++03 enum declaration
@@ -366,7 +359,7 @@ Examples:
 
 ### `;fn;` Synopsis
 
-<img src="/assets/images/kate.cpp/fn.svg" class="img-responsive" title=";fn; Synopsis" />
+![;fn; Synopsis](/assets/images/kate.cpp/fn.svg){:.img-rounded.img-responsive}
 
 Insert a function declaration or definition, if a dynamic snippet ends with `{` character.
 Function may have runtime and/or template parameters, as well as various modifiers.
@@ -380,7 +373,7 @@ Examples:
 
 ### `;for;` Synopsis
 
-<img src="/assets/images/kate.cpp/for.svg" class="img-responsive" title=";for; Synopsis" />
+![;for; Synopsis](/assets/images/kate.cpp/for.svg){:.img-rounded.img-responsive}
 
 Generate a `for` statement with various flavors. It is capable to expand into a range-based `for`
 or more "traditional" iterator-based. The latter can use either C++03 or C++11 semantics -- i.e.
@@ -394,7 +387,7 @@ Examples:
 
 ### `;ns;` Synopsis
 
-<img src="/assets/images/kate.cpp/ns.svg" class="img-responsive" title=";ns; Synopsis" />
+![;ns; Synopsis](/assets/images/kate.cpp/ns.svg){:.img-rounded.img-responsive}
 
 Generate an anonymous or named (possibly nested) namespace.
 
@@ -406,7 +399,7 @@ Examples:
 
 ### `;st;` Synopsis
 
-<img src="/assets/images/kate.cpp/st.svg" class="img-responsive" title=";st; Synopsis" />
+![;st; Synopsis](/assets/images/kate.cpp/st.svg){:.img-rounded.img-responsive}
 
 Generate a simple `struct` possibly with a given number of template parameters.
 
@@ -414,7 +407,7 @@ Generate a simple `struct` possibly with a given number of template parameters.
 
 ### `;sw;` Synopsis
 
-<img src="/assets/images/kate.cpp/sw.svg" class="img-responsive" title=";sw; Synopsis" />
+![;sw; Synopsis](/assets/images/kate.cpp/sw.svg){:.img-rounded.img-responsive}
 
 Generate a `switch` statement with a desired number of `case` statements and possibly with
 a `default` one.
@@ -423,11 +416,11 @@ a `default` one.
 
 ### `;try;` Synopsis
 
-<img src="/assets/images/kate.cpp/try.svg" class="img-responsive" title=";try; Synopsis" />
+![;try; Synopsis](/assets/images/kate.cpp/try.svg){:.img-rounded.img-responsive}
 
 Insert a `try` block with a desired number of `catch` blocks and possible a `catch (...)`.
 
 
 ### Dynamic Snippets Short Demo
 
-<img src="/assets/images/kate.cpp/iddqd.gif" class="img-responsive" title=";try; Synopsis" />
+![Dynamic Snippets Short Demo](/assets/images/kate.cpp/iddqd.gif){:.img-rounded.img-responsive}

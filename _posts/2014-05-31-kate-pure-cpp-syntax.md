@@ -46,10 +46,7 @@ But sometimes mass replacements (like `sed`) may lead to _misalign_ some comment
 easy to notice. It is why I've added that feature to my highlighter -- to make properly aligned comments
 (little) visually different than others.
 
-<img src="/assets/images/kate-cpp-syntax.png"
-    class="img-rounded img-responsive"
-    title="C++ highlighting example"
-  />
+![C++ highlighting example](/assets/images/kate-cpp-syntax.png){:.img-rounded.img-responsive}
 
 The 60th position is the last (in my code), where an _inline-comment_ may appear -- it is why aligned
 comments are detected only _before_ this position… To properly align _inline-comments_ I'm using
