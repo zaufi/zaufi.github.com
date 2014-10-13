@@ -11,18 +11,21 @@ Changes since release 1.0.2:
 
 * Simple preprocessor directive auto completion has been added. If there is no ambiguity it will
 auto substitute an item. E.g. to type `#pragma` it would be enough to press `#` and `p`.
-It is replacement for former `#in` "shortcut" to type `#include`…
+It is replacement for former `#in` "shortcut" to type `#include`…  
+
 ![Preprocessor and #include completer][p1]
 
 * Improved `#include` completion with better support for local (project) files. Some other
-features (like _Open Header/Implementation_) was also improved to support local headers.
+features (like _Open Header/Implementation_) was also improved to support local headers.  
+
 ![Toggle #include style][p2]
 
 * Introduced an action to toggle `#include` style -- i.e. between `<>` and `""` form.
-It is easy to transform a bunch of `#include`s using a shortcut (default <kbd>Alt+#</kbd>).
+It is easy to transform a bunch of `#include`s using a shortcut (default <kbd>Alt+#</kbd>).  
 
 ![Toggle #include style action][p3]
 
+* And as usual, also here is a bunch of refactorings to make a code better (thanks to C++14 ;-).
 
 [p1]: /assets/images/cpphelper/preprocessor-and-include-completion.gif "Preprocessor and #include completer"
 [p2]: /assets/images/cpphelper/toggle-include.png "Toggle #include style"
@@ -32,6 +35,6 @@ It is easy to transform a bunch of `#include`s using a shortcut (default <kbd>Al
 <div class="alert alert-success" markdown="1">
 #### Attention
 
-Since version 1.0.3, it is required C++14 capable compiler build this plugin -- i.e. GCC >= 4.9 or Clang >= 3.5.
+Since then version 1.0.3, it is required C++14 capable compiler to build this plugin -- 
+i.e. GCC >= 4.9 or Clang >= 3.5.
 </div>
-
