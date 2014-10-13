@@ -35,6 +35,6 @@ features (like _Open Header/Implementation_) was also improved to support local 
 <div class="alert alert-success" markdown="1">
 #### Attention
 
-Since then version 1.0.3, it is required C++14 capable compiler to build this plugin -- 
+Since the version 1.0.3, it is required C++14 capable compiler to build this plugin -- 
 i.e. GCC >= 4.9 or Clang >= 3.5.
 </div>
