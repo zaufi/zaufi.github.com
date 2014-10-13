@@ -11,19 +11,19 @@ Changes since release 1.0.2:
 
 * Simple preprocessor directive auto completion has been added. If there is no ambiguity it will
 auto substitute an item. E.g. to type `#pragma` it would be enough to press `#` and `p`.
-It is replacement for former `#in` "shortcut" to type `#include`…  
+It is replacement for former `#in` "shortcut" to type `#include`…   
 
-![Preprocessor and #include completer][p1]
+  ![Preprocessor and #include completer][p1]{: .img-rounded .img-responsive}
 
 * Improved `#include` completion with better support for local (project) files. Some other
-features (like _Open Header/Implementation_) was also improved to support local headers.  
+features (like _Open Header/Implementation_) was also improved to support local headers.   
 
-![Toggle #include style][p2]
+* Introduced an action to toggle `#include` style -- i.e. between `<>` and `""` form.   
 
-* Introduced an action to toggle `#include` style -- i.e. between `<>` and `""` form.
-It is easy to transform a bunch of `#include`s using a shortcut (default <kbd>Alt+#</kbd>).  
+  ![Toggle #include style][p2]{: .img-rounded .img-responsive}   
+  It is easy to transform a bunch of `#include`s using a shortcut (default <kbd>Alt+#</kbd>).   
 
-![Toggle #include style action][p3]
+  ![Toggle #include style action][p3]{: .img-rounded .img-responsive}
 
 * And as usual, also here is a bunch of refactorings to make a code better (thanks to C++14 ;-).
 
