@@ -14,22 +14,28 @@ This page describe actions to configure the plugin for your project.
 Requirements
 ------------
 
-* C++11 compatible compiler (gcc >= 4.8)
+* C++14 compatible compiler (gcc >= 4.9)
 * [clang](http://clang.llvm.org) >= 3.3
-* [cmake](http://cmake.org) >= 2.8
+* [cmake](http://cmake.org) >= 2.8.12
 * [Kate](http://kate-editor.org) editor version >= 3.8
 * [KDE](http://kde.org) >= 4.8
 * [boost](http://boost.org) library >= 1.49 required since version 0.8.7
 * [xapian](http://xapian.org) library >= 1.2.12 required since version 1.0
 
-__NOTE:__ Mentioned package versions are known to work, but maybe lesser versions could work for you.
-Try to fix them in `CMakeLists.txt` (around corresponding `find_package()`).
+
+<div class="alert alert-success" markdown="1">
+#### Note
+
+Mentioned package versions are known to work, but maybe lesser versions could work for you.
+Try to fix them in `CMakeLists.txt` (around corresponding `find_package()`) and please report back to me.
+</div>
 
 Installation
 ------------
 
 Unpack (or <a data-original-title="$ git clone https://github.com/zaufi/kate-cpp-helper-plugin.git"
-href="#" data-toggle="tooltip" data-placement="top" title="">clone</a>) sources to some workng directory, then execute the following commands from it:
+href="https://github.com/zaufi/kate-cpp-helper-plugin" data-toggle="tooltip" data-placement="top" title="">
+clone</a>) sources to some workng directory, then execute the following commands from it:
 
     $ cd <plugin-sources-dir>
     $ mkdir build && cd build
@@ -60,10 +66,10 @@ The _Other_ (disabled now) option has reserved for this purpose.
 
 Add anything else that as you think belongs to all `kate` sessions.
 
-The next page is a _Session Paths List_. Here is a `#include` directories list for your **current session**.
-You can store this list into a configuration file for future quick load using _Favorite and Stored Sets_.
-By default the plugin provides one predefined set `Qt4` with directories reported by Qt detection script
-at plugin compilation time.
+The next page is a _Session Paths List_. Here is a `#include` directories list for your **current session**
+(usually I have at least one session per project). You can store this list into a configuration file for
+future quick load using _Favorite and Stored Sets_. By default the plugin provides one predefined set
+`Qt4` with directories reported by Qt detection script at plugin compilation time.
 
 Typical dirs you have to add here is the following:
 * root of your project's source/build tree and/or any other directories inside your project
@@ -71,7 +77,7 @@ Typical dirs you have to add here is the following:
 
 The plugin also try to suggest some directories based on opened documents' paths.
 
-<div class="alert alert-info" markdown="1">
+<div class="alert alert-success" markdown="1">
 Personally I use only two `#include` directories in all my projects: a source tree root and a build root.
 And every source file contains a full path relative to one of listed paths when `#include` something.
 Particularly this technique helps to simplify configuration management when you have to add a bunch of
@@ -159,6 +165,9 @@ a particular completion result slightly shorter I use the regex like on a screen
     </div>
 </div>
 
+The package provide a sample set of rules which could be found at
+`/usr/share/apps/kate/plugins/katecpphelperplugin/sample.sanitizer-rules`. Use import to get them.
+
 The _Other Settings_ page contains options related to `#include` directives and a code completer.
 The plugin has action (default key is <kbd>Shift+F10</kbd>) to copy `#include` statement with current file
 into a clipboard, so you may switch a document and just paste it. The first option in a
@@ -213,7 +222,7 @@ mode will be applied automatically.
 few cases when it can't helps me. Nowadays I have 2 "real life" <del>really annoying</del> examples when it fails:
 
 * Often one may find a source tree with separate `${project}/src/` and `${project}/include` dirs.
-  So, when you are at some header from `include/` dir, that plugin obviously never will find
+  So, when you are at some header from `include/` dir, that plugin obviously will never find
   your source file. And vise versa.
 
 * The second case: sometimes I have a really big class defined in a header file
@@ -233,14 +242,23 @@ The second option (_Use wildcard source files search_) aimed to solve the second
 being in a header file and pressing <kbd>F11</kbd> it appends all `.cc`/`.cpp` files started w/ a current header name
 to a list of candidates.
 
+Since version 1.0.3, the plugin has a simple _Preprocessor Directive Completer_. It has _automatic substitution_
+feature -- i.e. when user contine to type and there is no ambiguity preprocessor directive would be inserted.
+E.g. to insert `#pragma` one need to type just 2 characters `#` and `p` -- it could be "strange" for awhile,
+but really convinient later. ;-)
+
+|![Preprocessor Completer][prep]{: .img-rounded .img-responsive}||![Include Files Completer][inc]{: .img-rounded .img-responsive}|
+
+
+Also there is _Header Files Completer_ aimed to help to complete `#include` directive taking files
+from a real filesystem searching configured directories and/or relative to a current document.
+
+
 **That is all!** (briefly ;-)
 
-<div class="alert alert-info" markdown="1">
-One more thing I have to mention: typing <kbd>#in</kbd> in C++ sources will automatically insert `#include`
-text and starts file completer...
-</div>
+[prep]: assets/images/cpphelper/preprocessor-completer.png "Preprocessor Directives Completer"
+[inc]: assets/images/cpphelper/include-completer.png "Include Files Completer"
 
-![Include Files Completer](assets/images/cpphelper/include-completer.png "Include Files Completer"){: .img-rounded .img-responsive}
 
 Indexing Source Code
 ====================
