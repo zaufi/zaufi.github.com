@@ -38,3 +38,10 @@ features (like _Open Header/Implementation_) was also improved to support local 
 Since the version 1.0.3, it is required C++14 capable compiler to build this plugin -- 
 i.e. GCC >= 4.9 or Clang >= 3.5.
 </div>
+
+See Also
+--------
+
+* [Download](http://kde-apps.org/content/show.php/?content=148606) latest release
+* Git [repository](https://github.com/zaufi/kate-cpp-helper-plugin)
+* Project [homepage](/kate-cpp-helper-plugin.html) w/ a miniHowTo
