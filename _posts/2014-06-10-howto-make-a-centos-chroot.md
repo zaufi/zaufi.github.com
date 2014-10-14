@@ -16,7 +16,7 @@ First of all we need `rpm` and `yum` programs to be installed (yeah, you can `em
 Then we can initialize RPMs database (I'll do my chroot environment in the `/storage/schroot/centos-6.5`):
 
     $ mkdir -p /storage/schroot/centos-6.5
-    $ rpm --root=/storage/schroot/centos-6.5 --rbuilddb
+    $ rpm --root=/storage/schroot/centos-6.5 --rebuilddb
 
 This will add an empty database to `/storage/schroot/onixs.centos-6.5/var/lib/rpm`.
 To enforce `yum` to work we have to install some configuration files for it.
