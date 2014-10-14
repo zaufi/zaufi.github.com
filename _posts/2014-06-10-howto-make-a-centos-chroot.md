@@ -127,6 +127,19 @@ environment, but clean (yep, again) the RPMs database.
 
 Now chroot is ready to use ;-)
 
+<div class="alert alert-info" markdown="1">
+#### Note
+
+`build-chroot` is a command from my other HOWTO about
+[making a Debian based chroot]({% post_url 2012-09-02-howto-make-a-debian-chroot %}) in Gentoo.
+</div>
+
+<div class="alert alert-warning" markdown="1">
+#### Attention
+
+Due `rpm` in Gentoo and in CentOS has different versions (and database formats), we have to `--rebuilddb` again!
+</div>
+
 See Also
 --------
 
