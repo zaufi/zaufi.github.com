@@ -18,13 +18,13 @@ Then we can initialize RPMs database (I'll do my chroot environment in the `/sto
     $ mkdir -p /storage/schroot/centos-6.5
     $ rpm --root=/storage/schroot/centos-6.5 --rebuilddb
 
-This will add an empty database to `/storage/schroot/onixs.centos-6.5/var/lib/rpm`.
+This will add an empty database to `/storage/schroot/centos-6.5/var/lib/rpm`.
 To enforce `yum` to work we have to install some configuration files for it.
 The easiest way to get them for your desired distro is to install `centos-release` package.
 
     $ wget http://mirror.centos.org/centos/6.5/os/x86_64/Packages/centos-release-6-5.el6.centos.11.1.x86_64.rpm
      <skip details>
-    $ rpm --root=/storage/schroot/onixs.centos-6.5 --nodeps -i centos-release-6-5.el6.centos.11.1.x86_64.rpm
+    $ rpm --root=/storage/schroot/centos-6.5 --nodeps -i centos-release-6-5.el6.centos.11.1.x86_64.rpm
     warning: Generating 12 missing index(es), please wait...
     warning: centos-release-6-5.el6.centos.11.1.x86_64.rpm: Header V3 RSA/SHA1 Signature, key ID c105b9de: NOKEY
     $ rm centos-release-6-5.el6.centos.11.1.x86_64.rpm
@@ -79,7 +79,7 @@ Now we can do the next step -- install a minimal base system:
     Total download size: 20 k
     Is this ok [y/N]: y
     Downloading packages:
-    warning: /storage/schroot/onixs.centos-6.5/var/cache/yum/updates/packages/centos-release-6-5.el6.centos.11.2.x86_64.rpm: Header V3 RSA/SHA1 Signature, key ID c105b9de: NOKEY
+    warning: /storage/schroot/centos-6.5/var/cache/yum/updates/packages/centos-release-6-5.el6.centos.11.2.x86_64.rpm: Header V3 RSA/SHA1 Signature, key ID c105b9de: NOKEY
     Public key for centos-release-6-5.el6.centos.11.2.x86_64.rpm is not installed
     centos-release-6-5.el6.centos.11.2.x86_64.rpm                                                                                   |  20 kB  00:00:00
     Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
@@ -115,7 +115,7 @@ environment, but clean (yep, again) the RPMs database.
     #? 1
     [schroot] password for builder:
     -bash: mesg: command not found
-    (onixs.centos-6.5)builder@gentop:~$ su
+    (centos-6.5)builder@gentop:~$ su
     Password:
     bash-4.1# rm -rf /var/lib/rpm
     bash-4.1# rpm --rebuilddb
@@ -124,8 +124,6 @@ environment, but clean (yep, again) the RPMs database.
     warning: /etc/yum.repos.d/CentOS-Base.repo saved as /etc/yum.repos.d/CentOS-Base.repo.rpmorig
     bash-4.1# yum install yum
     <skip details>
-
-Now chroot is ready to use ;-)
 
 <div class="alert alert-info" markdown="1">
 #### Note
@@ -139,6 +137,9 @@ Now chroot is ready to use ;-)
 
 Due `rpm` in Gentoo and in CentOS has different versions (and database formats), we have to `--rebuilddb` again!
 </div>
+
+Now chroot is ready to use ;-)
+
 
 See Also
 --------
