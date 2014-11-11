@@ -378,9 +378,22 @@ TODO
 * Add ability to find target objects (files, dirs, whatever) by introducing smth
   like `find` item and iterate over results applying some other actions (`ln`, `rm`, & etc...)
 * Implement FSM commands as **real** plugins... need to think about how to update (merge) DTD then.
-* add some `USE` flags to `paludis-hooks`
+* add some `USE` flags to `paludis-hooks` live
   [ebuild](https://github.com/zaufi/zaufi-overlay/blob/master/sys-apps/paludis-hooks/paludis-hooks-scm.ebuild)
   to be able to choose what components to install...
+* Process `symlink` elements as they are followed in a configuration file. Nowadays this order is **undefined**.
+* Allow to "override" `src` attribute in `rm` and `symlink/item` tags:
+
+{% highlight xml %}
+<package spec="cat/pkg">
+    <symlink cd="/usr/share/bash-completion/completions" src="some-bash-completion.sh">
+        <item dst="uno" />
+        <item dst="dos" />
+        <!-- Override -->
+        <item src="other-bash-completion.sh" dst="tres" />
+    </symlink>
+</package>
+{% endhighlight %}
 
 
 See Also
