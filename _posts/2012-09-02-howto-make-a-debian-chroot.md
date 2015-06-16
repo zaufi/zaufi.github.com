@@ -91,6 +91,10 @@ it myst be generated (if your host locale is UTF as in example):
     en_US.UTF-8... done
     Generation complete.
 
+Make your changes permanent:
+
+    (oneiric)root@gentop:/home/builder# update-locale LANG=en_US.UTF-8 LC_MESSAGES=POSIX
+
 To prepare a build "work horse" install the following packages as (chrooted) root:
 
     # apt-get install build-essential devscripts doxygen cmake software-properties-common pkg-config
