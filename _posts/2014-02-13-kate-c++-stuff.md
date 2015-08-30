@@ -338,6 +338,7 @@ Insert a `class` declaration. Depending on the options it is capable to add a de
 copy, move constructors and/or destructor. Also the class can be templated with a desired number of parameters.
 
 Examples:
+
 * `;clcd;` class with default constructor and destructor
 * `;clc2;` class with constructor with 2 parameters
 * `;clc1@cc@mc;` class with "conversion" constructor (single parameter), defaulted copy and move constructor/assign
@@ -351,6 +352,7 @@ Examples:
 ![;e; Synopsis](/assets/images/kate.cpp/e.svg){:.img-rounded.img-responsive}
 
 Examples:
+
 * `;e;` insert C++03 enum declaration
 * `;ec;` insert C++11 strong typed enum declaration
 * `;ec:;` insert C++11 strong typed enum declaration with the type specified
@@ -365,6 +367,7 @@ Insert a function declaration or definition, if a dynamic snippet ends with `{` 
 Function may have runtime and/or template parameters, as well as various modifiers.
 
 Examples:
+
 * `;fnt1;` `void` function with one template parameter
 * `;fn2s;` function with a `static` modifier and 2 parameters
 * `;fn1vfoc;` `virtual` function with 1 parameter and `final`, `override` and `const` modifiers
@@ -381,6 +384,7 @@ when `begin()` is a member or a free function, possibly matched by ADL. The type
 can be `const` and/or `ref`/`ref-ref` qualified.
 
 Examples:
+
 * `;fa;`  range-based `for` with the `auto` type and no body
 * `;fa&&{rng;`  range-based `for` with `auto&&` type over some `rng` and an empty body
 * `;fori3c{var;` loop using `const_iterators` and C++03 syntax over `var` container
