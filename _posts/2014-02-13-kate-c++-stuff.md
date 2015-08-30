@@ -396,6 +396,7 @@ Examples:
 Generate an anonymous or named (possibly nested) namespace.
 
 Examples:
+
 * `;ns;` insert anonymous namespace
 * `;nskate::details;` insert a `kate` namespace and one nested `details`
 
