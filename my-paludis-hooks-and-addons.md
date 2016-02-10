@@ -41,15 +41,17 @@ for broken packages w/o "writing" a my own ebuild and put it to my repo.
 The idea is simple and straightforward: at any desired stage of ebuild processing apply some _user provided patches_
 placed into a some special place (configurable via `/etc/paludis/hooks/configs/auto-patch.conf`).
 
-To apply a patch one have to put it into a directory under `${PATCH_DIR}/stage/category/pkg-spec-with-ver/`,
-where the `stage` is one of the following: `ebuild_compile_post`, `ebuild_compile_pre`,
-`ebuild_configure_post`, `ebuild_configure_pre`, `ebuild_install_pre` or `ebuild_unpack_post`.
+To apply a patch one have to put it into a directory under `${PATCH_DIR}/stage/category/pkgname-with-ver/`
+or to `${PATCH_DIR}/stage/category/pkgname/`, so you don't need to create a new directory (or symlink a previous 
+`pkg-spec-with-ver`) when package version has bumped. Where the `stage` is one of the following: 
+`ebuild_compile_post`, `ebuild_compile_pre`, `ebuild_configure_post`, `ebuild_configure_pre`, `ebuild_install_pre` 
+or `ebuild_unpack_post`.
 
 Recently I've killed all out of date patches from my local vault and made it
 [public](https://github.com/zaufi/paludis-autopatches). For example w/o a patch `cmake` won't colorize its
 output even if color explicitly requested when running w/ captured output. So to allow my
 [Pluggable Output Processor](/pluggable-output-processor.html) works w/o suppressing colors of CMake I have
-`/var/db/paludis/autopatches/ebuild_unpack_post/dev-utils/cmake-2.8.11.2/cmake-2.8.11.2-do-not-check-isatty.patch`
+`/var/db/paludis/autopatches/ebuild_unpack_post/dev-utils/cmake/cmake-3.0.0-do-not-check-isatty.patch`.
 
 
 Filesystem Hook
@@ -263,7 +265,8 @@ and/or other definitions.
 {% endhighlight %}
 
 Now you can edit the `/etc/paludis/package_env.conf` to specify how environment should be changed to compile
-any particular package. For example, I have it like this:
+any particular package. For example, I have somethig like 
+[this](https://github.com/zaufi/paludis-config/blob/hardware/notebook/MSI-GP60-2PE-Leopard/package_env.conf):
 
     #
     # My per package environment settings
@@ -286,36 +289,42 @@ any particular package. For example, I have it like this:
     www-client/firefox no-debug
 
 
-Every line has a package spec and a space separated list of environment modifiers. Every modifier actually
-is a file from the `/etc/paludis/env.conf.d/`. In that file (an ordinal bash script actually to be sourced if
-a package name matched) defined some actions to modify `CFLAGS`, `LDFLAGS` or anything else you want.
-There are two helpful functions `add-options` and `remove-options` available to add/remove some options
-to/from some variable. For example I have the following `LDFLAGS` definition in my `bashrc`:
+Every line has a package spec and a space separated list of environment modifiers. They would be applied in the same order
+as specified in the config. Every modifier actually is a file from the `/etc/paludis/env.conf.d/`. 
+In that file (an ordinal bash script actually to be sourced if a package name matched) defined some actions to modify 
+`CFLAGS`, `LDFLAGS` or anything else you want. For example in 
+[`/etc/paludis/bashrc`](https://github.com/zaufi/paludis-config/blob/hardware/notebook/MSI-GP60-2PE-Leopard/bashrc) 
+I have the following definition for `LDFLAGS`:
 
 {% highlight bash %}
 LDFLAGS="-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,--enable-new-dtags -Wl,--gc-sections -Wl,--hash-style=gnu"
 {% endhighlight %}
 
 Unfortunately, not all packages can link with `--gc-sections` option. For example `app-emulation/virtualbox`.
-It is why it mentioned in my `package_env.conf`. So here is mine `/etc/paludis/env.conf.d/no-gc-sections.conf`:
+It is why this package have `no-gc-sections` environment in my `package_env.conf`. You may use all functions provided by 
+[`flag-o-matic.eclass](https://devmanual.gentoo.org/eclass-reference/flag-o-matic.eclass/index.html) to manupulate
+compiler/linker flags! Here is mine `/etc/paludis/env.conf.d/no-gc-sections.conf` for example:
 
 {% highlight bash %}
 einfo "Remove --gc-sections from linker flags"
-remove-options LDFLAGS -Wl,--gc-sections
+filter-ldflags -Wl,--gc-sections
 {% endhighlight %}
 
 Yes, you can use logging functions as well ;-) The last command will remove undesired option from default
 ("global") `LDFLAGS`. Unfortunately `app-emulation/virtualbox` also fails to build if default linker is `ld.gold`.
-It is why its entry has two modifiers in `package_env.conf`. The second one
-`/etc/paludis/env.conf.d/use-bfd-linker.conf` will tell to use `ld.bfd` to link that package:
+The second environment (`use-bfd-linker`) tells to use `ld.bfd` to link that package:
 
 {% highlight bash %}
-einfo "Use ld.bfd linker"
-add-options LDFLAGS -fuse-ld=bfd
+if [ "bfd" != "$(readlink -f `which ld` | sed 's,.*\.\(bfd$\),\1,')" ]; then
+    einfo "Use ld.bfd linker"
+    append-ldflags -Wl,-fuse-ld=bfd
+fi
 {% endhighlight %}
 
-and it use `add-option` helper function to update `LDFLAGS`. Being an _ordinal bash script_ one may use any
-other programs, `sed` for example, to modify environment and/or build flags for particular package.
+Also there is a buch of other helper functions provided -- you may check 
+[my paludis configuration](https://github.com/zaufi/paludis-config/tree/master/env.conf.d)
+for inspiration. Being an _ordinal bash script_ one may use any other programs, `sed` for example, to modify environment 
+and/or build flags for particular package.
 
 
 New `cave` Subcommand
@@ -399,4 +408,4 @@ TODO
 See Also
 ========
 
-* [repository](https://github.com/zaufi/paludis-config) w/ my paludis configuration
+* [repository](https://github.com/zaufi/paludis-config) w/ my paludis configuration. Note, that it has various branches for my hardware.
