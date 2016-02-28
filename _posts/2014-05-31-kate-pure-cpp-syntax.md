@@ -51,7 +51,7 @@ easy to notice. It is why I've added that feature to my highlighter -- to make p
 The 60th position is the last (in my code), where an _inline-comment_ may appear -- it is why aligned
 comments are detected only _before_ this position… To properly align _inline-comments_ I'm using
 my ["Not quite indenter"]({% post_url 2013-11-29-kate-cppstyle-indenter %})™ and/or a
-[Pâtè plugins dedicated to C++ progrmmers]({% post_url 2014-02-13-kate-c++-stuff %}).
+[Pâtè plugins dedicated to C++ progrmmers]({% post_url 2014-02-13-kate-cxx-stuff %}).
 
 
 See Also

@@ -162,7 +162,7 @@ some_call_with_long parameters_list(                        // Comment starts he
 This _not-quite-indenter_™ has some other (smaller) features to reduce typing. Hope, you'll like them if found! ;)
 
 PS: The other things I've found useful when typing C++ code can be plugged w/
-[some Python plugins dedicated to C++]({% post_url 2014-02-13-kate-c++-stuff %}).
+[some Python plugins dedicated to C++]({% post_url 2014-02-13-kate-cxx-stuff %}).
 
 <div class="alert alert-info" markdown="1">
 #### TODO
