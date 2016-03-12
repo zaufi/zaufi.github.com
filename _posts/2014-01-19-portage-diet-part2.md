@@ -109,7 +109,7 @@ I have downloaded and unpack a portage snapshot for 2014-Jan-14 to play w/ into 
 Wrote a simple script in it to get a filtered copy of `portage/` -- just a shortcut for `rsync`
 w/ a bunch of options:
 
-{% highlight bash %}
+```bash
 #!/bin/sh
 
 rsync --exclude-from=./gentoo-portage-exclude.list \
@@ -119,7 +119,7 @@ rsync --exclude-from=./gentoo-portage-exclude.list \
       --delete-after \
       --verbose \
       portage/ portage.stripped/
-{% endhighlight %}
+```
 
 Now lets count files+dirs before/after and total directory size I've got with my
 [final version of filtering rules](https://github.com/zaufi/paludis-config/blob/master/repositories/gentoo-portage-exclude.list):

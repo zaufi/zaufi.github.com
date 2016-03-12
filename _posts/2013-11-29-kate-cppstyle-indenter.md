@@ -20,7 +20,7 @@ and prevent stupid errors like missed comma.
 
 Example:
 
-{% highlight cpp %}
+```cpp
 typedef typename boost::mpl::fold<
     typename boost::mpl::transform_view<
         Seq
@@ -33,14 +33,14 @@ typedef typename boost::mpl::fold<
       , boost::mpl::_1
       >
   >::type type;
-{% endhighlight %}
+```
 
 In practice I've noticed that this style also can be used to format a long function calls or even
 `for` statements. Actually, everything that can be split into several lines could be formatted that way.
 And yes, it is (really!) convenient to have a delimiter (comma, semicolon, whatever) as a leading character to
 make it visually noticeable.
 
-{% highlight cpp %}
+```cpp
 
 // Inheritance list formatting
 struct sample
@@ -72,7 +72,7 @@ struct sample
         }
     }
 };
-{% endhighlight %}
+```
 
 It looks unusual for awhile :) but later it become (quite) "normally" and easily to read and edit :)
 Really! When you want to add another one parameter to a function declaration, it takes less 
@@ -106,11 +106,11 @@ Some features in brief
 ----------------------
 
 * to start a C-style comment block type `/*` and press <kbd>ENTER</kbd> key -- it gives you
-    {% highlight cpp %}
+    ```cpp
 /*
  * |
  */
-{% endhighlight %}
+```
 * to start `doxygen` comment block use `/**` + <kbd>ENTER</kbd>. Every following <kbd>ENTER</kbd> just extends 
   the current block.
 * to start C++ style comment just type `//` it will add a one space after ;)
@@ -118,21 +118,21 @@ Some features in brief
  60th position. So typing `//` will automatically move comment to that position if there was some code before. 
  Moreover the indenter tries to keep that comments when you use <kbd>ENTER</kbd> key to break some complex 
  expressions into a few lines   
-    {% highlight cpp %}
+    ```cpp
 // Before pressing ENTER at position marked by '|'
 some_call_with_long parameters_list(|param1, ..., paramN);  // Comment starts here...
 // After pressing ENTER: keep comment at the original line
 some_call_with_long parameters_list(                        // Comment starts here...
     |param1, ..., paramN);
-{% endhighlight %}
+```
 * ...also try to use <kbd>ENTER</kbd> in the middle of a comment text ;-)
 * typing `///` gives you `/// ` (with a space) or `///< ` depending on presence of code at the current line
 * from time to time I use grouping in a doxygen documentation, so typing `//@` gives you:
-    {% highlight cpp %}
+    ```cpp
 //@{
 |
 //@}
-{% endhighlight %}
+```
 * always add a space after `,` character -- simple, but really convenient! really soon you've stopped typing 
   a space after any comma and feel yourself inconvenient with other indenters ;)
 * typing `<` without a space after some identifier adds a closing angle bracket (like notorious autobrackets 
@@ -142,7 +142,7 @@ some_call_with_long parameters_list(                        // Comment starts he
   moved out of parenthesis (most likely call expression). Try to type various punctuators at marked position
   in the following snippet `some(|)`...
 * typing a backslash in on a line of a long `MACRO` definition cause realign all others to fit to a longest line:
-    {% highlight cpp %}
+    ```cpp
 #define PP_FORM_A_ROW(State, Data, Elem)    \
   {                                         \
     {                                       \
@@ -155,7 +155,7 @@ some_call_with_long parameters_list(                        // Comment starts he
     }                                       \
   , manage_config_keys::action::GET         \
   },
-{% endhighlight %}
+```
 * typing `R"` will initiate a raw string literal
 * alsto try to split a string literal across multiple lines pressing <kbd>ENTER</kbd> in the middle ;-)
 

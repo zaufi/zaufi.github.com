@@ -71,11 +71,11 @@ and then make sure `/usr/lib/outproc/bin` placed __before__ `/usr/bin` (and anyt
 user/system `PATH` environment. Personally I use the following piece of code in `/etc/profile.d/set_outproc_path.sh`,
 because setting `PATH` via `/etc/env.d` files will not give desired place inside a list of paths:
 
-{% highlight bash %}
+```bash
 if [ -d /usr/lib/outproc/bin ]; then
     export PATH="/usr/lib/outproc/bin:$PATH"
 fi
-{% endhighlight %}
+```
 
 Available modules (plugins) can be found at `<python-site-packages-dir>/outproc/pp`.
 For example, to install the `gcc` module do the following:
@@ -236,7 +236,7 @@ use `eselect` in Gentoo. Being executed `outproc` will realize (from the symlink
 to execute and capture output from. All captured lines will be _piped_ through `your-module.Processor.handle_line()`.
 
 A minimal plugin code will looks like this:
-{% highlight python %}
+```python
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -258,7 +258,7 @@ class Processor(outproc.Processor):
         # TODO transfrom the line and return it back...
         return line
 
-{% endhighlight %}
+```
 
 Actually a plugin may control few more things like:
 

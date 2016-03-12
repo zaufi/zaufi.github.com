@@ -104,13 +104,13 @@ I have a [module](https://github.com/mutanabbi/chewy-cmake-rep/blob/master/UsePC
 to make it by command `make update-pch-header`. To use it add `UsePCHFile.cmake`,
 `PreparePCHHeader.cmake.in` and `pch_template.h.in` files to your cmake modules directory of your project
 and in a top level `CMakeLists.txt` call it like this:
-{% highlight cmake %}
+```cmake
 include(UsePCHFile)
 use_pch_file(
     PCH_FILE ${CMAKE_BINARY_DIR}/my-project-pch.hh
     EXCLUDE_DIRS cmake docs
   )
-{% endhighlight %}
+```
 Then you may add this file to _CLang Settings_ page and plugin will build it and use while code completion.
 
 <div class="alert alert-success" markdown="1">

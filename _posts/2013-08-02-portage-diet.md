@@ -21,38 +21,38 @@ To do so, you have to add the following to `/etc/paludis/repositories/gentoo.con
 The `gentoo-portage-exclude.list` file is actually generated from `gentoo-portage-exclude.list.skel`
 by the script below:
 
-   {% highlight bash %}
-#!/bin/bash
-#
-# Regenerate exclude list from the skeleton file
-#
+```bash
+    #!/bin/bash
+    #
+    # Regenerate exclude list from the skeleton file
+    #
 
-skel=`dirname $0`/gentoo-portage-exclude.list.skel
-out=`sed 's,\.skel,,' <<<${skel}`
+    skel=`dirname $0`/gentoo-portage-exclude.list.skel
+    out=`sed 's,\.skel,,' <<<${skel}`
 
-echo -n "Generating $out from $skel"
+    echo -n "Generating $out from $skel"
 
-# 0) put DNE header
-cat <<EOF >$out
-#
-# DO NOT EDIT! THIS FILE WAS GENERATED FROM ${skel}
-#
-EOF
+    # 0) put DNE header
+    cat <<EOF >$out
+    #
+    # DO NOT EDIT! THIS FILE WAS GENERATED FROM ${skel}
+    #
+    EOF
 
-# 1) cat skeleton to a new file
-cat $skel >> $out
+    # 1) cat skeleton to a new file
+    cat $skel >> $out
 
-# 2) append exclude list for metadata/md5-cache/* for every line
-# except for some special dirs and metadata.xml files
-cat ${skel} \
-  | grep -v ' eclass/' \
-  | grep -v ' licenses/' \
-  | grep -v ' profiles/' \
-  | grep -v 'metadata.xml' \
-  | grep -v '^.*/\*$' \
-  | sed 's,\([+\-]\) ,\1 metadata/md5-cache/,' \
-  >>$out
-   {% endhighlight %}
+    # 2) append exclude list for metadata/md5-cache/* for every line
+    # except for some special dirs and metadata.xml files
+    cat ${skel} \
+      | grep -v ' eclass/' \
+      | grep -v ' licenses/' \
+      | grep -v ' profiles/' \
+      | grep -v 'metadata.xml' \
+      | grep -v '^.*/\*$' \
+      | sed 's,\([+\-]\) ,\1 metadata/md5-cache/,' \
+      >>$out
+```
 
 And here is my _skeleton_ file w/ categories and profiles/architectures I'm not intended to use:
 

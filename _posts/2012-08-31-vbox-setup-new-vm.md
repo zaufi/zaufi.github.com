@@ -189,31 +189,33 @@ Before `mount -a` (or reboot) you may clean content of `/var/cache/apt/archives`
 I found the following scripts pretty useful:
 
 * `bin/startvm`
-   {% highlight bash %}
-#!/bin/bash
-#
-# Script to start a VBox'ed VM
-#
-# Copyright 2012 by Alex Turbov
-#
+```bash
+    #!/bin/bash
+    #
+    # Script to start a VBox'ed VM
+    #
+    # Copyright 2012 by Alex Turbov
+    #
 
-if [ -z "$*" ]; then
-    select vm in `VBoxManage list vms | sed 's,"\([^"]*\)".*,\1,'`; do
-        break
-    done
-else
-    vm=$1
-fi
+    if [ -z "$*" ]; then
+        select vm in `VBoxManage list vms | sed 's,"\([^"]*\)".*,\1,'`; do
+            break
+        done
+    else
+        vm=$1
+    fi
 
-if [ -n "$vm" ]; then
-    echo "Going to start '$vm'..."
-    nohup VBoxHeadless -s "$vm" --vrde=config > "/tmp/nohup-$vm.log" 2>&1 &
-else
-    echo "Nothing to do..."
-fi
-   {% endhighlight %}
+    if [ -n "$vm" ]; then
+        echo "Going to start '$vm'..."
+        nohup VBoxHeadless -s "$vm" --vrde=config > "/tmp/nohup-$vm.log" 2>&1 &
+    else
+        echo "Nothing to do..."
+    fi
+```
+
 * `bin/stopvm`
-   {% highlight bash %}
+
+```bash
 #!/bin/bash
 #
 # Script to stop a running VBox'ed VM
@@ -249,6 +251,6 @@ if [ -n "$vm" ]; then
 else
     echo "Nothing to do..."
 fi
-   {% endhighlight %}
+```
 
 * also I have improved bash-completion for `VBoxManage` (I'll share it later...)

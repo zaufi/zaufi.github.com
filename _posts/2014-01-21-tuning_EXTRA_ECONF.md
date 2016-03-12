@@ -80,10 +80,10 @@ into this
 
 Here is a related part of `/etc/paludis/bashrc`
 
-{% highlight bash %}
+```bash
 EXTRA_ECONF="--disable-dependency-tracking --enable-silent-rules"
 CMAKE_VERBOSE=OFF
-{% endhighlight %}
+```
 
 <div class="alert alert-info" markdown="1">
 #### Note

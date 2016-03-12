@@ -13,7 +13,7 @@ The final reason of this behaviour was surprising for me!
 
 Also, nowadays cmake's (<=2.8.9) SWIG module has buggy support for Ruby :( It is why the recommented way
 to copy `/usr/share/cmake/Modules/UseSWIG.cmake` to your modules directory and apply the following patch:
-{% highlight diff %}
+```diff
 
 --- UseSWIG.cmake.orig  2012-08-20 15:17:19.000000000 +0400
 +++ UseSWIG.cmake       2012-09-12 08:09:17.000000000 +0400
@@ -40,4 +40,4 @@ ENDIF ("${swig_lowercase_language}" STREQUAL "python")
 ENDMACRO(SWIG_ADD_MODULE)
 
 #
-{% endhighlight %}
+```

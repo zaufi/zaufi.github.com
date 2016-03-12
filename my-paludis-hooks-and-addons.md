@@ -146,11 +146,11 @@ Moreover it can be a little shorter :-) So instead of `/usr/share/doc/boost-1.55
 `/usr/share/doc/boost/index.html` as a hint in a location bar and don't care about particular version installed.
 
 To achieve that I've added a simple rule to my config:
-{% highlight xml %}
+```xml
 <package spec="dev-libs/boost">
     <symlink cd="/usr/share/doc" src="${PF}/html" dst="${PN}" />
 </package>
-{% endhighlight %}
+```
 So, this rule will change current directory to `/usr/share/doc` inside an image directory and create
 a symbolic link `boost` pointing to `boost-1.55-r1/html/`.
 
@@ -162,22 +162,22 @@ but install localizations anyway (yep, cuz ebuild authors just lazy ppl... most 
 So `app-admin/localpurge` was "invented" to cleanup unused locales (all of them in my case). But `localepurge`
 will remove `*.mo` files after install, so when a package gets uninstalled, some files will be marked as _gone_.
 One simple rule will do the job better:
-{% highlight xml %}
+```xml
 <package spec="*/*" descr="locale-cleaner">
     <rm cd="/usr/share/locale/" dst="*/LC_MESSAGES/*.mo" />
 </package>
-{% endhighlight %}
+```
 Because manipulations (deleting `*.mo` files) will be done **before** merge, all that files even
 won't be counted by a package manager. And I'm not telling about that you don't need to run any tool periodically
 (or via `cron`) -- all your packages will be already clean w/o any manual actions required :)
 
 Translations is a part of the "problem": some packages (like `alsa-utils`) want to install translated manual pages
 as well. To remove them (everything except English) one may use the following rule:
-{% highlight xml %}
+```xml
 <package spec="*/*" descr="man-pages-cleaner">
     <rm cd="/usr/share/man/" dst="man{0p,1,1p,2,3,3p,4,5,6,7,8}" reverse="true" />
 </package>
-{% endhighlight %}
+```
 Note the attribute `reverse` tells to the hook that everything except specified items (directories actually)
 should be removed.
 
@@ -192,13 +192,13 @@ the `/usr/share/doc` and some other places.
 Recently I've added one more element: `if` -- to check if a matched package has some desired `USE` flag turned on.
 Nowadays I have the following __extreme__ rule in my config:
 
-{% highlight xml %}
+```xml
 <package spec="*/*" descr="USE=-doc remover">
     <if use="doc" negate="true">
         <rm cd="/usr/share" dst="doc" />
     </if>
 </package>
-{% endhighlight %}
+```
 
 <div class="alert alert-danger" markdown="1">
 #### Attention
@@ -210,11 +210,11 @@ which do not have `USE=doc` enabled!
 Unfortunately some packages, I want docs for, do not have that `USE` at all, so to stop this rule triggering,
 I've got a bunch of _stoppers_ like this:
 
-{% highlight xml %}
+```xml
 <package spec="clang-docs" stop="true" />
 <package spec="python-docs" stop="true" />
 <package spec="valgrind" stop="true" />
-{% endhighlight %}
+```
 
 
 Working Directory in a RAM
@@ -233,11 +233,11 @@ some reserved space. Basically amount of bytes to reserve is a 10% of the stored
 Default configuration file location is `/etc/paludis/hooks/configs/workdir-tmpfs.conf`.
 The hook's configuration has the following default values:
 
-{% highlight bash %}
+```bash
 MIN_RESERVED_SPACE=$(( 1024 * 1024 * 10 ))
 MAX_RESERVED_SPACE=$(( 1024 * 1024 * 100 ))
 DISK_USAGE_STATS_CACHE="/var/cache/paludis/disk_usage_stats.cache"
-{% endhighlight %}
+```
 
 `MIN_RESERVED_SPACE` is a value to be used as an amount of a reserved space if 10% of a stored disk usage
 counter is less than it. The `MAX_RESERVED_SPACE` is an upper bound of that 10% -- i.e. max reserved space
@@ -260,9 +260,9 @@ like it is possible in the portage via the [`package.env` file](https://wiki.gen
 To use it, one have to add the following to the `/etc/paludis/bashrc` somewhere after the `CFLAGS`
 and/or other definitions.
 
-{% highlight bash %}
+```bash
 [ -e /usr/libexec/paludis-hooks/setup_pkg_env.bash ] && . /usr/libexec/paludis-hooks/setup_pkg_env.bash
-{% endhighlight %}
+```
 
 Now you can edit the `/etc/paludis/package_env.conf` to specify how environment should be changed to compile
 any particular package. For example, I have somethig like 
@@ -296,30 +296,30 @@ In that file (an ordinal bash script actually to be sourced if a package name ma
 [`/etc/paludis/bashrc`](https://github.com/zaufi/paludis-config/blob/hardware/notebook/MSI-GP60-2PE-Leopard/bashrc) 
 I have the following definition for `LDFLAGS`:
 
-{% highlight bash %}
+```bash
 LDFLAGS="-Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,--enable-new-dtags -Wl,--gc-sections -Wl,--hash-style=gnu"
-{% endhighlight %}
+```
 
 Unfortunately, not all packages can link with `--gc-sections` option. For example `app-emulation/virtualbox`.
 It is why this package have `no-gc-sections` environment in my `package_env.conf`. You may use all functions provided by 
 [`flag-o-matic.eclass](https://devmanual.gentoo.org/eclass-reference/flag-o-matic.eclass/index.html) to manupulate
 compiler/linker flags! Here is mine `/etc/paludis/env.conf.d/no-gc-sections.conf` for example:
 
-{% highlight bash %}
+```bash
 einfo "Remove --gc-sections from linker flags"
 filter-ldflags -Wl,--gc-sections
-{% endhighlight %}
+```
 
 Yes, you can use logging functions as well ;-) The last command will remove undesired option from default
 ("global") `LDFLAGS`. Unfortunately `app-emulation/virtualbox` also fails to build if default linker is `ld.gold`.
 The second environment (`use-bfd-linker`) tells to use `ld.bfd` to link that package:
 
-{% highlight bash %}
+```bash
 if [ "bfd" != "$(readlink -f `which ld` | sed 's,.*\.\(bfd$\),\1,')" ]; then
     einfo "Use ld.bfd linker"
     append-ldflags -Wl,-fuse-ld=bfd
 fi
-{% endhighlight %}
+```
 
 Also there is a buch of other helper functions provided -- you may check 
 [my paludis configuration](https://github.com/zaufi/paludis-config/tree/master/env.conf.d)
@@ -350,7 +350,7 @@ Short Aliases and Some Other Helpers
 
 I use the following short aliases for the `cave` subcommands:
 
-{% highlight bash %}
+```bash
 alias cs='cave search --index ${CAVE_SEARCH_INDEX}'
 alias cm='cave manage-search-index --create ${CAVE_SEARCH_INDEX}'
 alias cc='cave contents'
@@ -363,7 +363,7 @@ alias cy='cave sync'
 alias cz='cave resume -Cs ${CAVE_RESUME_FILE_OPT}'
 alias world-up='cave resolve ${CAVE_RESUME_FILE_OPT} -c -km -Km -Cs -P "*/*" -Si -Rn world'
 alias system-up='cave resolve ${CAVE_RESUME_FILE_OPT} -c -km -Km -Cs -P "*/*" -Si -Rn system'
-{% endhighlight %}
+```
 
 Variables `CAVE_SEARCH_INDEX` and `CAVE_RESUME_FILE_OPT` are defined in `/etc/env.d/90cave` file.
 Also here some trick used to reintroduce bash completions for all that commands, so even if alias is used
@@ -393,7 +393,7 @@ TODO
 * Process `symlink` elements as they are followed in a configuration file. Nowadays this order is **undefined**.
 * Allow to "override" `src` attribute in `rm` and `symlink/item` tags:
 
-{% highlight xml %}
+```xml
 <package spec="cat/pkg">
     <symlink cd="/usr/share/bash-completion/completions" src="some-bash-completion.sh">
         <item dst="uno" />
@@ -402,7 +402,7 @@ TODO
         <item src="other-bash-completion.sh" dst="tres" />
     </symlink>
 </package>
-{% endhighlight %}
+```
 
 
 See Also

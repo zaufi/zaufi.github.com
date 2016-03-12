@@ -25,7 +25,7 @@ character `'…'`. It took about 30 seconds to find out that unfortunately, `bas
 my own text instead of default. So I decided to make an 
 ["ugly hack"](https://github.com/zaufi/paludis-autopatches/blob/c268dcd66d8eeb991e17b79e1bfdd695134c6c69/ebuild_unpack_post/app-shells/bash-4.2_p45-r1/bash-4.2-unicode-triple-dot-trim-path.patch) ;-)
 
-{% highlight diff %}
+```diff
 diff -ub -r bash-4.2.org/general.c bash-4.2/general.c
 --- bash-4.2.org/general.c  2010-12-12 23:06:27.000000000 +0300
 +++ bash-4.2/general.c  2014-02-02 21:25:00.000000000 +0400
@@ -42,7 +42,7 @@ diff -ub -r bash-4.2.org/general.c bash-4.2/general.c
  
    nlen = nend - ntail;
    memcpy (nbeg, ntail, nlen);
-{% endhighlight%}
+```
 
 `\xe2\xe80\xa6` is UTF-8 code for `…`
 

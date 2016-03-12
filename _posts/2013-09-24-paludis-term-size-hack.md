@@ -17,13 +17,13 @@ and in any case on a wide terminal window it look strange...
 So here is a mine fix (hack actually) for that, I've done a long time ago for dynamic 
 detection of a terminal size:
 
-   {% highlight bash %}
+```bash
 # Put this to the end of your /etc/paludis/bashrc
 save_COLUMNS=${COLUMNS}
 COLUMNS=$(stty size 2>/dev/null | cut -d ' ' -f2)
 test -z "${COLUMNS}" && COLUMNS=${save_COLUMNS}
 unset save_COLUMNS
 PALUDIS_ENDCOL=$'\e[A\e['$(( ${COLUMNS:-80} - 7 ))'G'
-   {% endhighlight %}
+```
 
 Have fun! :-)
