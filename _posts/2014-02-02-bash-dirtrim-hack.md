@@ -52,6 +52,7 @@ to see a result …
 <img src="/assets/images/new-dirtrim-prompt.png" class="img-responsive" title=";try; Synopsis" />
 
 The proper (not hackish) way should be:
+
 0. get a value of `PROMPT_DIRTRIM_TEXT` if any, otherwise use default `'...'` string
 0. send a patch back to upstream
 
