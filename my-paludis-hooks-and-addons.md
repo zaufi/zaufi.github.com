@@ -146,11 +146,13 @@ Moreover it can be a little shorter :-) So instead of `/usr/share/doc/boost-1.55
 `/usr/share/doc/boost/index.html` as a hint in a location bar and don't care about particular version installed.
 
 To achieve that I've added a simple rule to my config:
+
 ```xml
 <package spec="dev-libs/boost">
     <symlink cd="/usr/share/doc" src="${PF}/html" dst="${PN}" />
 </package>
 ```
+
 So, this rule will change current directory to `/usr/share/doc` inside an image directory and create
 a symbolic link `boost` pointing to `boost-1.55-r1/html/`.
 
@@ -162,22 +164,26 @@ but install localizations anyway (yep, cuz ebuild authors just lazy ppl... most 
 So `app-admin/localpurge` was "invented" to cleanup unused locales (all of them in my case). But `localepurge`
 will remove `*.mo` files after install, so when a package gets uninstalled, some files will be marked as _gone_.
 One simple rule will do the job better:
+
 ```xml
 <package spec="*/*" descr="locale-cleaner">
     <rm cd="/usr/share/locale/" dst="*/LC_MESSAGES/*.mo" />
 </package>
 ```
+
 Because manipulations (deleting `*.mo` files) will be done **before** merge, all that files even
 won't be counted by a package manager. And I'm not telling about that you don't need to run any tool periodically
 (or via `cron`) -- all your packages will be already clean w/o any manual actions required :)
 
 Translations is a part of the "problem": some packages (like `alsa-utils`) want to install translated manual pages
 as well. To remove them (everything except English) one may use the following rule:
+
 ```xml
 <package spec="*/*" descr="man-pages-cleaner">
     <rm cd="/usr/share/man/" dst="man{0p,1,1p,2,3,3p,4,5,6,7,8}" reverse="true" />
 </package>
 ```
+
 Note the attribute `reverse` tells to the hook that everything except specified items (directories actually)
 should be removed.
 
