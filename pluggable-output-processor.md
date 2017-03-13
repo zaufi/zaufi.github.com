@@ -23,7 +23,7 @@ Some of them are written on Perl (and I'm not a fun of it :-) and after few hack
 Yes, I know there is a lot of stuff like this, but I have few problems w/ it:
 
 1. I'm not a Perl programmer (and don't want to be), but I feel a permanent desire to improve that
-  programs in a different ways.
+  programs in different ways.
 2. Some of that stuff is actually abandoned -- i.e. even if I can fix or improve smth, there is nobody I can send
   my patch to...
 3. Some of that stuff is <del>too much</del> _end-user oriented_ <del>so inflexible</del> -- they can colorize
@@ -63,7 +63,7 @@ or
 For Gentoo users there is a [live ebuild](https://github.com/zaufi/zaufi-overlay/blob/master/dev-util/pluggable-output-processor/pluggable-output-processor-scm.ebuild)
 in my [repository](https://github.com/zaufi/zaufi-overlay/).
 Also (for Gentoo users again ;-) `eselect` module from `contrib/` will be installed by the ebuild.
-Users of other distros have to make a symlinks to required modules manually:
+Users of other distros have to make symlinks to required modules manually:
 
     # ln -s /usr/bin/outproc /usr/lib/outproc/bin/<module-name>
 
