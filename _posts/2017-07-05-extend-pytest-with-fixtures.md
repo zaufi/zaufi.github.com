@@ -105,8 +105,8 @@ Ok, lets see how `expected_out` would look like... First of all it is a fixture 
 [`request` parameter][fixture-request] provided by pytest. Using `resuest` it's possible to get a module/class/function
 name which requested this fixture. Lets use 'em to form a path to expectations file, which is in turn located somewhere
 in `test/data/expected-results/` directory of project sources. The next part is to make an equal comparable object
-and return as a fixture "result". Equal operator later will be used in `assert` expression, where the second expression
-is the captured output (string type).
+and return it as a fixture "result". Equal operator later will be used in `assert` expression, where the second expression
+is the captured output (of string type).
 
 Ok, here is a full code:
 
@@ -187,7 +187,7 @@ def expected_err(request):
 
 Hence in a test function `my_test`, `expected_out` is an instance of `_content_check_or_store_pattern`,
 so one can use `assert expected_out == out`! For the fist time it is recommended to run `py.test` with
-`--save-patters` option and particular test to execute -- just to overwrite only one expectations file
+`--save-patters` option and particular test name to execute -- just to overwrite only one expectations file
 (and do not touch others):
 
 ~~~
@@ -208,10 +208,11 @@ def my_test(capfd, expected_out):
 Run `pytest` to store initial pattern, then edit the `test/data/expected-results/my_test.out` to replace
 mutable parts with `.*` regex's wildcards (or some other, more precise expressions).
 
+Some examples could be found in my [tcct][tcct] project ;-)
 
 [save-patterns]: http://www.boost.org/doc/libs/1_64_0/libs/test/doc/html/boost_test/utf_reference/rt_param_reference/save_pattern.html
 [pytest-addoption]: https://docs.pytest.org/en/latest/example/simple.html
 [fun-as-arg]: https://docs.pytest.org/en/latest/fixture.html#fixtures-as-function-arguments
 [capfd]: https://docs.pytest.org/en/latest/capture.html
 [fixture-request]: https://docs.pytest.org/en/latest/builtin.html#_pytest.fixtures.FixtureRequest
-
+[tcct]: https://github.com/zaufi/teamcity-config-tweaker/tree/master/test
