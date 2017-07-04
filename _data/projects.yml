@@ -26,10 +26,10 @@
 
 - name: ---
 
-- name: "Chewy Tool: <em>CMake Helpers Easy Way sYnchronizer</em>"
+- name: 'Chewy Tool: <em>CMake Helpers Easy Way sYnchronizer</em>'
   uri: https://github.com/mutanabbi/chewy
 
-- name: "Chewy Repository: <em>Collection of reusable CMake modules</em>"
+- name: 'Chewy Repository: <em>Collection of reusable CMake modules</em>'
   uri: https://github.com/mutanabbi/chewy-cmake-rep
 
 - name: ---
