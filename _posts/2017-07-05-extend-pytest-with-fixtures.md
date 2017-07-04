@@ -3,7 +3,7 @@ layout: post
 title: "Extend pytest with fixures"
 description: "Few more helpful pytext fixrures"
 category: programming
-tags: [programming python]
+tags: [programming,python]
 ---
 {% include JB/setup %}
 
