@@ -414,4 +414,4 @@ TODO
 See Also
 ========
 
-* [repository](https://github.com/zaufi/paludis-config) w/ my paludis configuration. Note, that it has various branches for my hardware.
+* [repository](https://github.com/zaufi/etc-paludis) w/ my paludis configuration. Note, that it has various branches for my hardware.

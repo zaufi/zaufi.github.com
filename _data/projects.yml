@@ -12,8 +12,14 @@
 
 - name: ---
 
+- name: TeamCity Configuration Tweaker
+  uri: https://github.com/zaufi/teamcity-config-tweaker
+
+- name: 'JIRA bot: interact with JIRA from shell scripts'
+  uri: https://github.com/zaufi/jira-bot
+
 - name: Smart <code>bash</code> Prompt
-  uri: http://cli-apps.org/content/show.php/smart-prompt?content=160498
+  uri: https://github.com/zaufi/smart-prompt
 
 - name: Team Expence Calculator (XSLT)
   uri: https://github.com/zaufi/team-expense-calc
@@ -34,5 +40,3 @@
 
 - name: My Paludis Configuration
   uri: https://github.com/zaufi/paludis-config
-
-
