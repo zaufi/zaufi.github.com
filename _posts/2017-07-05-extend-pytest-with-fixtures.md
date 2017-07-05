@@ -11,7 +11,7 @@ Few helper functions
 ====================
 
 It is quite common practice to store some data required for test in a repository
-as indicidual files. First of all it could be some input data for tests. Secondly,
+as individual files. First of all it could be some input data for tests. Secondly,
 files to check a test output somehow.
 
 I've found the following bunch of functions are pretty useful:
@@ -38,16 +38,16 @@ I put 'em to `test/conftest.py` usually.
 A simple way to assert test output
 ==================================
 
-Since begining of my experience with [pytest](https://docs.pytest.org/en/latest/) I've looked for an easy way
+Since beginning of my experience with [pytest](https://docs.pytest.org/en/latest/) I've looked for an easy way
 to match test output against an expected text or pattern. When I found nothing in docs and nothing interesting in
-StackOverflow and Google, I desided to write my own wheel ;-)
+StackOverflow and Google, I decided to write my own wheel ;-)
 
 
 Add CLI option to store patterns
 --------------------------------
 
-I like [this featue][save-patterns] in Boost Unit Testing Framework: `--save_pattern` CLI option instead of c
-hecking the captured output result, just store it into a file, which is usually kept in a VCS as _expected_ result.
+I like [this featue][save-patterns] in Boost Unit Testing Framework: `--save_pattern` CLI option, instead of checking
+the captured output result, just store it into a file, which is usually kept in a VCS as _expected_ result.
 
 Now lets implement the same for pytest! ;-) I found a [sample][pytest-addoption], so it was the easiest part:
 
@@ -102,7 +102,7 @@ def my_test(capfd, expected_out):
 
 
 Ok, lets see how `expected_out` would look like... First of all it is a fixture name -- i.e. a function accepting
-[`request` parameter][fixture-request] provided by pytest. Using `resuest` it's possible to get a module/class/function
+[`request` parameter][fixture-request] provided by pytest. Using `request` it's possible to get a module/class/function
 name which requested this fixture. Lets use 'em to form a path to expectations file, which is in turn located somewhere
 in `test/data/expected-results/` directory of project sources. The next part is to make an equal comparable object
 and return it as a fixture "result". Equal operator later will be used in `assert` expression, where the second expression
