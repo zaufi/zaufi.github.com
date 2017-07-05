@@ -7,8 +7,8 @@ tags: [programming,python]
 ---
 {% include JB/setup %}
 
-A few helper functions
-======================
+Few helper functions
+====================
 
 It is quite common practice to store some data required for test in a repository
 as indicidual files. First of all it could be some input data for tests. Secondly,
