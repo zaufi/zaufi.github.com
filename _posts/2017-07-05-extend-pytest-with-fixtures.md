@@ -176,7 +176,7 @@ def _make_expected_filename(request, ext):
 def expected_out(request):
     return _content_check_or_store_pattern(
         _make_expected_filename(request, '.out')
-      , request.config.option.save_patterns         # The value of `--save-patterns` CLI option
+      , request.config.getoption('--save-patterns')
       )
 
 
@@ -184,7 +184,7 @@ def expected_out(request):
 def expected_err(request):
     return _content_check_or_store_pattern(
         _make_expected_filename(request, '.err')
-      , request.config.option.save_patterns
+      , request.config.getoption('--save-patterns')
       )
 ~~~
 
