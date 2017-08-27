@@ -101,11 +101,13 @@ that the result string must be inserted into the document via `KTexeEditor::Temp
 a Python decorator `postprocess` from the module `expand`:
 
 ```python
+{% raw %}
 import expand
 
 @expand.postprocess
 def hi(name=None):
     return 'Hello ${{name:{}}}'.format(name if name is not None else 'anonymous')
+{%endraw%}
 ```
 
 This way a partly editable piece of code can be inserted! Yeah, right, just like these snippets from a plugin...
@@ -116,6 +118,7 @@ over snippets! :-) Still do not believe? Here is a _real world example_: lets wr
 insert structure definitions to C++ code (it doesn't use editable fields for simplicity):
 
 ```python
+{% raw %}
 _BRIEF_DOC_TPL = '''\
 /**
  * \\brief Struct \\c {0}
@@ -138,6 +141,7 @@ def st(name, *templateParams):
     else:
         template = _BRIEF_DOC_TPL + _STRUCT_BODY_TPL
     return template.format(*params)
+{%endraw%}
 ```
 
 This pretty simple (and quite short) function can do something, that snippets __just can't!__
