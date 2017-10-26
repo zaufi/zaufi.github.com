@@ -127,7 +127,7 @@ class _content_check_or_store_pattern:
         def _inner(self, text):
             # Check if `--save-patterns` has given to CLI
             if self._store:
-                # Make directory to store pattern file if it doesn't exist yet
+                # Make a directory to store a pattern file if it doesn't exist yet
                 if not self._filename.parent.exists():
                     self._filename.parent.mkdir(parents=True)
 
@@ -149,7 +149,7 @@ class _content_check_or_store_pattern:
 
     @_store_pattern_handle_error
     def __eq__(self, text):
-        expected_text = self._filename.read_text().strip()
+        expected_text = self._filename.read_text()
         return expected_text == text
 
 

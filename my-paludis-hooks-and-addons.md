@@ -16,7 +16,7 @@ added some other helpful things, I'm using for awhile... so probably the repo sh
 
 Personally I like hooks, cuz that facility, out of the box, turns `paludis` into a really flexible package manager
 and thanks to them, feature like _autopatch_ works much more better (and reliably) than the
-[same feature](https://www.gentoo.org/doc/en/handbook/handbook-amd64.xml?part=3&chap=6#doc_chap6) of
+[same feature](https://wiki.gentoo.org/wiki/Handbook:AMD64/Portage/Advanced#Applying_non-standard_patches) of
 `emerge` became available long time after.
 
 To install all that stuff, here is a
@@ -25,7 +25,7 @@ in my overlay. And yes, that `scm` is the only version nowadays ;-) cuz I'm perm
 w/o any release plan.
 
 **NOTE**: To use it w/ Python 3 as a default interpreter make sure you have an
-[appropriate](/gentoo/2013/12/11/paludis-python3/) paludis version installed.
+[appropriate](/gentoo/2013/12/11/paludis-python3) paludis version installed.
 
 
 Things in Details
