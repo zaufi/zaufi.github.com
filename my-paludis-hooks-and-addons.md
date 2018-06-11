@@ -114,6 +114,10 @@ There are few children tags possible under the `package` element:
     * `cd` -- change to this directory before making a symlink
     * `src` -- source for the symlink
     * `dst` -- destination of the symlink
+* `mv` -- used to move or rename something in the image.
+    * `cd` -- set a working directory to this
+    * `src` -- source file or directory name
+    * `dst` -- destination path/name
 * `rm` -- used to remove something from the image, so it will not be installed at all.
     * `dst` -- what to remove
     * `reverse` -- optional attribute to specify that command should remove **everything** except
@@ -121,6 +125,9 @@ There are few children tags possible under the `package` element:
 * `if` -- used to check some (limited nowadays) constraints and execute nested actions if latter is `true`
     * `use` -- the only mandatory attribute nowadays to check if given `USE` flag is turned on for matched package
     * `negate` -- boolean attribute to negate result of a use check
+* `mkdir` -- used to create a new directory
+    * `cd` -- change to this directory before doing anything
+    * `dst` -- the name of the directory to create
 
 Paths in a rule may refer to shell variables like `P`, `PN`, `PF`, `PV`, `PVR`, as well as others,
 declared by [PMS](http://wiki.gentoo.org/wiki/Project:PMS).
